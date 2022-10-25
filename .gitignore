@@ -1,5 +1,2 @@
-deploy/boot.ext4
-deploy/fw_dynamic.bin
-deploy/Image
-deploy/light-beagle.dtb
-deploy/u-boot-with-spl.bin
+ignore/
+deploy/
