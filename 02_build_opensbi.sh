@@ -1,8 +1,11 @@
 #!/bin/bash
 
+CORES=$(getconf _NPROCESSORS_ONLN)
+
 wdir=`pwd`
 
 make -C opensbi ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- PLATFORM=generic clean
-make -C opensbi ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- PLATFORM=generic
+echo "make -C opensbi -j${CORES} ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- PLATFORM=generic"
+make -C opensbi -j${CORES} ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- PLATFORM=generic
 
 cp -v ./opensbi/build/platform/generic/firmware/fw_dynamic.bin ./deploy/

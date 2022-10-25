@@ -1,5 +1,7 @@
 #!/bin/bash
 
+CORES=$(getconf _NPROCESSORS_ONLN)
+
 cd ./beaglev-ahead-u-boot/
 rm -f board/thead/light-c910/version_rollback.c || true
 git reset HEAD --hard
@@ -15,8 +17,10 @@ cd ../
 wdir=`pwd`
 
 make -C beaglev-ahead-u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- distclean
+echo "make -C beaglev-ahead-u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- light_beagle_defconfig"
 make -C beaglev-ahead-u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- light_beagle_defconfig
-make -C beaglev-ahead-u-boot -j8 ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- all
+echo "make -C beaglev-ahead-u-boot -j${CORES} ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- all"
+make -C beaglev-ahead-u-boot -j${CORES} ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- all
 
 cp -v ./beaglev-ahead-u-boot/u-boot-with-spl.bin ./deploy/
 
