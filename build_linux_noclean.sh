@@ -8,7 +8,6 @@ CC=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux-
 
 cd ./beaglev-ahead-linux/
 
-make ARCH=riscv CROSS_COMPILE=${CC} clean
 cp -v ../patches/linux/beaglev_defconfig ./arch/riscv/configs/beaglev_defconfig
 make ARCH=riscv CROSS_COMPILE=${CC} beaglev_defconfig
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
