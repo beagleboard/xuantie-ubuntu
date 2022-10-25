@@ -11,6 +11,9 @@ if [ ! -f ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-debian-sid
 	cd ../
 fi
 
+if [ -d ./ignore/.root ] ; then
+	sudo rm -rf ./ignore/.root || true
+fi
 mkdir -p ./ignore/.root
 
 sudo tar xfp ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-*.tar -C ./ignore/.root
@@ -23,7 +26,7 @@ sync
 #	fi
 #fi
 
-dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=2000M
+dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=1000M
 sudo mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
 cd ../
