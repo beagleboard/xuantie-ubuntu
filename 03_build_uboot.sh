@@ -7,6 +7,9 @@ patch -p1 < ../patches/u-boot/0001-no-strip-fw_printenv.patch
 patch -p1 < ../patches/u-boot/0002-Add-factory-reset-env-to-uboot.patch
 patch -p1 < ../patches/u-boot/0003-LIGHT-Automatic-version-rollback-when-upgrade-fails.patch
 patch -p1 < ../patches/u-boot/0004-fix-scripts-dtc-dtc-lexer.l-for-gcc10.patch
+
+cp -v ../patches/u-boot/light-c910.h ./include/configs/
+
 cd ../
 
 wdir=`pwd`
