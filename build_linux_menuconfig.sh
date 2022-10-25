@@ -19,7 +19,7 @@ KERNEL_UTS=$(cat "${wdir}/beaglev-ahead-linux/include/generated/utsrelease.h" | 
 
 make -s ARCH=riscv CROSS_COMPILE=${CC} modules_install INSTALL_MOD_PATH="${wdir}/deploy/tmp"
 
-if [ -f "${wdir}/deploy/${KERNEL_UTS}-modules.tar.gz" ; then
+if [ -f "${wdir}/deploy/${KERNEL_UTS}-modules.tar.gz" ] ; then
 	rm -rf "${wdir}/deploy/${KERNEL_UTS}-modules.tar.gz" || true
 fi
 echo "Compressing ${KERNEL_UTS}-modules.tar.gz..."
