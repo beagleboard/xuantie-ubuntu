@@ -19,9 +19,15 @@ mkdir -p ./ignore/.root
 sudo tar xfp ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-*.tar -C ./ignore/.root
 sync
 
+sudo mkdir -p ./ignore/.root/boot/firmware/ || true
+
+sudo sh -c "echo '/dev/mmcblk0p2  /boot/firmware/ auto  defaults  0  2' >> ./ignore/.root/etc/fstab"
 sudo sh -c "echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/.root/etc/fstab"
 
 sudo rm -rf ./ignore/.root/lib/modules/5.13.6-riscv64-r17/ || true
+
+sudo rm -rf ./ignore/.root/lib/systemd/system/bb-usb-gadgets.service || true
+sudo rm -rf ./ignore/.root//lib/systemd/system/grow_partition.service || true
 
 #if [ -f ./deploy/.modules ] ; then
 #	version=$(cat ./deploy/.modules || true)
