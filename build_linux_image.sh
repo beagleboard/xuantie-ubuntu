@@ -11,6 +11,7 @@ cd ./beaglev-ahead-linux/
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image
 
+cp -v ./.config ../patches/linux/beaglev_defconfig
 cp -v ./arch/riscv/boot/Image ../deploy/
 
 cd ../

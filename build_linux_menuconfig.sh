@@ -11,6 +11,7 @@ cd ./beaglev-ahead-linux/
 make ARCH=riscv CROSS_COMPILE=${CC} clean
 cp -v ../patches/linux/beaglev_defconfig ./arch/riscv/configs/beaglev_defconfig
 make ARCH=riscv CROSS_COMPILE=${CC} beaglev_defconfig
+make ARCH=riscv CROSS_COMPILE=${CC} menuconfig
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs
 
