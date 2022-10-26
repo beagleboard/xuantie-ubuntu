@@ -36,7 +36,7 @@ sudo rm -rf ./ignore/.root//lib/systemd/system/grow_partition.service || true
 #	fi
 #fi
 
-dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=1000M
+dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=1100M
 sudo mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
 cd ../
