@@ -7,3 +7,24 @@
 
 #include "light-ant-evt.dts"
 
+&sdhci1 {
+	max-frequency = <100000000>;
+	bus-width = <4>;
+	pull_up;
+	no-sd;
+	no-mmc;
+	non-removable;
+	io_fixed_1v8;
+	wprtn_ignore;
+	cap-sd-highspeed;
+	keep-power-in-suspend;
+	wakeup-source;
+	status = "okay";
+
+	brcmf: wifi@1 {
+		status = "okay";
+		reg = <1>;
+		compatible = "brcm,bcm4329-fmac";
+	};
+};
+
