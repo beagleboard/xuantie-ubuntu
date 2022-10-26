@@ -8,8 +8,9 @@ CC=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux-
 
 cd ./beaglev-ahead-linux/
 
-make ARCH=riscv CROSS_COMPILE=${CC} clean
 cp -v ../patches/linux/beaglev_defconfig ./arch/riscv/configs/beaglev_defconfig
+cp -v ../patches/linux/light-beagle.dts ./arch/riscv/boot/dts/thead/
+make ARCH=riscv CROSS_COMPILE=${CC} clean
 make ARCH=riscv CROSS_COMPILE=${CC} beaglev_defconfig
 make ARCH=riscv CROSS_COMPILE=${CC} menuconfig
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
@@ -30,6 +31,7 @@ cd "${wdir}/beaglev-ahead-linux/" || exit
 rm -rf "${wdir}/deploy/tmp" || true
 
 cp -v ./.config ../patches/linux/beaglev_defconfig
+cp -v ./arch/riscv/boot/dts/thead/light-beagle.dts ../patches/linux/
 cp -v ./arch/riscv/boot/Image ../deploy/
 cp -v ./arch/riscv/boot/dts/thead/light-beagle.dtb ../deploy/
 
