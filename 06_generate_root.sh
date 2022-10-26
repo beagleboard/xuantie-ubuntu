@@ -37,7 +37,7 @@ if [ -f ./deploy/.modules ] ; then
 	fi
 fi
 
-dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=1200M
+dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=1300M
 sudo mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
 cd ../
