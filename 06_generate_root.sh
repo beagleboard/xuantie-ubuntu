@@ -2,7 +2,7 @@
 
 wdir=`pwd`
 
-image="2022-10-24"
+image="2022-10-25"
 
 if [ ! -f ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-debian-sid.tar ] ; then
 	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-minimal/${image}/debian-sid-console-riscv64-${image}.tar.xz
@@ -27,16 +27,17 @@ sudo sh -c "echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/
 sudo rm -rf ./ignore/.root/lib/modules/5.13.6-riscv64-r17/ || true
 
 sudo rm -rf ./ignore/.root/lib/systemd/system/bb-usb-gadgets.service || true
-sudo rm -rf ./ignore/.root//lib/systemd/system/grow_partition.service || true
+sudo rm -rf ./ignore/.root/lib/systemd/system/grow_partition.service || true
 
-#if [ -f ./deploy/.modules ] ; then
-#	version=$(cat ./deploy/.modules || true)
-#	if [ -f ./deploy/${version}.tar.gz ] ; then
-#		sudo tar xfv ./deploy/${version}.tar.gz -C ./ignore/.root
-#	fi
-#fi
+if [ -f ./deploy/.modules ] ; then
+	version=$(cat ./deploy/.modules || true)
+	if [ -f ./deploy/${version}.tar.gz ] ; then
+		sudo cp -v ./deploy/${version}.tar.gz ./ignore/.root/home/debian/
+		#sudo tar xfv ./deploy/${version}.tar.gz -C ./ignore/.root
+	fi
+fi
 
-dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=1100M
+dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=1200M
 sudo mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
 cd ../
