@@ -12,5 +12,5 @@
 # Flash Board over USB
 
 ```
-07_fastboot_emmc.sh
+sudo ./07_fastboot_emmc.sh
 ```
