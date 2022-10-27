@@ -14,7 +14,7 @@ fi
 if [ -d ./ignore/.root ] ; then
 	sudo rm -rf ./ignore/.root || true
 fi
-mkdir -p ./ignore/.root
+sudo mkdir -p ./ignore/.root
 
 sudo tar xfp ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-*.tar -C ./ignore/.root
 sync
