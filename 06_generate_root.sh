@@ -24,16 +24,15 @@ sudo mkdir -p ./ignore/.root/boot/firmware/ || true
 sudo sh -c "echo '/dev/mmcblk0p2  /boot/firmware/ auto  defaults  0  2' >> ./ignore/.root/etc/fstab"
 sudo sh -c "echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/.root/etc/fstab"
 
-sudo rm -rf ./ignore/.root/lib/modules/5.13.6-riscv64-r17/ || true
+sudo rm -rf ./ignore/.root/usr/lib/modules/5.13.6-riscv64-r17/ || true
 
-sudo rm -rf ./ignore/.root/lib/systemd/system/bb-usb-gadgets.service || true
-sudo rm -rf ./ignore/.root/lib/systemd/system/grow_partition.service || true
+sudo rm -rf ./ignore/.root/usr/lib/systemd/system/bb-usb-gadgets.service || true
+sudo rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 
 if [ -f ./deploy/.modules ] ; then
 	version=$(cat ./deploy/.modules || true)
 	if [ -f ./deploy/${version}.tar.gz ] ; then
-		sudo cp -v ./deploy/${version}.tar.gz ./ignore/.root/home/debian/
-		#sudo tar xfv ./deploy/${version}.tar.gz -C ./ignore/.root
+		sudo tar xfv ./deploy/${version}.tar.gz -C ./ignore/.root/usr/
 	fi
 fi
 
