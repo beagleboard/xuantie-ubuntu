@@ -2,7 +2,7 @@
 
 wdir=`pwd`
 
-image="2022-10-25"
+image="2022-10-26"
 
 if [ ! -f ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-debian-sid.tar ] ; then
 	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-minimal/${image}/debian-sid-console-riscv64-${image}.tar.xz
@@ -37,7 +37,7 @@ if [ -f ./deploy/.modules ] ; then
 	fi
 fi
 
-dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=1300M
+dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=1500M
 sudo mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
 cd ../
