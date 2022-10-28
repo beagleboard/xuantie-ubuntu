@@ -12,3 +12,4 @@ build:
   stage: build
   script:
     - ./01_git_sync.sh
+    - ./02_build_opensbi.sh
