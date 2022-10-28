@@ -14,3 +14,4 @@ build:
     - ./01_git_sync.sh
     - ./02_build_opensbi.sh
     - ./03_build_uboot.sh
+    - ./04_build_linux.sh
