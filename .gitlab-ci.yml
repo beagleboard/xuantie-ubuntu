@@ -1,0 +1,6 @@
+image: robertcnelson/debian-bullseye-slim-riscv-debian:latest
+
+build:
+  stage: build
+  script:
+    - ./01_git_sync.sh
