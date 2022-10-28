@@ -13,3 +13,4 @@ build:
   script:
     - ./01_git_sync.sh
     - ./02_build_opensbi.sh
+    - ./03_build_uboot.sh
