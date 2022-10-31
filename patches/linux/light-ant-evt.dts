@@ -624,7 +624,7 @@
 	};
 
 	spidev@1 {
-		compatible = "spidev";
+		compatible = "rohm,dh2228fv";
 		#address-cells = <0x1>;
 		#size-cells = <0x1>;
 		reg = <0x1>;
@@ -665,7 +665,7 @@
 	status = "okay";
 
 	spidev@0 {
-		compatible = "spidev";
+		compatible = "rohm,dh2228fv";
 		#address-cells = <0x1>;
 		#size-cells = <0x1>;
 		reg = <0x0>;
