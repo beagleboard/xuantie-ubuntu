@@ -9,6 +9,14 @@
 #include <dt-bindings/interrupt-controller/irq.h>
 #include "light-ant-evt.dts"
 
+/ {
+	brcmf_pwrseq: brcmf_pwrseq {
+		compatible = "mmc-pwrseq-simple";
+		reset-gpios = <&gpio2_porta 28 GPIO_ACTIVE_LOW>,	/* BT-REG-ON */
+			      <&gpio2_porta 31 GPIO_ACTIVE_LOW>;	/* WL-REG-ON */
+	};
+};
+
 &sdhci1 {
 	max-frequency = <100000000>;
 	bus-width = <4>;
@@ -22,6 +30,10 @@
 	keep-power-in-suspend;
 	wakeup-source;
 	status = "okay";
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+	mmc-pwrseq = <&brcmf_pwrseq>;
 
 	wifi@1 {
 		status = "okay";
