@@ -35,6 +35,8 @@ rm -rf ./ignore/.root/usr/lib/modules/5.13.6-riscv64-r17/ || true
 rm -rf ./ignore/.root/usr/lib/systemd/system/bb-usb-gadgets.service || true
 rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 
+cp -v ./rootfs/eth0.network ./ignore/.root/etc/systemd/network/ || true
+
 if [ -f ./deploy/.modules ] ; then
 	version=$(cat ./deploy/.modules || true)
 	if [ -f ./deploy/${version}.tar.gz ] ; then
