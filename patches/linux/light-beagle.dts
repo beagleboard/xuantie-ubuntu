@@ -5,6 +5,8 @@
 
 /dts-v1/;
 
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
 #include "light-ant-evt.dts"
 
 &sdhci1 {
@@ -25,6 +27,10 @@
 		status = "okay";
 		reg = <1>;
 		compatible = "cypress,cyw43012-fmac", "brcm,bcm4329-fmac";
+
+		interrupt-parent = <&gpio2_porta>;
+		interrupts = <25 IRQ_TYPE_EDGE_FALLING>;
+		interrupt-names = "host-wake";
 	};
 };
 
