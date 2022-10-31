@@ -15,3 +15,7 @@ cp -v ./deploy/light-beagle.dtb ./ignore/.boot
 
 dd if=/dev/zero of=./deploy/boot.ext4 count=10000 bs=4096
 mkfs.ext4 -F ./deploy/boot.ext4 -d ./ignore/.boot
+
+if [ -f ./.05_generate_boot.sh ] ; then
+	rm -f ./.05_generate_boot.sh || true
+fi

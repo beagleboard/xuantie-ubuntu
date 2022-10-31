@@ -29,3 +29,4 @@ rm -f board/thead/light-c910/version_rollback.c || true
 git reset HEAD --hard
 cd ../
 
+touch ./.05_generate_boot.sh

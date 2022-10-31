@@ -9,3 +9,5 @@ echo "make -C opensbi -j${CORES} ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchai
 make -C opensbi -j${CORES} ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- PLATFORM=generic
 
 cp -v ./opensbi/build/platform/generic/firmware/fw_dynamic.bin ./deploy/
+
+touch ./.05_generate_boot.sh
