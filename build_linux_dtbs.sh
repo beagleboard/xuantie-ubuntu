@@ -9,10 +9,12 @@ CC=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux-
 cd ./beaglev-ahead-linux/
 
 cp -v ../patches/linux/light-beagle.dts ./arch/riscv/boot/dts/thead/
+cp -v ../patches/linux/light-ant-evt.dts ./arch/riscv/boot/dts/thead/
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} dtbs
 
 cp -v ./arch/riscv/boot/dts/thead/light-beagle.dts ../patches/linux/
+cp -v ./arch/riscv/boot/dts/thead/light-ant-evt.dts ../patches/linux/
 cp -v ./arch/riscv/boot/dts/thead/light-beagle.dtb ../deploy/
 
 cd ../

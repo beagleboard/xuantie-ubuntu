@@ -10,6 +10,7 @@ cd ./beaglev-ahead-linux/
 
 cp -v ../patches/linux/beaglev_defconfig ./arch/riscv/configs/beaglev_defconfig
 cp -v ../patches/linux/light-beagle.dts ./arch/riscv/boot/dts/thead/
+cp -v ../patches/linux/light-ant-evt.dts ./arch/riscv/boot/dts/thead/
 make ARCH=riscv CROSS_COMPILE=${CC} clean
 make ARCH=riscv CROSS_COMPILE=${CC} beaglev_defconfig
 make ARCH=riscv CROSS_COMPILE=${CC} menuconfig
@@ -32,6 +33,7 @@ rm -rf "${wdir}/deploy/tmp" || true
 
 cp -v ./.config ../patches/linux/beaglev_defconfig
 cp -v ./arch/riscv/boot/dts/thead/light-beagle.dts ../patches/linux/
+cp -v ./arch/riscv/boot/dts/thead/light-ant-evt.dts ../patches/linux/
 cp -v ./arch/riscv/boot/Image ../deploy/
 cp -v ./arch/riscv/boot/dts/thead/light-beagle.dtb ../deploy/
 
