@@ -21,10 +21,10 @@
 	wakeup-source;
 	status = "okay";
 
-	brcmf: wifi@1 {
+	wifi@1 {
 		status = "okay";
 		reg = <1>;
-		compatible = "brcm,bcm4329-fmac";
+		compatible = "cypress,cyw43012-fmac", "brcm,bcm4329-fmac";
 	};
 };
 
