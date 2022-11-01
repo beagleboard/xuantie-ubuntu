@@ -522,6 +522,8 @@
 
 	brcmf_pwrseq: brcmf_pwrseq {
 		compatible = "mmc-pwrseq-simple";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_brcmf_pwrseq>;
 		reset-gpios = <&gpio2_porta 28 GPIO_ACTIVE_LOW>,	/* BT-REG-ON */
 			      <&gpio2_porta 31 GPIO_ACTIVE_LOW>;	/* WL-REG-ON */
 	};
@@ -740,6 +742,9 @@
 	#size-cells = <0>;
 	status = "okay";
 
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_brcm>;
+
 	non-removable;
 	bus-width = <4>;
 	max-frequency = <100000000>;
@@ -765,6 +770,17 @@
 		interrupt-names = "host-wake";
 	};
 };
+
+/*
+	PIN           ,         0x0,        0x1, 0x2,       0x3,  0x4,  0x5
+	GPIO2_25      ,    GPIO2_25, GMAC1_RXDV, NULL,     NULL, NULL, NULL
+	FM_SDIO1_WPRTN, SDIO1_WPRTN,       NULL, NULL, GPIO2_28, NULL, NULL
+	FM_GPIO2_31   ,    GPIO2_31, GMAC1_RXD1, NULL,     NULL, NULL, NULL
+*/
+
+#define FM_GPIO2_25_GPIO	0x0
+#define FM_SDIO1_WPRTN_GPIO 0x3
+#define FM_GPIO2_31_GPIO	0x0
 
 &padctrl0_apsys { /* right-pinctrl */
 	light-evb-padctrl0 {
@@ -815,6 +831,20 @@
 			pinctrl_pwm: pwmgrp {
 				thead,pins = <
 					FM_GPIO3_2	0x1	0x208	/* pwm0 */
+				>;
+			};
+
+			/* todo, 0x72... */
+			pinctrl_brcm: brcmgrp {
+				thead,pins = <
+					FM_GPIO2_25	FM_GPIO2_25_GPIO    0x72
+				>;
+			};
+
+			pinctrl_brcmf_pwrseq: brcmfpwrseqgrp {
+				thead,pins = <
+					FM_SDIO1_WPRTN	FM_SDIO1_WPRTN_GPIO    0x72
+					FM_GPIO2_31     FM_GPIO2_31_GPIO       0x72
 				>;
 			};
 		};
