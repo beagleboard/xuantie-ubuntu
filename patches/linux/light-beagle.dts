@@ -28,10 +28,11 @@
 
 	leds {
 		compatible = "gpio-leds";
-		status = "disabled";
+
 		led0 {
-			label = "SYS_STATUS";
-			gpios = <&gpio1_porta 15 0>;	/* GPIO_ACTIVE_HIGH: 0 */
+			label = "beaglebone:green:usr0";
+			gpios = <&ao_gpio4_porta 8 GPIO_ACTIVE_HIGH>;
+			linux,default-trigger = "heartbeat";
 			default-state = "off";
 		};
 	};
