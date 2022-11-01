@@ -820,14 +820,6 @@
 		};
 };
 
-/*
-	PIN      ,       0x0,  0x1,  0x2,     0x3,  0x4,  0x5
-	AUDIO_PA8, AUDIO_PA8, NULL, NULL, GPIO4_8, NULL, NULL
-*/
-
-#define FM_AUDIO_PA8_AUDIO_PA8 0x00
-#define FM_AUDIO_PA8_GPIO 0x03
-
 &padctrl1_apsys { /* left-pinctrl */
 	light-evb-padctrl1 {
 			/*
@@ -877,6 +869,14 @@
 			};
 		};
 };
+
+/*
+	PIN      ,       0x0,  0x1,  0x2,     0x3,  0x4,  0x5
+	AUDIO_PA8, AUDIO_PA8, NULL, NULL, GPIO4_8, NULL, NULL
+*/
+
+#define FM_AUDIO_PA8_AUDIO_PA8 0x00
+#define FM_AUDIO_PA8_GPIO 0x03
 
 &padctrl_aosys {
 	light-aon-padctrl {
