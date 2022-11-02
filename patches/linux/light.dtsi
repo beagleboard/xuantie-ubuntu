@@ -975,9 +975,9 @@
 			status = "disabled";
 		};
 
-		adc: adc@ffec020000 {
+		adc: adc@0xfffff51000 {
 			compatible = "thead,light-adc";
-			reg = <0xff 0xfff51000 0x0 0x2000>;
+			reg = <0xff 0xfff51000 0x0 0x1000>;
 			interrupt-parent = <&intc>;
 			interrupts = <61>;
 			clocks = <&dummy_clock_aonsys_clk>;
