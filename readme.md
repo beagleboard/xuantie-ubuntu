@@ -5,8 +5,8 @@
 ./02_build_opensbi.sh
 ./03_build_uboot.sh
 ./04_build_linux.sh
-./05_generate_boot.sh
-./06_generate_root.sh
+sudo ./05_generate_boot.sh
+sudo ./06_generate_root.sh
 ```
 
 # Flash Board over USB
