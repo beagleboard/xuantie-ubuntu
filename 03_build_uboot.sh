@@ -5,7 +5,6 @@ CORES=$(getconf _NPROCESSORS_ONLN)
 cd ./beaglev-ahead-u-boot/
 rm -f board/thead/light-c910/version_rollback.c || true
 git reset HEAD --hard
-patch -p1 < ../patches/u-boot/0002-Add-factory-reset-env-to-uboot.patch
 patch -p1 < ../patches/u-boot/0003-LIGHT-Automatic-version-rollback-when-upgrade-fails.patch
 patch -p1 < ../patches/u-boot/0004-fix-scripts-dtc-dtc-lexer.l-for-gcc10.patch
 
