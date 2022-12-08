@@ -1,7 +1,3 @@
-[submodule "riscv-toolchain"]
-	path = riscv-toolchain
-	url = git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git
-	shallow = true
 [submodule "beaglev-ahead-u-boot"]
 	path = beaglev-ahead-u-boot
 	url = git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-u-boot.git
