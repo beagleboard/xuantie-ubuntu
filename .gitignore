@@ -1,5 +1,6 @@
 ignore/
 deploy/
+riscv-toolchain/
 opensbi/
 .05_generate_boot.sh
 .06_generate_root.sh

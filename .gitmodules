@@ -1,7 +1,3 @@
-[submodule "beaglev-ahead-u-boot"]
-	path = beaglev-ahead-u-boot
-	url = git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-u-boot.git
-	shallow = true
 [submodule "beaglev-ahead-linux"]
 	path = beaglev-ahead-linux
 	url = git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git

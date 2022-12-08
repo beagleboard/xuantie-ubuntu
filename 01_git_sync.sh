@@ -20,4 +20,10 @@ fi
 
 git clone git@git.beagleboard.org:beaglev-ahead/opensbi.git --depth=1
 
+if [ -d ./beaglev-ahead-u-boot ] ; then
+	rm -rf ./beaglev-ahead-u-boot || true
+fi
+
+git clone -b beaglev-ahead-v2020.01-0.9.5 git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-u-boot.git --depth=10
+
 #
