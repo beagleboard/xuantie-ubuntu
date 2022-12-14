@@ -11,6 +11,9 @@ sudo ./06_generate_root.sh
 
 # Flash Board over USB
 
+1. Press the `USB` button near SD card holder and then connect the board to PC with your USB3 cable.
+2. Now, Execute the command below and you should see the board flashing.
+
 ```
 sudo ./07_fastboot_emmc.sh
 ```
