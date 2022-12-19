@@ -9,6 +9,8 @@ before_script:
     - chmod 644 ~/.ssh/known_hosts
 
 build:
+  tags:
+    - docker-amd64
   stage: build
   script:
     - ./01_git_sync.sh
