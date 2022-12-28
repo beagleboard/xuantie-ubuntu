@@ -1,4 +1,0 @@
-[submodule "beaglev-ahead-linux"]
-	path = beaglev-ahead-linux
-	url = git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git
-	shallow = true

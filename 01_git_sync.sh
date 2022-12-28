@@ -1,13 +1,5 @@
 #!/bin/bash
 
-if [ -d ./beaglev-ahead-linux ] ; then
-	cd ./beaglev-ahead-linux/
-	git reset HEAD --hard
-	cd ../
-fi
-
-git submodule init && git submodule sync && git submodule update --remote
-
 if [ -d ./riscv-toolchain ] ; then
 	rm -rf ./riscv-toolchain || true
 fi
@@ -26,4 +18,9 @@ fi
 
 git clone -b beaglev-ahead-v2020.01-0.9.5 git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-u-boot.git --depth=10
 
+if [ -d ./beaglev-ahead-linux ] ; then
+	rm -rf ./beaglev-ahead-linux || true
+fi
+
+git clone -b beaglev-ahead-v5.10.113-0.9.5 git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git --depth=10
 #
