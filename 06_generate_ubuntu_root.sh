@@ -8,7 +8,7 @@ fi
 
 wdir=`pwd`
 
-image="2022-12-27"
+image="2022-12-28"
 
 if [ ! -f ./deploy/ubuntu-23.04-console-riscv64-${image}/riscv64-rootfs-debian-sid.tar ] ; then
 	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-lunar-minimal/${image}/ubuntu-23.04-console-riscv64-${image}.tar.xz
@@ -42,7 +42,7 @@ if [ -f ./deploy/.modules ] ; then
 	fi
 fi
 
-dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=2000M
+dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=3000M
 mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
 if [ -f ./.06_generate_root.sh ] ; then
