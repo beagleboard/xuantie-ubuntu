@@ -6,6 +6,14 @@ if ! id | grep -q root; then
 	exit
 fi
 
+if [ -f boot.ext4.xz ] ; then
+	unxz -v boot.ext4.xz
+fi
+
+if [ -f root.ext4.xz ] ; then
+	unxz -v root.ext4.xz
+fi
+
 fastboot flash ram ./u-boot-with-spl.bin
 fastboot reboot
 sleep 10

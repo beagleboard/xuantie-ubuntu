@@ -19,10 +19,12 @@ build:
     - ./04_build_linux.sh
     - ./05_generate_boot.sh
     - ./06_generate_ubuntu_root.sh
+    - xz -vT8 deploy/boot.ext4
+    - xz -vT8 deploy/root.ext4
   artifacts:
     paths:
       - "deploy/fastboot_emmc.sh"
       - "deploy/u-boot-with-spl.bin"
-      - "deploy/boot.ext4"
-      - "deploy/root.ext4"
+      - "deploy/boot.ext4.xz"
+      - "deploy/root.ext4.xz"
 
