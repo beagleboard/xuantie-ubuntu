@@ -1,3 +1,9 @@
+# Install Android Fastboot
+
+```
+sudo apt install fastboot
+```
+
 # Build Order
 
 ```

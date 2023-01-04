@@ -8,9 +8,9 @@ fi
 
 wdir=`pwd`
 
-image="2023-01-01"
+image="2023-01-03"
 
-if [ ! -f ./deploy/ubuntu-23.04-console-riscv64-${image}/riscv64-rootfs-debian-sid.tar ] ; then
+if [ ! -f ./deploy/ubuntu-23.04-console-riscv64-${image}/riscv64-rootfs-ubuntu-lunar.tar ] ; then
 	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-lunar-minimal/${image}/ubuntu-23.04-console-riscv64-${image}.tar.xz
 	cd ./deploy/
 	tar xf ubuntu-23.04-console-riscv64-${image}.tar.xz
@@ -22,7 +22,7 @@ if [ -d ./ignore/.root ] ; then
 fi
 mkdir -p ./ignore/.root
 
-tar xfp ./deploy/ubuntu-23.04-console-riscv64-${image}/riscv64-rootfs-ubuntu-*.tar -C ./ignore/.root
+tar xfp ./deploy/ubuntu-23.04-console-riscv64-${image}/riscv64-rootfs-ubuntu-lunar.tar -C ./ignore/.root
 sync
 
 mkdir -p ./ignore/.root/boot/firmware/ || true
