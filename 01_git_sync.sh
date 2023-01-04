@@ -1,7 +1,7 @@
 #!/bin/bash
 
 UBOOT_BRANCH="beaglev-v2020.01-1.0.3"
-LINUX_BRANCH="beaglev-ahead-v5.10.113-0.9.5"
+LINUX_BRANCH="beaglev-v5.10.113-1.0.3"
 
 if [ -d ./riscv-toolchain ] ; then
 	rm -rf ./riscv-toolchain || true
