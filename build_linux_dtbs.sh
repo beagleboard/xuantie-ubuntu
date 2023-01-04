@@ -6,7 +6,7 @@ wdir=`pwd`
 
 CC=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux-
 
-cd ./beaglev-ahead-linux/
+cd ./linux/
 
 cp -v ../patches/linux/light-beagle.dts ./arch/riscv/boot/dts/thead/
 cp -v ../patches/linux/light-ant-evt.dts ./arch/riscv/boot/dts/thead/
