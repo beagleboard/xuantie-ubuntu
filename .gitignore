@@ -2,7 +2,7 @@ ignore/
 deploy/
 riscv-toolchain/
 opensbi/
-beaglev-ahead-u-boot/
+u-boot/
 beaglev-ahead-linux/
 .05_generate_boot.sh
 .06_generate_root.sh
