@@ -1,6 +1,7 @@
 #!/bin/bash
 
 UBOOT_BRANCH="beaglev-v2020.01-1.0.3"
+LINUX_BRANCH="beaglev-ahead-v5.10.113-0.9.5"
 
 if [ -d ./riscv-toolchain ] ; then
 	rm -rf ./riscv-toolchain || true
@@ -40,9 +41,9 @@ if [ -d ./beaglev-ahead-linux ] ; then
 fi
 
 if [ -f ./.gitlab-runner ] ; then
-	git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-linux/ -b beaglev-ahead-v5.10.113-0.9.5 git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git --depth=1
+	git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-linux/ -b ${LINUX_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git --depth=1
 else
-	git clone -b beaglev-ahead-v5.10.113-0.9.5 git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git --depth=10
+	git clone -b ${LINUX_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git --depth=10
 fi
 
 if [ -f ./.gitlab-runner ] ; then
