@@ -1,11 +1,14 @@
 /* SPDX-License-Identifier: GPL-2.0 */
 /*
  * Copyright (C) 2021 Alibaba Group Holding Limited.
+ * Copyright (C) 2022 BeagleBoard.org - https://beagleboard.org/
+ * Copyright (C) 2022 Deepak Khatri <lorforlinux@beagleboard.org>
  */
 
 /dts-v1/;
 
 #include "light.dtsi"
+#include "light-beagle-bone-buses.dtsi"
 #include <dt-bindings/input/linux-event-codes.h>
 #include <dt-bindings/gpio/gpio.h>
 #include "light-vi-devices.dtsi"
