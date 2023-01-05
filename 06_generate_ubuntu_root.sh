@@ -37,12 +37,19 @@ cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/s
 
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
+cp -v ./rootfs/check-config.sh ./ignore/.root/home/beagle/ || true
+
 if [ -f ./deploy/.modules ] ; then
 	version=$(cat ./deploy/.modules || true)
 	if [ -f ./deploy/${version}.tar.gz ] ; then
 		tar xfv ./deploy/${version}.tar.gz -C ./ignore/.root/usr/
 	fi
 fi
+
+echo '---------------------'
+echo 'File Size'
+du -sh ignore/.root/ || true
+echo '---------------------'
 
 dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=3000M
 mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
