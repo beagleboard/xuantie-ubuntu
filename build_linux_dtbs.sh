@@ -16,6 +16,7 @@ cp -v ./arch/riscv/boot/dts/thead/light-beagle-ref.dts ../patches/linux/
 cp -v ./arch/riscv/boot/dts/thead/light-vi-devices.dtsi ../patches/linux/
 cp -v ./arch/riscv/boot/dts/thead/light.dtsi ../patches/linux/
 cp -v ./arch/riscv/boot/dts/thead/light-beagle.dtb ../deploy/
+cp -v ./.config ../patches/linux/beaglev_defconfig
 
 cd ../
 

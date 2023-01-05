@@ -220,6 +220,7 @@
                 regulator-always-on;
         };
 
+/*
 	wcn_wifi: wireless-wlan {
 		compatible = "wlan-platdata";
 		clock-names = "clk_wifi";
@@ -238,6 +239,7 @@
 		BT,power_gpio    = <&gpio2_porta 29 0>;
 		status = "okay";
 	};
+*/
 
 	gpio-keys {
 		compatible = "gpio-keys";
@@ -249,12 +251,14 @@
 			debounce-interval = <1>;
 			gpios = <&gpio1_porta 19 0x1>;
 		};
+/*
 		key-volumeup {
 			label = "Volume Up Key";
 			linux,code = <KEY_VOLUMEUP>;
 			debounce-interval = <1>;
 			gpios = <&gpio2_porta 25 0x1>;
 		};
+*/
 	};
 
 	aon: aon {
