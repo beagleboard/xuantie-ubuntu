@@ -23,7 +23,7 @@ build:
     - xz -vT8 deploy/boot.ext4
     - xz -vT8 deploy/root.ext4
   artifacts:
-    expire_in: 2 weeks
+    expire_in: 5 days
     name: "$CI_PROJECT_NAME-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
