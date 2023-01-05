@@ -33,7 +33,7 @@ echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/.root/etc/fs
 rm -rf ./ignore/.root/usr/lib/systemd/system/bb-usb-gadgets.service || true
 rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 
-cp -v ../ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/ || true
+cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
 
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
