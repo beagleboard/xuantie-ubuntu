@@ -37,7 +37,7 @@ cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/s
 
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
-cp -v ./rootfs/check-config.sh ./ignore/.root/home/beagle/ || true
+#cp -v ./rootfs/check-config.sh ./ignore/.root/home/beagle/ || true
 
 if [ -f ./deploy/.modules ] ; then
 	version=$(cat ./deploy/.modules || true)
