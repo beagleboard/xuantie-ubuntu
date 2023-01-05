@@ -30,6 +30,7 @@ cd "${wdir}/linux/" || exit
 rm -rf "${wdir}/deploy/tmp" || true
 
 cp -v ./.config ../patches/linux/beaglev_defconfig
+cp -v ./.config ./arch/riscv/configs/beaglev_defconfig
 cp -v ./arch/riscv/boot/dts/thead/light-beagle.dts ../patches/linux/
 cp -v ./arch/riscv/boot/dts/thead/light-beagle-ref.dts ../patches/linux/
 cp -v ./arch/riscv/boot/dts/thead/light-vi-devices.dtsi ../patches/linux/
