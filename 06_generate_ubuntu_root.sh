@@ -51,7 +51,7 @@ echo 'File Size'
 du -sh ignore/.root/ || true
 echo '---------------------'
 
-dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=4050M
+dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=4000M
 mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
 if [ -f ./.06_generate_root.sh ] ; then
