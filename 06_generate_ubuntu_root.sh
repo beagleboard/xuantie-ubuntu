@@ -8,7 +8,7 @@ fi
 
 wdir=`pwd`
 
-image="2023-01-05"
+image="2023-01-06"
 
 if [ ! -f ./deploy/ubuntu-23.04-console-riscv64-${image}/riscv64-rootfs-ubuntu-lunar.tar ] ; then
 	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-lunar-minimal/${image}/ubuntu-23.04-console-riscv64-${image}.tar.xz
@@ -51,7 +51,7 @@ echo 'File Size'
 du -sh ignore/.root/ || true
 echo '---------------------'
 
-dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=3000M
+dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=4000M
 mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
 if [ -f ./.06_generate_root.sh ] ; then
