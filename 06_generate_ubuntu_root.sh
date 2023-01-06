@@ -35,6 +35,19 @@ rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 
 cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
 
+#Cleanup large firmware's..
+rm -rf ./ignore/.root/usr/lib/firmware/netronome/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/mrvl/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/qcom/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/mellanox/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/amdgpu/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/intel/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/liquidio/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/i915/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/qed/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/nvidia/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/iwlwifi-* || true
+
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
 #cp -v ./rootfs/check-config.sh ./ignore/.root/home/beagle/ || true
