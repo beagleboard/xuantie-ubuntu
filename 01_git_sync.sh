@@ -9,7 +9,11 @@ fi
 if [ -f ./.gitlab-runner ] ; then
 	git clone --reference-if-able /mnt/yocto-cache/git/riscv-toolchain/ git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1
 else
-	git clone git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1
+	if [ -d ./mirror/riscv-toolchain ] ; then
+		git clone --reference-if-able ./mirror/riscv-toolchain git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1
+	else
+		git clone git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1
+	fi
 fi
 
 if [ -d ./opensbi ] ; then
@@ -40,6 +44,12 @@ if [ -d ./beaglev-ahead-linux ] ; then
 	rm -rf ./beaglev-ahead-linux || true
 fi
 
+if [ -d ./BeagleBoard-DeviceTrees ] ; then
+	rm -rf ./BeagleBoard-DeviceTrees || true
+fi
+
+git clone -b v5.10.x-ti-unified git@git.beagleboard.org:beaglev-ahead/BeagleBoard-DeviceTrees.git
+
 if [ -d ./linux ] ; then
 	rm -rf ./linux || true
 fi
@@ -54,5 +64,4 @@ if [ -f ./.gitlab-runner ] ; then
 	rm -f ./.gitlab-runner || true
 fi
 
-git clone -b v5.10.x-ti-unified git@git.beagleboard.org:beaglev-ahead/BeagleBoard-DeviceTrees.git
 #

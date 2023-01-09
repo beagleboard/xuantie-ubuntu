@@ -1,4 +1,5 @@
 ignore/
+mirror/
 deploy/
 BeagleBoard-DeviceTrees/
 riscv-toolchain/
