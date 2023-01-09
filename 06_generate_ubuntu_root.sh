@@ -41,6 +41,7 @@ rm -rf ./ignore/.root/usr/lib/firmware/dpaa2/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/i915/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/intel/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/liquidio/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/mediatek/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/mellanox/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/mrvl/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/netronome/ || true
@@ -48,9 +49,11 @@ rm -rf ./ignore/.root/usr/lib/firmware/nvidia/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/qcom/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/qed/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/radeon/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/ueagle-atm/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/vsc/ || true
 
 rm -rf ./ignore/.root/usr/lib/firmware/iwlwifi-* || true
+rm -rf ./ignore/.root/usr/lib/firmware/ipw* || true
 
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
