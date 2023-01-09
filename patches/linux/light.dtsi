@@ -33,7 +33,7 @@
 		i2c2 = &i2c2;
 		i2c3 = &i2c3;
 		i2c4 = &i2c4;
-		audio_i2c0 = &audio_i2c0;
+		audio-i2c0 = &audio_i2c0;
 		mmc0 = &emmc;
 		mmc1 = &sdhci0;
 		serial0 = &uart0;
@@ -46,7 +46,7 @@
 		spi1 = &qspi0;
 		spi2 = &qspi1;
 
-		flash_led0 = &vvcam_flash_led0;
+		flash-led0 = &vvcam_flash_led0;
 		vivcam0 = &vvcam_sensor0;
 		vivcam1 = &vvcam_sensor1;
 		vivcam2 = &vvcam_sensor2;
@@ -55,22 +55,22 @@
 		vivcam5 = &vvcam_sensor5;
         vivcam6 = &vvcam_sensor6;
 
-        viv_video0 =  &video0;
-        viv_video1 =  &video1;
-		viv_video2 =  &video2;
-		viv_video3 =  &video3;
-		viv_video4 =  &video4;
-		viv_video5 =  &video5;
-		viv_video6 =  &video6;
-        viv_video7 =  &video7;
-        viv_video8 =  &video8;
-		viv_video9 =  &video9;
-		viv_video10 = &video10;
-		viv_video11 = &video11;
-		viv_video12 = &video12;
-        viv_video13 = &video13;
-		viv_video14 = &video14;
-		viv_video15 = &video15;
+        viv-video0 =  &video0;
+        viv-video1 =  &video1;
+		viv-video2 =  &video2;
+		viv-video3 =  &video3;
+		viv-video4 =  &video4;
+		viv-video5 =  &video5;
+		viv-video6 =  &video6;
+        viv-video7 =  &video7;
+        viv-video8 =  &video8;
+		viv-video9 =  &video9;
+		viv-video10 = &video10;
+		viv-video11 = &video11;
+		viv-video12 = &video12;
+        viv-video13 = &video13;
+		viv-video14 = &video14;
+		viv-video15 = &video15;
 	};
 
 	memory@0 {
