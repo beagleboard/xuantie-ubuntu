@@ -8,7 +8,7 @@ fi
 
 wdir=`pwd`
 
-image="2023-01-06"
+image="2023-01-09"
 
 if [ ! -f ./deploy/ubuntu-23.04-console-riscv64-${image}/riscv64-rootfs-ubuntu-lunar.tar ] ; then
 	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-lunar-minimal/${image}/ubuntu-23.04-console-riscv64-${image}.tar.xz
@@ -36,21 +36,23 @@ rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
 
 #Cleanup large firmware's..
-rm -rf ./ignore/.root/usr/lib/firmware/netronome/ || true
-rm -rf ./ignore/.root/usr/lib/firmware/mrvl/ || true
-rm -rf ./ignore/.root/usr/lib/firmware/qcom/ || true
-rm -rf ./ignore/.root/usr/lib/firmware/mellanox/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/amdgpu/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/dpaa2/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/i915/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/intel/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/liquidio/ || true
-rm -rf ./ignore/.root/usr/lib/firmware/i915/ || true
-rm -rf ./ignore/.root/usr/lib/firmware/qed/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/mellanox/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/mrvl/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/netronome/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/nvidia/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/qcom/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/qed/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/radeon/ || true
+rm -rf ./ignore/.root/usr/lib/firmware/vsc/ || true
+
 rm -rf ./ignore/.root/usr/lib/firmware/iwlwifi-* || true
 
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
-
-#cp -v ./rootfs/check-config.sh ./ignore/.root/home/beagle/ || true
 
 if [ -f ./deploy/.modules ] ; then
 	version=$(cat ./deploy/.modules || true)
