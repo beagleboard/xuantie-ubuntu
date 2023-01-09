@@ -1,5 +1,6 @@
 ignore/
 deploy/
+BeagleBoard-DeviceTrees/
 riscv-toolchain/
 opensbi/
 u-boot/

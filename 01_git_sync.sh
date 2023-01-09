@@ -53,4 +53,6 @@ fi
 if [ -f ./.gitlab-runner ] ; then
 	rm -f ./.gitlab-runner || true
 fi
+
+git clone -b v5.10.x-ti-unified git@git.beagleboard.org:beaglev-ahead/BeagleBoard-DeviceTrees.git
 #
