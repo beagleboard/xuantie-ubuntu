@@ -6,6 +6,7 @@
 #include <dt-bindings/pinctrl/light-fm-left-pinctrl.h>
 #include <dt-bindings/pinctrl/light-fm-right-pinctrl.h>
 #include <dt-bindings/pinctrl/light-fm-aon-pinctrl.h>
+#include <dt-bindings/pinctrl/light.h>
 #include <dt-bindings/clock/light-fm-ap-clock.h>
 #include <dt-bindings/clock/light-vpsys.h>
 #include <dt-bindings/clock/light-vosys.h>
