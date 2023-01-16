@@ -8,7 +8,6 @@
 /dts-v1/;
 
 #include "light.dtsi"
-#include "light-beagle-bone-buses.dtsi"
 #include <dt-bindings/input/linux-event-codes.h>
 #include <dt-bindings/gpio/gpio.h>
 #include "light-vi-devices.dtsi"
@@ -735,7 +734,7 @@
 };
 
 &padctrl0_apsys { /* right-pinctrl */
-	light-evb-padctrl0 {
+	light_padctrl0: light-evb-padctrl0 {
 			/*
 			 * Pin Configuration Node:
 			 * Format: <pin_id mux_node config>
@@ -789,7 +788,7 @@
 };
 
 &padctrl1_apsys { /* left-pinctrl */
-	light-evb-padctrl1 {
+	light_padctrl1: light-evb-padctrl1 {
 			/*
 			 * Pin Configuration Node:
 			 * Format: <pin_id mux_node config>

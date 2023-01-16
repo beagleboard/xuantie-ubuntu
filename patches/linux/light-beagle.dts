@@ -713,3 +713,5 @@ video12: tuningtool
 		};
 	};
 };
+
+#include "light-beagle-bone-buses.dtsi"
