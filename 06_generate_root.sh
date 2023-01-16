@@ -8,7 +8,7 @@ fi
 
 wdir=`pwd`
 
-image="2023-01-12"
+image="2023-01-16"
 
 if [ ! -f ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-debian-sid.tar ] ; then
 	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-minimal/${image}/debian-sid-console-riscv64-${image}.tar.xz
@@ -30,8 +30,6 @@ mkdir -p ./ignore/.root/boot/firmware/ || true
 echo '/dev/mmcblk0p2  /boot/firmware/ auto  defaults  0  2' >> ./ignore/.root/etc/fstab
 echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/.root/etc/fstab
 echo 'debugfs  /sys/kernel/debug  debugfs  mode=755,uid=root,gid=gpio,defaults  0  0' >> ./ignore/.root/etc/fstab
-
-rm -rf ./ignore/.root/usr/lib/modules/5.13.6-riscv64-r17/ || true
 
 rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 
