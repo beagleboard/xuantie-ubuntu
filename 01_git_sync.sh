@@ -3,16 +3,21 @@
 UBOOT_BRANCH="beaglev-v2020.01-1.0.3"
 LINUX_BRANCH="beaglev-v5.10.113-1.0.3"
 
-if [ -d ./riscv-toolchain ] ; then
-	rm -rf ./riscv-toolchain || true
-fi
 if [ -f ./.gitlab-runner ] ; then
 	git clone --reference-if-able /mnt/yocto-cache/git/riscv-toolchain/ git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1
 else
-	if [ -d ./mirror/riscv-toolchain ] ; then
-		git clone --reference-if-able ./mirror/riscv-toolchain git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1
+	if [ ! -d ./riscv-toolchain ] ; then
+		if [ -d ./mirror/riscv-toolchain ] ; then
+			git clone --reference-if-able ./mirror/riscv-toolchain git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1
+		else
+			echo "Log riscv-toolchain: [git clone git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1]"
+			git clone git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1
+		fi
 	else
-		git clone git@git.beagleboard.org:beaglev-ahead/riscv-toolchain.git --depth=1
+		cd ./riscv-toolchain/
+		echo "Log riscv-toolchain: [git pull --rebase]"
+		git pull --rebase
+		cd -
 	fi
 fi
 
