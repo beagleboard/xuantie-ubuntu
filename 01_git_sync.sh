@@ -21,14 +21,18 @@ else
 	fi
 fi
 
-if [ -d ./opensbi ] ; then
-	rm -rf ./opensbi || true
-fi
-
 if [ -f ./.gitlab-runner ] ; then
 	git clone --reference-if-able /mnt/yocto-cache/git/opensbi/ git@git.beagleboard.org:beaglev-ahead/opensbi.git --depth=1
 else
-	git clone git@git.beagleboard.org:beaglev-ahead/opensbi.git --depth=10
+	if [ ! -d ./opensbi ] ; then
+		echo "Log opensbi: [git clone git@git.beagleboard.org:beaglev-ahead/opensbi.git --depth=10]"
+		git clone git@git.beagleboard.org:beaglev-ahead/opensbi.git --depth=10
+	else
+		cd ./opensbi/
+		echo "Log opensbi: [git pull --rebase]"
+		git pull --rebase
+		cd -
+	fi
 fi
 
 if [ -d ./beaglev-ahead-u-boot ] ; then
