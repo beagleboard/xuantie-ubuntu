@@ -57,6 +57,9 @@ rm -rf ./ignore/.root/usr/lib/firmware/ipw* || true
 
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
+# setuid root ping+ping6
+chmod u+s ./ignore/.root/usr/bin/ping ./ignore/.root/usr/bin/ping6
+
 if [ -f ./deploy/.modules ] ; then
 	version=$(cat ./deploy/.modules || true)
 	if [ -f ./deploy/${version}.tar.gz ] ; then

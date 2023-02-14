@@ -36,6 +36,9 @@ rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
+# setuid root ping+ping6
+chmod u+s ./ignore/.root/usr/bin/ping ./ignore/.root/usr/bin/ping6
+
 if [ -f ./deploy/.modules ] ; then
 	version=$(cat ./deploy/.modules || true)
 	if [ -f ./deploy/${version}.tar.gz ] ; then
