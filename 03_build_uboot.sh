@@ -5,6 +5,13 @@ CORES=$(getconf _NPROCESSORS_ONLN)
 wdir=`pwd`
 
 make -C u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- distclean
+
+#make -C u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- light_beagle_defconfig
+#make -C u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- menuconfig
+#make -C u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- savedefconfig
+#cp -v ./u-boot/defconfig ./u-boot/configs/light_beagle_defconfig
+#make -C u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- distclean
+
 echo "make -C u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- light_beagle_defconfig"
 make -C u-boot ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- light_beagle_defconfig
 echo "make -C u-boot -j${CORES} ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux- all"
