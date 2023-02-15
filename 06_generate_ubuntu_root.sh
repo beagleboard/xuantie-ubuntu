@@ -8,7 +8,7 @@ fi
 
 wdir=`pwd`
 
-image="2023-02-14"
+image="2023-02-15"
 
 if [ ! -f ./deploy/ubuntu-23.04-console-riscv64-${image}/riscv64-rootfs-ubuntu-lunar.tar ] ; then
 	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-lunar-minimal/${image}/ubuntu-23.04-console-riscv64-${image}.tar.xz
