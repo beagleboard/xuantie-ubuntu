@@ -7,17 +7,14 @@ wdir=`pwd`
 CC=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux-
 
 cd ./linux/
+cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dtsi ./arch/riscv/boot/dts/thead/
+cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dts ./arch/riscv/boot/dts/thead/
+cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/board/light-fm-bone-pins.h ./include/dt-bindings/board/
+cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/pinctrl/light.h ./include/dt-bindings/pinctrl/
 
-if [ -d ../BeagleBoard-DeviceTrees/src/riscv/ ] ; then
-	cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dtsi ./arch/riscv/boot/dts/thead/
-	cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dts ./arch/riscv/boot/dts/thead/
-	cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/board/light-fm-bone-pins.h ./include/dt-bindings/board/
-	cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/pinctrl/light.h ./include/dt-bindings/pinctrl/
-
-	cd ../BeagleBoard-DeviceTrees/
-	make clean ; make
-	cd ../linux
-fi
+cd ../BeagleBoard-DeviceTrees/
+make clean ; make
+cd ../linux
 
 make ARCH=riscv CROSS_COMPILE=${CC} clean
 make ARCH=riscv CROSS_COMPILE=${CC} beaglev_defconfig
@@ -40,10 +37,10 @@ rm -rf "${wdir}/deploy/tmp" || true
 
 cp -v ./.config ../patches/linux/beaglev_defconfig
 cp -v ./.config ./arch/riscv/configs/beaglev_defconfig
-cp -v ./arch/riscv/boot/dts/thead/light-beagle.dts ../patches/linux/
-cp -v ./arch/riscv/boot/dts/thead/light-beagle-ref.dts ../patches/linux/
-cp -v ./arch/riscv/boot/dts/thead/light-vi-devices.dtsi ../patches/linux/
-cp -v ./arch/riscv/boot/dts/thead/light.dtsi ../patches/linux/
+cp -v ./arch/riscv/boot/dts/thead/light-beagle.dts ../BeagleBoard-DeviceTrees/src/riscv/
+cp -v ./arch/riscv/boot/dts/thead/light-beagle-ref.dts ../BeagleBoard-DeviceTrees/src/riscv/
+cp -v ./arch/riscv/boot/dts/thead/light-vi-devices.dtsi ../BeagleBoard-DeviceTrees/src/riscv/
+cp -v ./arch/riscv/boot/dts/thead/light.dtsi ../BeagleBoard-DeviceTrees/src/riscv/
 cp -v ./arch/riscv/boot/Image ../deploy/
 cp -v ./arch/riscv/boot/dts/thead/light-beagle.dtb ../deploy/
 

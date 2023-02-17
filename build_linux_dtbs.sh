@@ -11,10 +11,10 @@ cd ./linux/
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} dtbs
 
-cp -v ./arch/riscv/boot/dts/thead/light-beagle.dts ../patches/linux/
-cp -v ./arch/riscv/boot/dts/thead/light-beagle-ref.dts ../patches/linux/
-cp -v ./arch/riscv/boot/dts/thead/light-vi-devices.dtsi ../patches/linux/
-cp -v ./arch/riscv/boot/dts/thead/light.dtsi ../patches/linux/
+cp -v ./arch/riscv/boot/dts/thead/light-beagle.dts ../BeagleBoard-DeviceTrees/src/riscv/
+cp -v ./arch/riscv/boot/dts/thead/light-beagle-ref.dts ../BeagleBoard-DeviceTrees/src/riscv/
+cp -v ./arch/riscv/boot/dts/thead/light-vi-devices.dtsi ../BeagleBoard-DeviceTrees/src/riscv/
+cp -v ./arch/riscv/boot/dts/thead/light.dtsi ../BeagleBoard-DeviceTrees/src/riscv/
 cp -v ./arch/riscv/boot/dts/thead/light-beagle.dtb ../deploy/
 cp -v ./.config ../patches/linux/beaglev_defconfig
 
