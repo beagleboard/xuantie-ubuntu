@@ -57,6 +57,9 @@ rm -rf ./ignore/.root/usr/lib/firmware/ipw* || true
 
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
+mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true
+cp -v bins/BCM43013A0_001.001.006.1073.1102.hcd ./ignore/.root/usr/lib/firmware/brcm/BCM43013A0.hcd
+
 # setuid root ping+ping6
 chmod u+s ./ignore/.root/usr/bin/ping ./ignore/.root/usr/bin/ping6
 
