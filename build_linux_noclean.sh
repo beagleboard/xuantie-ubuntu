@@ -7,6 +7,14 @@ wdir=`pwd`
 CC=${wdir}/riscv-toolchain/riscv-toolchain/bin/riscv64-linux-
 
 cd ./linux/
+cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dtsi ./arch/riscv/boot/dts/thead/
+cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dts ./arch/riscv/boot/dts/thead/
+cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/board/light-fm-bone-pins.h ./include/dt-bindings/board/
+cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/pinctrl/light.h ./include/dt-bindings/pinctrl/
+
+cd ../BeagleBoard-DeviceTrees/
+make clean ; make
+cd ../linux
 
 make ARCH=riscv CROSS_COMPILE=${CC} menuconfig
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
