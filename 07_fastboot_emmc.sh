@@ -15,6 +15,7 @@ else
 		fastboot flash ram ./deploy/u-boot-with-spl.bin
 		fastboot reboot
 		sleep 10
+		fastboot oem format
 		fastboot flash uboot ./deploy/u-boot-with-spl.bin
 		fastboot flash boot ./deploy/boot.ext4
 		fastboot flash root ./deploy/root.ext4

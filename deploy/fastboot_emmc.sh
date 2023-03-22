@@ -17,6 +17,7 @@ fi
 fastboot flash ram ./u-boot-with-spl.bin
 fastboot reboot
 sleep 10
+fastboot oem format
 fastboot flash uboot ./u-boot-with-spl.bin
 fastboot flash boot ./boot.ext4
 fastboot flash root ./root.ext4
