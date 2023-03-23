@@ -31,6 +31,8 @@ echo '/dev/mmcblk0p2  /boot/firmware/ auto  defaults  0  2' >> ./ignore/.root/et
 echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/.root/etc/fstab
 echo 'debugfs  /sys/kernel/debug  debugfs  mode=755,uid=root,gid=gpio,defaults  0  0' >> ./ignore/.root/etc/fstab
 
+rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
+
 cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
