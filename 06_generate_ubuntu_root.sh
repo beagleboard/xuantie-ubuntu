@@ -32,6 +32,9 @@ echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/.root/etc/fs
 echo 'debugfs  /sys/kernel/debug  debugfs  mode=755,uid=root,gid=gpio,defaults  0  0' >> ./ignore/.root/etc/fstab
 
 rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
+cd ./ignore/.root/
+ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=./etc/systemd/system/multi-user.target.wants/
+cd ../../
 
 cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
 
@@ -66,7 +69,7 @@ chmod u+s ./ignore/.root/usr/bin/ping ./ignore/.root/usr/bin/ping6
 if [ -f ./deploy/.modules ] ; then
 	version=$(cat ./deploy/.modules || true)
 	if [ -f ./deploy/${version}.tar.gz ] ; then
-		tar xfv ./deploy/${version}.tar.gz -C ./ignore/.root/usr/
+		tar xf ./deploy/${version}.tar.gz -C ./ignore/.root/usr/
 	fi
 fi
 
