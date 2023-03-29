@@ -10,6 +10,10 @@ mkdir -p ./ignore/.boot || true
 cp -v ./deploy/fw_dynamic.bin ./ignore/.boot
 cp -v ./bins/light_aon_fpga.bin ./ignore/.boot
 cp -v ./bins/light_c906_audio.bin ./ignore/.boot
+if [ ! -f ./deploy/Image ] ; then
+	echo "Missing Kernel Image"
+	exit 2
+fi
 cp -v ./deploy/Image ./ignore/.boot
 cp -v ./deploy/light-beagle.dtb ./ignore/.boot
 
