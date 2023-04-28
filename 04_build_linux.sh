@@ -9,6 +9,9 @@ CC=${wdir}/riscv-toolchain/bin/riscv64-linux-
 cd ./linux/
 cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dtsi ./arch/riscv/boot/dts/thead/
 cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dts ./arch/riscv/boot/dts/thead/
+if [ ! -d ./include/dt-bindings/board/ ] ; then
+	mkdir -p ./include/dt-bindings/board/
+fi
 cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/board/light-fm-bone-pins.h ./include/dt-bindings/board/
 cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/pinctrl/light.h ./include/dt-bindings/pinctrl/
 
@@ -17,6 +20,9 @@ make clean ; make
 cd ../linux
 
 make ARCH=riscv CROSS_COMPILE=${CC} clean
+if [ ! -f ./arch/riscv/configs/beaglev_defconfig ] ; then
+	cp -v ./arch/riscv/configs/light_defconfig ./arch/riscv/configs/beaglev_defconfig
+fi
 make ARCH=riscv CROSS_COMPILE=${CC} beaglev_defconfig
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs
