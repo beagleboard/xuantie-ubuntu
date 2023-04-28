@@ -1,7 +1,7 @@
 #!/bin/bash
 
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2"
-LINUX_BRANCH="beaglev-v5.10.113-1.0.3"
+LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 
 if [ ! -f ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.2.8.tar.xz ] ; then
 	###FIXME, move to public when released...
