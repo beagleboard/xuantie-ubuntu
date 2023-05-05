@@ -17,10 +17,10 @@ fi
 cp -v ./deploy/Image ./ignore/.boot
 cp -v ./deploy/light-beagle.dtb ./ignore/.boot
 
-mkdir ./ignore/.boot/overlays/ || true
+mkdir -p ./ignore/.boot/overlays/ || true
 cp -v ./BeagleBoard-DeviceTrees/src/riscv/overlays/*.dtbo ./ignore/.boot/overlays/
 
-mkdir ./ignore/.boot/extlinux/ || true
+mkdir -p ./ignore/.boot/extlinux/ || true
 echo "label Linux eMMC" > ./ignore/.boot/extlinux/extlinux.conf
 echo "    kernel /Image" >> ./ignore/.boot/extlinux/extlinux.conf
 echo "    append root=/dev/mmcblk0p3 ro rootfstype=ext4 rootwait console=ttyS0,115200 earlycon clk_ignore_unused net.ifnames=0" >> ./ignore/.boot/extlinux/extlinux.conf
