@@ -24,6 +24,7 @@ build:
     - ./02_build_opensbi.sh
     - ./03_build_uboot.sh
     - ./04_build_linux.sh
+    - ./05_build_modules.sh
     - ./06_generate_boot.sh
     - ./07_generate_ubuntu_xfce_root.sh
     - xz -vT8 deploy/boot.ext4
