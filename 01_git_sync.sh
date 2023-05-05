@@ -64,4 +64,24 @@ if [ -f ./.gitlab-runner ] ; then
 	rm -f ./.gitlab-runner || true
 fi
 
+if [ ! -d ./gpu_bxm_4_64-kernel ] ; then
+	echo "Log gpu_bxm_4_64-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10]"
+	git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10
+else
+	cd ./gpu_bxm_4_64-kernel/
+	echo "Log gpu_bxm_4_64-kernel: [git pull --rebase]"
+	git pull --rebase
+	cd -
+fi
+
+if [ ! -d ./light-images-proprietary ] ; then
+	echo "Log light-images-proprietary: [git clone git@git.beagleboard.org:beaglev-ahead/light-images-proprietary.git --depth=10]"
+	git clone git@git.beagleboard.org:beaglev-ahead/light-images-proprietary.git --depth=10
+else
+	cd ./light-images-proprietary/
+	echo "Log light-images-proprietary: [git pull --rebase]"
+	git pull --rebase
+	cd -
+fi
+
 #
