@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if ! id | grep -q root; then
-	echo "./05_generate_boot.sh must be run as root:"
-	echo "sudo ./05_generate_boot.sh"
+	echo "./06_generate_boot.sh must be run as root:"
+	echo "sudo ./06_generate_boot.sh"
 	exit
 fi
 
@@ -30,6 +30,6 @@ echo "    #fdtoverlays /overlays/<file>.dtbo" >> ./ignore/.boot/extlinux/extlinu
 dd if=/dev/zero of=./deploy/boot.ext4 bs=1 count=0 seek=190M
 mkfs.ext4 -F ./deploy/boot.ext4 -d ./ignore/.boot
 
-if [ -f ./.05_generate_boot.sh ] ; then
-	rm -f ./.05_generate_boot.sh || true
+if [ -f ./.06_generate_boot.sh ] ; then
+	rm -f ./.06_generate_boot.sh || true
 fi

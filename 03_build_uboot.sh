@@ -19,4 +19,4 @@ make -C u-boot -j${CORES} ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/bin/r
 
 cp -v ./u-boot/u-boot-with-spl.bin ./deploy/
 
-touch ./.05_generate_boot.sh
+touch ./.06_generate_boot.sh

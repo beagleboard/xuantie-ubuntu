@@ -10,4 +10,4 @@ make -C opensbi -j${CORES} ARCH=riscv CROSS_COMPILE=${wdir}/riscv-toolchain/bin/
 
 cp -v ./opensbi/build/platform/generic/firmware/fw_dynamic.bin ./deploy/
 
-touch ./.05_generate_boot.sh
+touch ./.06_generate_boot.sh

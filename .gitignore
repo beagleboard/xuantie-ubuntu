@@ -6,5 +6,5 @@ riscv-toolchain/
 opensbi/
 u-boot/
 linux/
-.05_generate_boot.sh
+.06_generate_boot.sh
 .06_generate_root.sh
