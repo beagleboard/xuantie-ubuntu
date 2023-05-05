@@ -3,15 +3,15 @@
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2"
 LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 
-if [ ! -f ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.2.8.tar.xz ] ; then
+if [ ! -f ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz ] ; then
 	###FIXME, move to public when released...
-	echo "wget -c https://git.beagleboard.org/beaglev-ahead/xuantie-tools/-/raw/main/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.2.8.tar.xz"
-	wget -c https://git.beagleboard.org/beaglev-ahead/xuantie-tools/-/raw/main/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.2.8.tar.xz
+	echo "wget -c --directory-prefix=./mirror/ https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1663142514282/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz"
+	wget -c --directory-prefix=./mirror/ https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1663142514282/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz
 fi
 
-if [ ! -f ./riscv-toolchain/README.md ] ; then
-	echo "tar xf ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.2.8.tar.xz -C ./riscv-toolchain/"
-	tar xf ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.2.8.tar.xz -C ./riscv-toolchain/
+if [ ! -f ./riscv-toolchain/bin/riscv64-unknown-linux-gnu-gcc-10.2.0 ] ; then
+	echo "tar xf ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz --strip-components=1 -C ./riscv-toolchain/"
+	tar xf ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz --strip-components=1 -C ./riscv-toolchain/
 fi
 
 if [ -f ./.gitlab-runner ] ; then

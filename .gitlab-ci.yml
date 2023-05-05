@@ -8,6 +8,12 @@ before_script:
     - ssh-keyscan git.beagleboard.org >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
 
+cache:
+  key: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH"
+  paths:
+    - mirror
+    - deploy/*.tar.xz
+
 build:
   tags:
     - docker-amd64
