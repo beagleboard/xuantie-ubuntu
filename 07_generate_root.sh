@@ -57,7 +57,7 @@ fi
 mkdir -p ./ignore/.root/usr/lib/modules/${version}/extra/
 cp -v ./deploy/drm_nulldisp.ko ./ignore/.root/usr/lib/modules/${version}/extra/
 cp -v ./deploy/pvrsrvkm.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-sudo depmod -a -b ./ignore/.root/usr ${version}
+depmod -a -b ./ignore/.root/usr ${version}
 
 echo '---------------------'
 echo 'File Size'
