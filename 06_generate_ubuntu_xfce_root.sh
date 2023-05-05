@@ -63,6 +63,13 @@ cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true
 cp -v bins/BCM43013A0_001.001.006.1073.1102.hcd ./ignore/.root/usr/lib/firmware/brcm/BCM43013A0.hcd
 
+mkdir -p ./ignore/.root/usr/share/backgrounds/bbb.io/ || true
+cp -v ./bins/xfce/beagleboard-logo.svg ./ignore/.root/usr/share/backgrounds/bbb.io/
+
+mkdir -p ./ignore/.root/home/beagle/.config/xfce4/xfconf/xfce-perchannel-xml/ || true
+cp -v ./bins/xfce/xfce4-desktop.xml ./ignore/.root/home/beagle/.config/xfce4/xfconf/xfce-perchannel-xml/
+chown -R 1000:1000 ./ignore/.root/home/beagle/.config/
+
 # setuid root ping+ping6
 chmod u+s ./ignore/.root/usr/bin/ping ./ignore/.root/usr/bin/ping6
 
