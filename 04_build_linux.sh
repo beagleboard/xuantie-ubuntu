@@ -35,7 +35,7 @@ if [ -f "${wdir}/deploy/${KERNEL_UTS}-modules.tar.gz" ] ; then
 	rm -rf "${wdir}/deploy/${KERNEL_UTS}-modules.tar.gz" || true
 fi
 echo "Compressing ${KERNEL_UTS}-modules.tar.gz..."
-echo "${KERNEL_UTS}-modules" > "${wdir}/deploy/.modules"
+echo "${KERNEL_UTS}" > "${wdir}/deploy/.modules"
 cd "${wdir}/deploy/tmp" || true
 tar --create --gzip --file "../${KERNEL_UTS}-modules.tar.gz" ./*
 cd "${wdir}/linux/" || exit

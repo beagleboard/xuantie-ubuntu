@@ -68,8 +68,8 @@ chmod u+s ./ignore/.root/usr/bin/ping ./ignore/.root/usr/bin/ping6
 
 if [ -f ./deploy/.modules ] ; then
 	version=$(cat ./deploy/.modules || true)
-	if [ -f ./deploy/${version}.tar.gz ] ; then
-		tar xf ./deploy/${version}.tar.gz -C ./ignore/.root/usr/
+	if [ -f ./deploy/${version}-modules.tar.gz ] ; then
+		tar xf ./deploy/${version}-modules.tar.gz -C ./ignore/.root/usr/
 	fi
 fi
 
