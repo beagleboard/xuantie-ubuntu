@@ -70,6 +70,16 @@ mkdir -p ./ignore/.root/home/beagle/.config/xfce4/xfconf/xfce-perchannel-xml/ ||
 cp -v ./bins/xfce/xfce4-desktop.xml ./ignore/.root/home/beagle/.config/xfce4/xfconf/xfce-perchannel-xml/
 chown -R 1000:1000 ./ignore/.root/home/beagle/.config/
 
+#Disable dpms mode and screen blanking
+#Better fix for missing cursor
+wfile="./ignore/.root/home/beagle/.xsessionrc"
+echo "#!/bin/sh" > ${wfile}
+echo "" >> ${wfile}
+echo "xset -dpms" >> ${wfile}
+echo "xset s off" >> ${wfile}
+echo "xsetroot -cursor_name left_ptr" >> ${wfile}
+chown -R 1000:1000 ${wfile}
+
 # setuid root ping+ping6
 chmod u+s ./ignore/.root/usr/bin/ping ./ignore/.root/usr/bin/ping6
 
