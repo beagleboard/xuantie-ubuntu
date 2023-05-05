@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if ! id | grep -q root; then
-	echo "./07_fastboot_emmc.sh must be run as root:"
-	echo "sudo ./07_fastboot_emmc.sh"
+	echo "./fastboot_boot_partition.sh must be run as root:"
+	echo "sudo ./fastboot_boot_partition.sh"
 	exit
 fi
 

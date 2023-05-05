@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if ! id | grep -q root; then
-	echo "./07_fastboot_emmc.sh must be run as root:"
-	echo "sudo ./07_fastboot_emmc.sh"
+	echo "./08_fastboot_emmc.sh must be run as root:"
+	echo "sudo ./08_fastboot_emmc.sh"
 	exit
 fi
 
