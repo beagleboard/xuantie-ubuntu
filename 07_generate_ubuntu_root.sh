@@ -81,6 +81,6 @@ echo '---------------------'
 dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=4000M
 mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
-if [ -f ./.06_generate_root.sh ] ; then
-	rm -f ./.06_generate_root.sh || true
+if [ -f ./.07_generate_root.sh ] ; then
+	rm -f ./.07_generate_root.sh || true
 fi

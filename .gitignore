@@ -7,4 +7,4 @@ opensbi/
 u-boot/
 linux/
 .06_generate_boot.sh
-.06_generate_root.sh
+.07_generate_root.sh

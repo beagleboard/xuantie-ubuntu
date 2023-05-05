@@ -29,4 +29,4 @@ cp -v ./.config ../patches/linux/beaglev_defconfig
 cd ../
 
 touch ./.06_generate_boot.sh
-touch ./.06_generate_root.sh
+touch ./.07_generate_root.sh
