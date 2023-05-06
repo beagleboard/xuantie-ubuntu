@@ -6,5 +6,8 @@ riscv-toolchain/
 opensbi/
 u-boot/
 linux/
+gpu_bxm_4_64-kernel/
+light-images-proprietary/
+vi-kernel/
 .06_generate_boot.sh
 .07_generate_root.sh
