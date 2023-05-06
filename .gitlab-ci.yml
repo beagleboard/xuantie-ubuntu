@@ -13,6 +13,11 @@ cache:
   paths:
     - mirror
     - deploy/*.tar.xz
+    - baremetal-drivers
+    - light-images-proprietary
+    - gpu_bxm_4_64-kernel
+    - video_memory
+    - vi-kernel
 
 build:
   tags:
