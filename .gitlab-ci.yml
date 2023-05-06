@@ -11,7 +11,7 @@ before_script:
 cache:
   key: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH"
   paths:
-    - mirror
+    - mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz
     - deploy/*.tar.xz
 
 build:
