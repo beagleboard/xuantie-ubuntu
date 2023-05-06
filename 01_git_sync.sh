@@ -64,6 +64,16 @@ if [ -f ./.gitlab-runner ] ; then
 	rm -f ./.gitlab-runner || true
 fi
 
+if [ ! -d ./vi-kernel ] ; then
+	echo "Log vi-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10]"
+	git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10
+else
+	cd ./vi-kernel/
+	echo "Log vi-kernel: [git pull --rebase]"
+	git pull --rebase
+	cd -
+fi
+
 if [ ! -d ./gpu_bxm_4_64-kernel ] ; then
 	echo "Log gpu_bxm_4_64-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10]"
 	git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10
