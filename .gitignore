@@ -9,5 +9,7 @@ linux/
 gpu_bxm_4_64-kernel/
 light-images-proprietary/
 vi-kernel/
+baremetal-drivers/
+video_memory/
 .06_generate_boot.sh
 .07_generate_root.sh

@@ -21,6 +21,11 @@ echo "make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=li
 make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle clean
 make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle
 
+cd ${wdir}/video_memory/
+echo "make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle"
+make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle clean
+make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle
+
 cd ${wdir}/
 
 touch ./.07_generate_root.sh

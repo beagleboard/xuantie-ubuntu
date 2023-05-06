@@ -74,6 +74,16 @@ else
 	cd -
 fi
 
+if [ ! -d ./video_memory ] ; then
+	echo "Log video_memory: [git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=10]"
+	git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=10
+else
+	cd ./video_memory/
+	echo "Log video_memory: [git pull --rebase]"
+	git pull --rebase
+	cd -
+fi
+
 if [ ! -d ./vi-kernel ] ; then
 	echo "Log vi-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10]"
 	git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10
