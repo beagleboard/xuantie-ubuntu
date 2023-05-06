@@ -64,6 +64,16 @@ if [ -f ./.gitlab-runner ] ; then
 	rm -f ./.gitlab-runner || true
 fi
 
+if [ ! -d ./baremetal-drivers ] ; then
+	echo "Log baremetal-drivers: [git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=10]"
+	git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=10
+else
+	cd ./baremetal-drivers/
+	echo "Log baremetal-drivers: [git pull --rebase]"
+	git pull --rebase
+	cd -
+fi
+
 if [ ! -d ./vi-kernel ] ; then
 	echo "Log vi-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10]"
 	git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10
