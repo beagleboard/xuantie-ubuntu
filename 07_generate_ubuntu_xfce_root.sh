@@ -104,6 +104,10 @@ depmod -a -b ./ignore/.root/usr ${version}
 
 cp -v ./vi-kernel/output/rootfs/bsp/isp/ko/*.sh ./ignore/.root/home/beagle/
 
+mkdir -p ./ignore/.root/usr/share/vidmem/test/bin/
+cp -v video_memory/output/rootfs/bsp/vidmem/test/vidmem_test ./ignore/.root/usr/share/vidmem/test/bin/
+cp -v video_memory/output/rootfs/bsp/vidmem/lib/libvmem.so ./ignore/.root/usr/lib/
+
 echo '---------------------'
 echo 'File Size'
 du -sh ignore/.root/ || true

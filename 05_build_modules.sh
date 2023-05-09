@@ -22,9 +22,9 @@ make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-be
 make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle
 
 cd ${wdir}/video_memory/
-echo "make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle"
-make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle clean
-make ARCH=riscv CROSS_COMPILE=${CC} LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle
+echo "make ARCH=riscv CROSS_COMPILE=${CC} CC=${CC}gcc LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle"
+make ARCH=riscv CROSS_COMPILE=${CC} CC=${CC}gcc LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle clean
+make ARCH=riscv CROSS_COMPILE=${CC} CC=${CC}gcc LINUX_DIR=${wdir}/linux/ BOARD_NAME=light-beagle
 
 cd ${wdir}/
 
