@@ -1,5 +1,6 @@
 #!/bin/bash
 
+OPENSBI_BRANCH="0.9-1.1.2"
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2"
 LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 
@@ -14,20 +15,12 @@ if [ ! -f ./riscv-toolchain/bin/riscv64-unknown-linux-gnu-gcc-10.2.0 ] ; then
 	tar xf ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz --strip-components=1 -C ./riscv-toolchain/
 fi
 
-if [ -f ./.gitlab-runner ] ; then
-	echo "git clone --reference-if-able /mnt/yocto-cache/git/opensbi/ git@git.beagleboard.org:beaglev-ahead/opensbi.git --depth=1"
-	git clone --reference-if-able /mnt/yocto-cache/git/opensbi/ git@git.beagleboard.org:beaglev-ahead/opensbi.git --depth=1
-else
-	if [ ! -d ./opensbi ] ; then
-		echo "Log opensbi: [git clone git@git.beagleboard.org:beaglev-ahead/opensbi.git --depth=10]"
-		git clone git@git.beagleboard.org:beaglev-ahead/opensbi.git --depth=10
-	else
-		cd ./opensbi/
-		echo "Log opensbi: [git pull --rebase]"
-		git pull --rebase
-		cd -
-	fi
+if [ -d ./opensbi ] ; then
+	rm -rf ./opensbi || true
 fi
+
+echo "git clone -b ${OPENSBI_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-opensbi.git ./opensbi/ --depth=10"
+git clone -b ${OPENSBI_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-opensbi.git ./opensbi/ --depth=10
 
 if [ -d ./u-boot ] ; then
 	rm -rf ./u-boot || true
