@@ -9,6 +9,12 @@ CC=${wdir}/riscv-toolchain/bin/riscv64-unknown-linux-gnu-
 cd ./linux/
 cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dtsi ./arch/riscv/boot/dts/thead/
 cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dts ./arch/riscv/boot/dts/thead/
+
+if [ ! -d ./arch/riscv/boot/dts/thead/overlays/ ] ; then
+	mkdir -p ./arch/riscv/boot/dts/thead/overlays/
+fi
+cp -rv ../BeagleBoard-DeviceTrees/src/riscv/overlays/*.dts ./arch/riscv/boot/dts/thead/overlays/
+
 if [ ! -d ./include/dt-bindings/board/ ] ; then
 	mkdir -p ./include/dt-bindings/board/
 fi
