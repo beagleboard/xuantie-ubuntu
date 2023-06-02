@@ -37,7 +37,7 @@ ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=
 cd ../../
 
 cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
-cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
+cp -v ./bins/ap6203/* ./ignore/.root/lib/firmware/ || true
 
 mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true
 cp -v bins/BCM43013A0_001.001.006.1073.1102.hcd ./ignore/.root/usr/lib/firmware/brcm/BCM43013A0.hcd

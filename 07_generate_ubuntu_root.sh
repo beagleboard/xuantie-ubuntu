@@ -58,7 +58,7 @@ rm -rf ./ignore/.root/usr/lib/firmware/vsc/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/iwlwifi-* || true
 rm -rf ./ignore/.root/usr/lib/firmware/ipw* || true
 
-cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
+cp -v ./bins/ap6203/* ./ignore/.root/lib/firmware/ || true
 
 mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true
 cp -v bins/BCM43013A0_001.001.006.1073.1102.hcd ./ignore/.root/usr/lib/firmware/brcm/BCM43013A0.hcd
