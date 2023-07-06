@@ -8,10 +8,10 @@ fi
 
 wdir=`pwd`
 
-image="2023-06-21"
+image="2023-07-05"
 
 if [ ! -f ./deploy/ubuntu-23.04-xfce-riscv64-${image}/riscv64-rootfs-ubuntu-lunar.tar ] ; then
-	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-lunar-xfce/${image}/ubuntu-23.04-xfce-riscv64-${image}.tar.xz
+	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-23.04-xfce/${image}/ubuntu-23.04-xfce-riscv64-${image}.tar.xz
 	cd ./deploy/
 	tar xf ubuntu-23.04-xfce-riscv64-${image}.tar.xz
 	cd ../
