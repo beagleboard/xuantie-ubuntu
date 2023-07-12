@@ -19,8 +19,8 @@ if [ -d ./opensbi ] ; then
 	rm -rf ./opensbi || true
 fi
 
-echo "git clone -b ${OPENSBI_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-opensbi.git ./opensbi/ --depth=10"
-git clone -b ${OPENSBI_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-opensbi.git ./opensbi/ --depth=10
+echo "git clone -b ${OPENSBI_BRANCH} https://github.com/beagleboard/beaglev-ahead-opensbi.git ./opensbi/ --depth=10"
+git clone -b ${OPENSBI_BRANCH} https://github.com/beagleboard/beaglev-ahead-opensbi.git ./opensbi/ --depth=10
 
 if [ -d ./u-boot ] ; then
 	rm -rf ./u-boot || true
