@@ -46,11 +46,11 @@ if [ -d ./linux ] ; then
 fi
 
 if [ -f ./.gitlab-runner ] ; then
-	echo "git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-linux/ -b ${LINUX_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git ./linux/ --depth=1"
-	git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-linux/ -b ${LINUX_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git ./linux/ --depth=1
+	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux/ -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=1"
+	git clone --reference-if-able /mnt/yocto-cache/git/linux/ -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=1
 else
-	echo "git clone -b ${LINUX_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git ./linux/ --depth=10"
-	git clone -b ${LINUX_BRANCH} git@git.beagleboard.org:beaglev-ahead/beaglev-ahead-linux.git ./linux/ --depth=10
+	echo "git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=10"
+	git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=10
 fi
 
 if [ -f ./.gitlab-runner ] ; then
