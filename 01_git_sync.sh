@@ -38,8 +38,8 @@ if [ -d ./BeagleBoard-DeviceTrees ] ; then
 	rm -rf ./BeagleBoard-DeviceTrees || true
 fi
 
-echo "git clone -b v5.10.x-ti-unified git@git.beagleboard.org:beaglev-ahead/BeagleBoard-DeviceTrees.git"
-git clone -b v5.10.x-ti-unified git@git.beagleboard.org:beaglev-ahead/BeagleBoard-DeviceTrees.git
+echo "git clone -b v5.10.x-ti-unified https://git.beagleboard.org/beagleboard/BeagleBoard-DeviceTrees.git"
+git clone -b v5.10.x-ti-unified https://git.beagleboard.org/beagleboard/BeagleBoard-DeviceTrees.git
 
 if [ -d ./linux ] ; then
 	rm -rf ./linux || true
