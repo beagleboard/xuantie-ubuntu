@@ -1,4 +1,4 @@
-image: robertcnelson/debian-bullseye-slim-riscv-debian:latest
+image: robertcnelson/debian-bookworm-slim-riscv:latest
 
 #before_script:
 #    - eval $(ssh-agent -s)
