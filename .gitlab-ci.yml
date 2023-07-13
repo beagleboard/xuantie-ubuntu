@@ -1,12 +1,12 @@
 image: robertcnelson/debian-bullseye-slim-riscv-debian:latest
 
-before_script:
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan git.beagleboard.org >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
+#before_script:
+#    - eval $(ssh-agent -s)
+#    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+#    - mkdir -p ~/.ssh
+#    - chmod 700 ~/.ssh
+#    - ssh-keyscan git.beagleboard.org >> ~/.ssh/known_hosts
+#    - chmod 644 ~/.ssh/known_hosts
 
 cache:
   key: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH"
