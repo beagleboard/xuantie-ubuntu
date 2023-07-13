@@ -1,3 +1,18 @@
+# Clone repo:
+
+```
+git clone https://github.com/beagleboard/xuantie-ubuntu.git
+cd ./xuantie-ubuntu/
+```
+
+# Merge Requests:
+
+https://git.beagleboard.org/beaglev-ahead/xuantie-ubuntu
+
+# CI builds:
+
+https://git.beagleboard.org/beaglev-ahead/xuantie-ubuntu/-/pipelines
+
 # Install Android Fastboot
 
 ```
