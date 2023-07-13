@@ -99,8 +99,8 @@ fi
 #fi
 
 if [ ! -d ./light-images-proprietary ] ; then
-	echo "Log light-images-proprietary: [git clone git@git.beagleboard.org:beaglev-ahead/light-images-proprietary.git --depth=10]"
-	git clone git@git.beagleboard.org:beaglev-ahead/light-images-proprietary.git --depth=10
+	echo "Log light-images-proprietary: [git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=10]"
+	git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=10
 else
 	cd ./light-images-proprietary/
 	echo "Log light-images-proprietary: [git pull --rebase]"
