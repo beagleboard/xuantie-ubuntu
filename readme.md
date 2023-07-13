@@ -1,8 +1,8 @@
 # Debian/Ubuntu RootFS generator:
 
-Ubuntu 23.04 Console: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-ubuntu-2304-console-riscv64.conf
-Ubuntu 23.04 Xfce: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-ubuntu-2304-xfce-riscv64.conf
-Debian (sid/ports) Console: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-debian-sid-console-riscv64.conf
+- Ubuntu 23.04 Console: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-ubuntu-2304-console-riscv64.conf 
+- Ubuntu 23.04 Xfce: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-ubuntu-2304-xfce-riscv64.conf
+- Debian (sid/ports) Console: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-debian-sid-console-riscv64.conf
 
 These are daily built and uploaded to: https://rcn-ee.net/rootfs/
 
