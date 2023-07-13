@@ -24,5 +24,5 @@ cp -v ./arch/riscv/boot/Image ../deploy/
 
 cd ../
 
-touch ./.06_generate_boot.sh
-touch ./.07_generate_root.sh
+touch ./.05_generate_boot.sh
+touch ./.06_generate_root.sh

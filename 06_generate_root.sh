@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if ! id | grep -q root; then
-	echo "./07_generate_root.sh must be run as root:"
-	echo "sudo ./07_generate_root.sh"
+	echo "./06_generate_root.sh must be run as root:"
+	echo "sudo ./06_generate_root.sh"
 	exit
 fi
 
@@ -54,13 +54,20 @@ if [ -f ./deploy/.modules ] ; then
 	fi
 fi
 
-mkdir -p ./ignore/.root/usr/lib/modules/${version}/extra/
-cp -v ./gpu_bxm_4_64-kernel/rogue_km/binary_thead_linux_lws-generic_release/target_riscv64/kbuild/drm_nulldisp.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-cp -v ./gpu_bxm_4_64-kernel/rogue_km/binary_thead_linux_lws-generic_release/target_riscv64/kbuild/pvrsrvkm.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-cp -v ./vi-kernel/output/rootfs/bsp/isp/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-cp -v ./baremetal-drivers/output/rootfs/bsp/baremetal/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-cp -v ./video_memory/output/rootfs/bsp/vidmem/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-depmod -a -b ./ignore/.root/usr ${version}
+#FIXME: We need to solve the 0.7.1 vector enabled blobs, with mainline ubuntu/debian...
+#mkdir -p ./ignore/.root/usr/lib/modules/${version}/extra/
+#cp -v ./gpu_bxm_4_64-kernel/rogue_km/binary_thead_linux_lws-generic_release/target_riscv64/kbuild/drm_nulldisp.ko ./ignore/.root/usr/lib/modules/${version}/extra/
+#cp -v ./gpu_bxm_4_64-kernel/rogue_km/binary_thead_linux_lws-generic_release/target_riscv64/kbuild/pvrsrvkm.ko ./ignore/.root/usr/lib/modules/${version}/extra/
+#cp -v ./vi-kernel/output/rootfs/bsp/isp/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
+#cp -v ./baremetal-drivers/output/rootfs/bsp/baremetal/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
+#cp -v ./video_memory/output/rootfs/bsp/vidmem/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
+#depmod -a -b ./ignore/.root/usr ${version}
+
+#cp -v ./vi-kernel/output/rootfs/bsp/isp/ko/*.sh ./ignore/.root/home/beagle/
+
+#mkdir -p ./ignore/.root/usr/share/vidmem/test/bin/
+#cp -v video_memory/output/rootfs/bsp/vidmem/test/vidmem_test ./ignore/.root/usr/share/vidmem/test/bin/
+#cp -v video_memory/output/rootfs/bsp/vidmem/lib/libvmem.so ./ignore/.root/usr/lib/
 
 echo '---------------------'
 echo 'File Size'
@@ -70,6 +77,6 @@ echo '---------------------'
 dd if=/dev/zero of=./deploy/root.ext4 bs=1 count=0 seek=4000M
 mkfs.ext4 -F ./deploy/root.ext4 -d ./ignore/.root
 
-if [ -f ./.07_generate_root.sh ] ; then
-	rm -f ./.07_generate_root.sh || true
+if [ -f ./.06_generate_root.sh ] ; then
+	rm -f ./.06_generate_root.sh || true
 fi

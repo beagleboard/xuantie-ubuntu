@@ -57,45 +57,46 @@ if [ -f ./.gitlab-runner ] ; then
 	rm -f ./.gitlab-runner || true
 fi
 
-if [ ! -d ./baremetal-drivers ] ; then
-	echo "Log baremetal-drivers: [git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=10]"
-	git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=10
-else
-	cd ./baremetal-drivers/
-	echo "Log baremetal-drivers: [git pull --rebase]"
-	git pull --rebase
-	cd -
-fi
-
-if [ ! -d ./video_memory ] ; then
-	echo "Log video_memory: [git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=10]"
-	git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=10
-else
-	cd ./video_memory/
-	echo "Log video_memory: [git pull --rebase]"
-	git pull --rebase
-	cd -
-fi
-
-if [ ! -d ./vi-kernel ] ; then
-	echo "Log vi-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10]"
-	git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10
-else
-	cd ./vi-kernel/
-	echo "Log vi-kernel: [git pull --rebase]"
-	git pull --rebase
-	cd -
-fi
-
-if [ ! -d ./gpu_bxm_4_64-kernel ] ; then
-	echo "Log gpu_bxm_4_64-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10]"
-	git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10
-else
-	cd ./gpu_bxm_4_64-kernel/
-	echo "Log gpu_bxm_4_64-kernel: [git pull --rebase]"
-	git pull --rebase
-	cd -
-fi
+#FIXME: We need to solve the 0.7.1 vector enabled blobs, with mainline ubuntu/debian...
+#if [ ! -d ./baremetal-drivers ] ; then
+#	echo "Log baremetal-drivers: [git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=10]"
+#	git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=10
+#else
+#	cd ./baremetal-drivers/
+#	echo "Log baremetal-drivers: [git pull --rebase]"
+#	git pull --rebase
+#	cd -
+#fi
+#
+#if [ ! -d ./video_memory ] ; then
+#	echo "Log video_memory: [git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=10]"
+#	git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=10
+#else
+#	cd ./video_memory/
+#	echo "Log video_memory: [git pull --rebase]"
+#	git pull --rebase
+#	cd -
+#fi
+#
+#if [ ! -d ./vi-kernel ] ; then
+#	echo "Log vi-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10]"
+#	git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10
+#else
+#	cd ./vi-kernel/
+#	echo "Log vi-kernel: [git pull --rebase]"
+#	git pull --rebase
+#	cd -
+#fi
+#
+#if [ ! -d ./gpu_bxm_4_64-kernel ] ; then
+#	echo "Log gpu_bxm_4_64-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10]"
+#	git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10
+#else
+#	cd ./gpu_bxm_4_64-kernel/
+#	echo "Log gpu_bxm_4_64-kernel: [git pull --rebase]"
+#	git pull --rebase
+#	cd -
+#fi
 
 if [ ! -d ./light-images-proprietary ] ; then
 	echo "Log light-images-proprietary: [git clone git@git.beagleboard.org:beaglev-ahead/light-images-proprietary.git --depth=10]"

@@ -1,16 +1,16 @@
 #!/bin/bash
 
 if ! id | grep -q root; then
-	echo "./08_fastboot_emmc.sh must be run as root:"
-	echo "sudo ./08_fastboot_emmc.sh"
+	echo "./07_fastboot_emmc.sh must be run as root:"
+	echo "sudo ./07_fastboot_emmc.sh"
 	exit
 fi
 
-if [ -f ./.06_generate_boot.sh ] ; then
-	echo "ERROR: run: [sudo ./06_generate_boot.sh] first"
+if [ -f ./.05_generate_boot.sh ] ; then
+	echo "ERROR: run: [sudo ./05_generate_boot.sh] first"
 else
-	if [ -f ./.07_generate_root.sh ] ; then
-		echo "ERROR: run: [sudo ./07_generate_root.sh] first"
+	if [ -f ./.06_generate_root.sh ] ; then
+		echo "ERROR: run: [sudo ./06_generate_root.sh] first"
 	else
 		fastboot flash ram ./deploy/u-boot-with-spl.bin
 		fastboot reboot
