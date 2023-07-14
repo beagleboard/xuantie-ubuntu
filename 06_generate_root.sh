@@ -8,10 +8,10 @@ fi
 
 wdir=`pwd`
 
-image="2023-07-05"
+image="2023-07-14"
 
 if [ ! -f ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-debian-sid.tar ] ; then
-	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-minimal/${image}/debian-sid-console-riscv64-${image}.tar.xz
+	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-sid-minimal/${image}/debian-sid-console-riscv64-${image}.tar.xz
 	cd ./deploy/
 	tar xf debian-sid-console-riscv64-${image}.tar.xz
 	cd ../
