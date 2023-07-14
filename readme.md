@@ -46,3 +46,13 @@ sudo ./06_generate_ubuntu_root.sh
 ```
 sudo ./07_fastboot_emmc.sh
 ```
+
+# Default User and password:
+
+Ubuntu:
+user: beagle
+pass: temppwd
+
+Debian:
+user: debian
+pass: temppwd
