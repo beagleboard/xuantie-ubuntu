@@ -10,7 +10,7 @@ if [ -f ./.05_generate_boot.sh ] ; then
 	echo "ERROR: run: [sudo ./05_generate_boot.sh] first"
 else
 	if [ -f ./.06_generate_root.sh ] ; then
-		echo "ERROR: run: [sudo ./06_generate_root.sh] first"
+		echo "ERROR: run: [sudo ./06_generate_debian_console_root.sh] first"
 	else
 		fastboot flash ram ./deploy/u-boot-with-spl.bin
 		fastboot reboot
