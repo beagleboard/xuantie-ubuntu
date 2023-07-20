@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if ! id | grep -q root; then
-	echo "./06_generate_ubuntu_root.sh must be run as root:"
-	echo "sudo ./06_generate_ubuntu_root.sh"
+	echo "./06_generate_ubuntu_console_root.sh must be run as root:"
+	echo "sudo ./06_generate_ubuntu_console_root.sh"
 	exit
 fi
 

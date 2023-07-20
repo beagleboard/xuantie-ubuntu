@@ -35,7 +35,7 @@ sudo apt install fastboot
 ./03_build_uboot.sh
 ./04_build_linux.sh
 sudo ./05_generate_boot.sh
-sudo ./06_generate_ubuntu_root.sh
+sudo ./06_generate_ubuntu_console_root.sh
 ```
 
 # Flash Board over USB
