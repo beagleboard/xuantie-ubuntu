@@ -33,6 +33,7 @@ build:
     name: "$CI_PROJECT_NAME-1.1.2-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
+      - "deploy/mac_fastboot_emmc.sh"
       - "deploy/u-boot-with-spl.bin"
       - "deploy/boot.ext4.xz"
       - "deploy/root.ext4.xz"
