@@ -2,6 +2,7 @@
 
 OPENSBI_BRANCH="0.9-1.1.2"
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2"
+DTB_BRANCH="v5.10.x-ti-unified"
 LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 
 if [ ! -f ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz ] ; then
@@ -38,8 +39,8 @@ if [ -d ./BeagleBoard-DeviceTrees ] ; then
 	rm -rf ./BeagleBoard-DeviceTrees || true
 fi
 
-echo "git clone -b v5.10.x-ti-unified https://git.beagleboard.org/beagleboard/BeagleBoard-DeviceTrees.git"
-git clone -b v5.10.x-ti-unified https://git.beagleboard.org/beagleboard/BeagleBoard-DeviceTrees.git
+echo "git clone -b ${DTB_BRANCH} https://git.beagleboard.org/beagleboard/BeagleBoard-DeviceTrees.git"
+git clone -b ${DTB_BRANCH} https://git.beagleboard.org/beagleboard/BeagleBoard-DeviceTrees.git
 
 if [ -d ./linux ] ; then
 	rm -rf ./linux || true
