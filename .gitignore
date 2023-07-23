@@ -11,6 +11,7 @@ light-images-proprietary/
 vi-kernel/
 baremetal-drivers/
 video_memory/
-.06_generate_boot.sh
-.07_generate_root.sh
 .05_generate_boot.sh
+.06_generate_boot.sh
+.06_generate_root.sh
+.07_generate_root.sh
