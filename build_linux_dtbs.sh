@@ -20,6 +20,7 @@ echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} dtbs
 
 cp -v ./arch/riscv/boot/dts/thead/th1520-beaglev-ahead.dts ../BeagleBoard-DeviceTrees/src/thead/
+cp -v ./arch/riscv/boot/dts/thead/*.dtb ../deploy/
 
 cd ../
 
