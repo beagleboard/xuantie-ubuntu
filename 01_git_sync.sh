@@ -4,6 +4,7 @@ OPENSBI_BRANCH="0.9-1.1.2"
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2"
 DTB_BRANCH="v5.10.x-ti-unified"
 LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
+GIT_DEPTH="20"
 
 if [ ! -f ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz ] ; then
 	###FIXME, move to public when released...
@@ -20,8 +21,8 @@ if [ -d ./opensbi ] ; then
 	rm -rf ./opensbi || true
 fi
 
-echo "git clone -b ${OPENSBI_BRANCH} https://github.com/beagleboard/beaglev-ahead-opensbi.git ./opensbi/ --depth=10"
-git clone -b ${OPENSBI_BRANCH} https://github.com/beagleboard/beaglev-ahead-opensbi.git ./opensbi/ --depth=10
+echo "git clone -b ${OPENSBI_BRANCH} https://github.com/beagleboard/beaglev-ahead-opensbi.git ./opensbi/ --depth=${GIT_DEPTH}"
+git clone -b ${OPENSBI_BRANCH} https://github.com/beagleboard/beaglev-ahead-opensbi.git ./opensbi/ --depth=${GIT_DEPTH}
 
 if [ -d ./u-boot ] ; then
 	rm -rf ./u-boot || true
@@ -31,8 +32,8 @@ if [ -f ./.gitlab-runner ] ; then
 	echo "git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-u-boot/ -b ${UBOOT_BRANCH} https://github.com/beagleboard/beaglev-ahead-u-boot.git ./u-boot/ --depth=1"
 	git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-u-boot/ -b ${UBOOT_BRANCH} https://github.com/beagleboard/beaglev-ahead-u-boot.git ./u-boot/ --depth=1
 else
-	echo "git clone -b ${UBOOT_BRANCH} https://github.com/beagleboard/beaglev-ahead-u-boot.git ./u-boot/ --depth=10"
-	git clone -b ${UBOOT_BRANCH} https://github.com/beagleboard/beaglev-ahead-u-boot.git ./u-boot/ --depth=10
+	echo "git clone -b ${UBOOT_BRANCH} https://github.com/beagleboard/beaglev-ahead-u-boot.git ./u-boot/ --depth=${GIT_DEPTH}"
+	git clone -b ${UBOOT_BRANCH} https://github.com/beagleboard/beaglev-ahead-u-boot.git ./u-boot/ --depth=${GIT_DEPTH}
 fi
 
 if [ -d ./BeagleBoard-DeviceTrees ] ; then
@@ -47,11 +48,11 @@ if [ -d ./linux ] ; then
 fi
 
 if [ -f ./.gitlab-runner ] ; then
-	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux/ -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=1"
-	git clone --reference-if-able /mnt/yocto-cache/git/linux/ -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=1
+	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux/ -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}"
+	git clone --reference-if-able /mnt/yocto-cache/git/linux/ -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}
 else
-	echo "git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=10"
-	git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=10
+	echo "git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}"
+	git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}
 fi
 
 if [ -f ./.gitlab-runner ] ; then
@@ -60,8 +61,8 @@ fi
 
 #FIXME: We need to solve the 0.7.1 vector enabled blobs, with mainline ubuntu/debian...
 #if [ ! -d ./baremetal-drivers ] ; then
-#	echo "Log baremetal-drivers: [git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=10]"
-#	git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=10
+#	echo "Log baremetal-drivers: [git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=${GIT_DEPTH}]"
+#	git clone git@git.beagleboard.org:beaglev-ahead/baremetal-drivers.git --depth=${GIT_DEPTH}
 #else
 #	cd ./baremetal-drivers/
 #	echo "Log baremetal-drivers: [git pull --rebase]"
@@ -70,8 +71,8 @@ fi
 #fi
 #
 #if [ ! -d ./video_memory ] ; then
-#	echo "Log video_memory: [git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=10]"
-#	git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=10
+#	echo "Log video_memory: [git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=${GIT_DEPTH}]"
+#	git clone git@git.beagleboard.org:beaglev-ahead/video_memory.git --depth=${GIT_DEPTH}
 #else
 #	cd ./video_memory/
 #	echo "Log video_memory: [git pull --rebase]"
@@ -80,8 +81,8 @@ fi
 #fi
 #
 #if [ ! -d ./vi-kernel ] ; then
-#	echo "Log vi-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10]"
-#	git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=10
+#	echo "Log vi-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=${GIT_DEPTH}]"
+#	git clone git@git.beagleboard.org:beaglev-ahead/vi-kernel.git --depth=${GIT_DEPTH}
 #else
 #	cd ./vi-kernel/
 #	echo "Log vi-kernel: [git pull --rebase]"
@@ -90,8 +91,8 @@ fi
 #fi
 #
 #if [ ! -d ./gpu_bxm_4_64-kernel ] ; then
-#	echo "Log gpu_bxm_4_64-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10]"
-#	git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=10
+#	echo "Log gpu_bxm_4_64-kernel: [git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=${GIT_DEPTH}]"
+#	git clone git@git.beagleboard.org:beaglev-ahead/gpu_bxm_4_64-kernel.git --depth=${GIT_DEPTH}
 #else
 #	cd ./gpu_bxm_4_64-kernel/
 #	echo "Log gpu_bxm_4_64-kernel: [git pull --rebase]"
@@ -100,8 +101,8 @@ fi
 #fi
 
 if [ ! -d ./light-images-proprietary ] ; then
-	echo "Log light-images-proprietary: [git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=10]"
-	git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=10
+	echo "Log light-images-proprietary: [git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=${GIT_DEPTH}]"
+	git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=${GIT_DEPTH}
 else
 	cd ./light-images-proprietary/
 	echo "Log light-images-proprietary: [git pull --rebase]"
