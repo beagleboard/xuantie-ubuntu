@@ -7,10 +7,15 @@ wdir=`pwd`
 CC=${wdir}/riscv-toolchain/bin/riscv64-unknown-linux-gnu-
 
 cd ./linux/
-cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dtsi ./arch/riscv/boot/dts/thead/
-cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dts ./arch/riscv/boot/dts/thead/
-cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/board/light-fm-bone-pins.h ./include/dt-bindings/board/
-cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/pinctrl/light.h ./include/dt-bindings/pinctrl/
+cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dts ./arch/riscv/boot/dts/thead/
+echo "# SPDX-License-Identifier: GPL-2.0" > arch/riscv/boot/dts/thead/Makefile
+echo "dtb-\$(CONFIG_ARCH_THEAD) += th1520-lichee-pi-4a.dtb" >> arch/riscv/boot/dts/thead/Makefile
+echo "dtb-\$(CONFIG_ARCH_THEAD) += th1520-beaglev-ahead.dtb" >> arch/riscv/boot/dts/thead/Makefile
+
+#if [ ! -d ./arch/riscv/boot/dts/thead/overlays/ ] ; then
+#	mkdir -p ./arch/riscv/boot/dts/thead/overlays/
+#fi
+#cp -rv ../BeagleBoard-DeviceTrees/src/thead/overlays/*.dts ./arch/riscv/boot/dts/thead/overlays/
 
 cd ../BeagleBoard-DeviceTrees/
 make clean ; make
@@ -34,14 +39,10 @@ tar --create --gzip --file "../${KERNEL_UTS}-modules.tar.gz" ./*
 cd "${wdir}/linux/" || exit
 rm -rf "${wdir}/deploy/tmp" || true
 
+cp -v ./arch/riscv/boot/dts/thead/th1520-beaglev-ahead.dts ../BeagleBoard-DeviceTrees/src/thead/
 cp -v ./.config ../patches/linux/beaglev_defconfig
-cp -v ./.config ./arch/riscv/configs/beaglev_defconfig
-cp -v ./arch/riscv/boot/dts/thead/light-beagle.dts ../BeagleBoard-DeviceTrees/src/riscv/
-cp -v ./arch/riscv/boot/dts/thead/light-beagle-ref.dts ../BeagleBoard-DeviceTrees/src/riscv/
-cp -v ./arch/riscv/boot/dts/thead/light-vi-devices.dtsi ../BeagleBoard-DeviceTrees/src/riscv/
-cp -v ./arch/riscv/boot/dts/thead/light.dtsi ../BeagleBoard-DeviceTrees/src/riscv/
 cp -v ./arch/riscv/boot/Image ../deploy/
-cp -v ./arch/riscv/boot/dts/thead/light-beagle.dtb ../deploy/
+cp -v ./arch/riscv/boot/dts/thead/*.dtb ../deploy/
 
 cd ../
 

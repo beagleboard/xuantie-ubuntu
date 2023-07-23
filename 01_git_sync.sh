@@ -1,9 +1,9 @@
 #!/bin/bash
 
-OPENSBI_BRANCH="0.9-1.1.2"
+OPENSBI_BRANCH="v1.3.1"
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2"
-DTB_BRANCH="v5.10.x-ti-unified"
-LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
+DTB_BRANCH="v6.5.x"
+#LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 GIT_DEPTH="20"
 
 if [ ! -f ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz ] ; then
@@ -21,8 +21,8 @@ if [ -d ./opensbi ] ; then
 	rm -rf ./opensbi || true
 fi
 
-echo "git clone -b ${OPENSBI_BRANCH} https://github.com/beagleboard/beaglev-ahead-opensbi.git ./opensbi/ --depth=${GIT_DEPTH}"
-git clone -b ${OPENSBI_BRANCH} https://github.com/beagleboard/beaglev-ahead-opensbi.git ./opensbi/ --depth=${GIT_DEPTH}
+echo "git clone -b ${OPENSBI_BRANCH} https://github.com/riscv-software-src/opensbi.git ./opensbi/ --depth=${GIT_DEPTH}"
+git clone -b ${OPENSBI_BRANCH} https://github.com/riscv-software-src/opensbi.git ./opensbi/ --depth=${GIT_DEPTH}
 
 if [ -d ./u-boot ] ; then
 	rm -rf ./u-boot || true
@@ -47,13 +47,10 @@ if [ -d ./linux ] ; then
 	rm -rf ./linux || true
 fi
 
-if [ -f ./.gitlab-runner ] ; then
-	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux/ -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}"
-	git clone --reference-if-able /mnt/yocto-cache/git/linux/ -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}
-else
-	echo "git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}"
-	git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}
-fi
+#echo "git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}"
+#git clone -b ${LINUX_BRANCH} https://github.com/beagleboard/linux.git ./linux/ --depth=${GIT_DEPTH}
+echo "git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git ./linux/ --depth=${GIT_DEPTH}"
+git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git ./linux/ --depth=${GIT_DEPTH}
 
 if [ -f ./.gitlab-runner ] ; then
 	rm -f ./.gitlab-runner || true
