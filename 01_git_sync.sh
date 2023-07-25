@@ -59,6 +59,10 @@ else
 	git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git ./linux/ --depth=${GIT_DEPTH}
 fi
 
+cd ./linux/
+git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc3-BeagleV-Ahead-dts-mmc --no-rebase
+cd ../
+
 if [ -f ./.gitlab-runner ] ; then
 	rm -f ./.gitlab-runner || true
 fi
