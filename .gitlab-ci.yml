@@ -30,7 +30,7 @@ build:
     - xz -vT8 deploy/root.ext4
   artifacts:
     expire_in: 5 days
-    name: "$CI_PROJECT_NAME-1.1.2-$CI_JOB_ID"
+    name: "$CI_PROJECT_NAME-mainline-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
       - "deploy/mac_fastboot_emmc.sh"
