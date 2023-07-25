@@ -8,9 +8,6 @@ CC=${wdir}/riscv-toolchain/bin/riscv64-unknown-linux-gnu-
 
 cd ./linux/
 cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dts ./arch/riscv/boot/dts/thead/
-echo "# SPDX-License-Identifier: GPL-2.0" > arch/riscv/boot/dts/thead/Makefile
-echo "dtb-\$(CONFIG_ARCH_THEAD) += th1520-lichee-pi-4a.dtb" >> arch/riscv/boot/dts/thead/Makefile
-echo "dtb-\$(CONFIG_ARCH_THEAD) += th1520-beaglev-ahead.dtb" >> arch/riscv/boot/dts/thead/Makefile
 
 #if [ ! -d ./arch/riscv/boot/dts/thead/overlays/ ] ; then
 #	mkdir -p ./arch/riscv/boot/dts/thead/overlays/
