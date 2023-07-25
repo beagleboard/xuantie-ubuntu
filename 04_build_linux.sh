@@ -17,6 +17,8 @@ echo "dtb-\$(CONFIG_ARCH_THEAD) += th1520-beaglev-ahead.dtb" >> arch/riscv/boot/
 #fi
 #cp -rv ../BeagleBoard-DeviceTrees/src/thead/overlays/*.dts ./arch/riscv/boot/dts/thead/overlays/
 
+git diff > log.txt ; cat log.txt ; rm log.txt
+
 cd ../BeagleBoard-DeviceTrees/
 make clean ; make
 cd ../linux
