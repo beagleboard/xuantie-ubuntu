@@ -48,5 +48,7 @@ cp -v ./arch/riscv/boot/dts/thead/*.dtb ../deploy/
 
 cd ../
 
+git diff > log.txt ; cat log.txt ; rm log.txt
+
 touch ./.05_generate_boot.sh
 touch ./.06_generate_root.sh
