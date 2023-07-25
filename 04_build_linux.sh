@@ -24,6 +24,7 @@ cd ../linux
 make ARCH=riscv CROSS_COMPILE=${CC} clean
 make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_OF_OVERLAY
+./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs
 

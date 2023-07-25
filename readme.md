@@ -8,7 +8,7 @@
 
 # Linux - [v6.5-rc]
 - Mainline: Basic Boot, gpio, serial, memory [submitted for v6.6-rc] - https://lore.kernel.org/linux-riscv/20230722-upstream-beaglev-ahead-dts-v1-0-ccda511357f4@baylibre.com/T/#t
-- eMMC/microSD - [testing, not posted yet]
+- eMMC - [RFC, testing] - https://lore.kernel.org/linux-riscv/20230724-th1520-emmc-v1-0-cca1b2533da2@baylibre.com/T/#t
 
 # Debian/Ubuntu RootFS generator:
 - Ubuntu 23.04 Console: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-ubuntu-2304-console-riscv64.conf 
