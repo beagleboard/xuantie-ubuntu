@@ -3,7 +3,7 @@ image: robertcnelson/debian-bookworm-slim-riscv:latest
 cache:
   key: "$CI_PROJECT_NAME"
   paths:
-    - mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz
+    - mirror/x86_64-gcc-13.1.0-nolibc-riscv64-linux.tar.xz
     - deploy/*.tar.xz
 
 build:
