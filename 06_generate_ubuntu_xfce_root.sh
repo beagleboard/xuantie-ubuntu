@@ -63,10 +63,6 @@ cp -v ./bins/ap6203/* ./ignore/.root/lib/firmware/ || true
 mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true
 cp -v bins/BCM43013A0_001.001.006.1073.1102.hcd ./ignore/.root/usr/lib/firmware/brcm/BCM43013A0.hcd
 
-#cp -v ./light-images-proprietary/gpu_bxm_4_64/lib/firmware/* ./ignore/.root/usr/lib/firmware/ || true
-#cp -rv ./light-images-proprietary/gpu_bxm_4_64/etc/* ./ignore/.root/etc/
-#cp -rv ./light-images-proprietary/gpu_bxm_4_64/usr/* ./ignore/.root/usr/
-
 mkdir -p ./ignore/.root/usr/share/backgrounds/bbb.io/ || true
 cp -v ./bins/xfce/beagleboard-logo.svg ./ignore/.root/usr/share/backgrounds/bbb.io/
 
