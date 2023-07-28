@@ -100,14 +100,14 @@ fi
 #	cd -
 #fi
 
-if [ ! -d ./light-images-proprietary ] ; then
-	echo "Log light-images-proprietary: [git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=${GIT_DEPTH}]"
-	git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=${GIT_DEPTH}
-else
-	cd ./light-images-proprietary/
-	echo "Log light-images-proprietary: [git pull --rebase]"
-	git pull --rebase
-	cd -
-fi
+#if [ ! -d ./light-images-proprietary ] ; then
+#	echo "Log light-images-proprietary: [git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=${GIT_DEPTH}]"
+#	git clone https://git.beagleboard.org/beaglev-ahead/light-images-proprietary.git --depth=${GIT_DEPTH}
+#else
+#	cd ./light-images-proprietary/
+#	echo "Log light-images-proprietary: [git pull --rebase]"
+#	git pull --rebase
+#	cd -
+#fi
 
 #
