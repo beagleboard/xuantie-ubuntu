@@ -286,6 +286,10 @@ CONFIG_RISCV_SWIOTLB=y
 
 CONFIG_FPU=y
 CONFIG_VECTOR=y
+# CONFIG_VECTOR_1_0 is not set
+CONFIG_VECTOR_0_7=y
+# CONFIG_VLEN_256 is not set
+# CONFIG_VECTOR_EMU is not set
 # CONFIG_THEAD_ISA is not set
 # end of Platform type
 
