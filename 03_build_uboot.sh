@@ -2,7 +2,7 @@
 
 CORES=$(getconf _NPROCESSORS_ONLN)
 wdir=`pwd`
-CC=${CC:-"${wdir}/riscv-toolchain/bin/riscv64-unknown-linux-gnu-"}
+CC=${CC:-"${wdir}/riscv-toolchain/bin/riscv64-linux-"}
 
 make -C u-boot ARCH=riscv CROSS_COMPILE=${CC} distclean
 
