@@ -51,8 +51,10 @@ sudo ./06_generate_ubuntu_console_root.sh
 
 # Flash Board over USB
 
-1. Press the `USB` button near SD card holder and then connect the board to PC with your USB3 cable.
-2. Now, Execute the command below and you should see the board flashing.
+1. Connect board to PC with your USB3 cable.
+2. Press the `USB` button near SD card holder and toggle the `RESET` button near the Ethernet Jack.
+3. Now, Execute the command below and you should see the board flashing.
+
 
 ```
 sudo ./07_fastboot_emmc.sh
