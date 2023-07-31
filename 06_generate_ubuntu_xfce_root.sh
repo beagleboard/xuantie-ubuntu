@@ -8,13 +8,23 @@ fi
 
 wdir=`pwd`
 
-image="2023-07-28"
+if [ -f /tmp/latest ] ; then
+	rm -rf /tmp/latest | true
+fi
+wget --quiet --directory-prefix=/tmp/ https://rcn-ee.net/rootfs/ubuntu-riscv64-23.04-xfce/latest || true
+if [ -f /tmp/latest ] ; then
+	latest_rootfs=$(cat "/tmp/latest")
+	datestamp=$(cat "/tmp/latest" | awk -F 'riscv64-' '{print $2}' | awk -F '.' '{print $1}')
 
-if [ ! -f ./deploy/ubuntu-23.04-xfce-riscv64-${image}/riscv64-rootfs-ubuntu-lunar.tar ] ; then
-	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-23.04-xfce/${image}/ubuntu-23.04-xfce-riscv64-${image}.tar.xz
-	cd ./deploy/
-	tar xf ubuntu-23.04-xfce-riscv64-${image}.tar.xz
-	cd ../
+	if [ ! -f ./deploy/ubuntu-23.04-xfce-riscv64-${datestamp}/riscv64-rootfs-ubuntu-lunar.tar ] ; then
+		wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-23.04-xfce/${datestamp}/${latest_rootfs}
+		cd ./deploy/
+		tar xf ${latest_rootfs}
+		cd ../
+	fi
+else
+	echo "Failure: getting image"
+	exit 2
 fi
 
 if [ -d ./ignore/.root ] ; then
@@ -22,7 +32,7 @@ if [ -d ./ignore/.root ] ; then
 fi
 mkdir -p ./ignore/.root
 
-tar xfp ./deploy/ubuntu-23.04-xfce-riscv64-${image}/riscv64-rootfs-ubuntu-lunar.tar -C ./ignore/.root
+tar xfp ./deploy/ubuntu-23.04-xfce-riscv64-${datestamp}/riscv64-rootfs-ubuntu-lunar.tar -C ./ignore/.root
 sync
 
 mkdir -p ./ignore/.root/boot/firmware/ || true
