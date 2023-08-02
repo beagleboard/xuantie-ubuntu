@@ -60,7 +60,7 @@ else
 fi
 
 cd ./linux/
-git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc3-BeagleV-Ahead-dts-mmc --no-rebase
+git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc4-BeagleV-Ahead-dts-mmc --no-rebase
 cd ../
 
 if [ -f ./.gitlab-runner ] ; then
