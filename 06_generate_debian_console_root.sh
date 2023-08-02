@@ -32,6 +32,10 @@ echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/.root/etc/fs
 echo 'debugfs  /sys/kernel/debug  debugfs  mode=755,uid=root,gid=gpio,defaults  0  0' >> ./ignore/.root/etc/fstab
 
 rm -rf ./ignore/.root/usr/lib/systemd/system/bb-usb-gadgets.service || true
+rm -rf ./ignore/.root/etc/systemd/system/getty.target.wants/serial-getty@ttyGS0.service || true
+rm -rf ./ignore/.root/etc/systemd/network/usb0.network || true
+rm -rf ./ignore/.root/etc/systemd/network/usb1.network || true
+
 rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 cd ./ignore/.root/
 ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=./etc/systemd/system/multi-user.target.wants/
