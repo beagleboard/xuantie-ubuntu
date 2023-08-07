@@ -3,7 +3,7 @@ image: robertcnelson/debian-bookworm-slim-riscv:latest
 cache:
   key: "$CI_PROJECT_NAME"
   paths:
-    - mirror/x86_64-gcc-13.1.0-nolibc-riscv64-linux.tar.xz
+    - mirror/x86_64-gcc-*-linux.tar.xz
     - deploy/*.tar.xz
 
 build:
@@ -21,7 +21,7 @@ build:
     - xz -vT8 deploy/boot.ext4
     - xz -vT8 deploy/root.ext4
   artifacts:
-    expire_in: 5 days
+    expire_in: 14 days
     name: "$CI_PROJECT_NAME-mainline-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"

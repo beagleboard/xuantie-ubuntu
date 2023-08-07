@@ -6,15 +6,15 @@ DTB_BRANCH="v6.5.x"
 #LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 GIT_DEPTH="20"
 
-if [ ! -f ./mirror/x86_64-gcc-13.1.0-nolibc-riscv64-linux.tar.xz ] ; then
+if [ ! -f ./mirror/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz ] ; then
 	###FIXME, move to public when released...
-	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/13.1.0/x86_64-gcc-13.1.0-nolibc-riscv64-linux.tar.xz"
-	wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/13.1.0/x86_64-gcc-13.1.0-nolibc-riscv64-linux.tar.xz
+	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/13.2.0/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz"
+	wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/13.2.0/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz
 fi
 
-if [ ! -f ./riscv-toolchain/bin/riscv64-linux-gcc-13.1.0 ] ; then
-	echo "tar xf ./mirror/x86_64-gcc-13.1.0-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/"
-	tar xf ./mirror/x86_64-gcc-13.1.0-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/
+if [ ! -f ./riscv-toolchain/bin/riscv64-linux-gcc-13.2.0 ] ; then
+	echo "tar xf ./mirror/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/"
+	tar xf ./mirror/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/
 fi
 
 if [ -d ./opensbi ] ; then
