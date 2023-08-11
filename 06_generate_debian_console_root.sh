@@ -8,13 +8,23 @@ fi
 
 wdir=`pwd`
 
-image="2023-07-28"
+if [ -f /tmp/latest ] ; then
+	rm -rf /tmp/latest | true
+fi
+wget --quiet --directory-prefix=/tmp/ https://rcn-ee.net/rootfs/debian-riscv64-sid-minimal/latest || true
+if [ -f /tmp/latest ] ; then
+	latest_rootfs=$(cat "/tmp/latest")
+	datestamp=$(cat "/tmp/latest" | awk -F 'riscv64-' '{print $2}' | awk -F '.' '{print $1}')
 
-if [ ! -f ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-debian-sid.tar ] ; then
-	wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-sid-minimal/${image}/debian-sid-console-riscv64-${image}.tar.xz
-	cd ./deploy/
-	tar xf debian-sid-console-riscv64-${image}.tar.xz
-	cd ../
+	if [ ! -f ./deploy/debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-debian-sid.tar ] ; then
+		wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-sid-minimal/${datestamp}/${latest_rootfs}
+		cd ./deploy/
+		tar xf ${latest_rootfs}
+		cd ../
+	fi
+else
+	echo "Failure: getting image"
+	exit 2
 fi
 
 if [ -d ./ignore/.root ] ; then
@@ -22,7 +32,7 @@ if [ -d ./ignore/.root ] ; then
 fi
 mkdir -p ./ignore/.root
 
-tar xfp ./deploy/debian-sid-console-riscv64-${image}/riscv64-rootfs-*.tar -C ./ignore/.root
+tar xfp ./deploy/debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-*.tar -C ./ignore/.root
 sync
 
 mkdir -p ./ignore/.root/boot/firmware/ || true
