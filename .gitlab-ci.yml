@@ -3,7 +3,7 @@ image: robertcnelson/debian-bookworm-slim-riscv:latest
 cache:
   key: "$CI_PROJECT_NAME"
   paths:
-    - mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz
+    - mirror/x86_64-gcc-*-linux.tar.xz
     - deploy/*.tar.xz
 
 build:
@@ -17,11 +17,11 @@ build:
     - ./03_build_uboot.sh
     - ./04_build_linux.sh
     - ./05_generate_boot.sh
-    - ./06_generate_ubuntu_xfce_root.sh
+    - ./06_generate_debian_console_root.sh
     - xz -vT8 deploy/boot.ext4
     - xz -vT8 deploy/root.ext4
   artifacts:
-    expire_in: 5 days
+    expire_in: 14 days
     name: "$CI_PROJECT_NAME-1.1.2-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"

@@ -1,20 +1,20 @@
 #!/bin/bash
 
-OPENSBI_BRANCH="0.9-1.1.2"
-UBOOT_BRANCH="beaglev-v2020.01-1.1.2"
+OPENSBI_BRANCH="0.9-1.1.2-ubuntu"
+UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 DTB_BRANCH="v5.10.x-ti-unified"
-LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
+LINUX_BRANCH="beaglev-v5.10.113-1.1.2-ubuntu"
 GIT_DEPTH="20"
 
-if [ ! -f ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz ] ; then
+if [ ! -f ./mirror/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz ] ; then
 	###FIXME, move to public when released...
-	echo "wget -c --directory-prefix=./mirror/ https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1663142514282/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz"
-	wget -c --directory-prefix=./mirror/ https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1663142514282/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz
+	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/13.2.0/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz"
+	wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/13.2.0/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz
 fi
 
-if [ ! -f ./riscv-toolchain/bin/riscv64-unknown-linux-gnu-gcc-10.2.0 ] ; then
-	echo "tar xf ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz --strip-components=1 -C ./riscv-toolchain/"
-	tar xf ./mirror/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz --strip-components=1 -C ./riscv-toolchain/
+if [ ! -f ./riscv-toolchain/bin/riscv64-linux-gcc-13.2.0 ] ; then
+	echo "tar xf ./mirror/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/"
+	tar xf ./mirror/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/
 fi
 
 if [ -d ./opensbi ] ; then

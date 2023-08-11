@@ -2,7 +2,7 @@
 
 CORES=$(getconf _NPROCESSORS_ONLN)
 wdir=`pwd`
-CC=${CC:-"${wdir}/riscv-toolchain/bin/riscv64-unknown-linux-gnu-"}
+CC=${CC:-"${wdir}/riscv-toolchain/bin/riscv64-linux-"}
 
 cd ./linux/
 cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dtsi ./arch/riscv/boot/dts/thead/
