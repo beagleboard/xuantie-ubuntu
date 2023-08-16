@@ -32,6 +32,7 @@ if [ -d ./ignore/.root ] ; then
 fi
 mkdir -p ./ignore/.root
 
+echo "Extracting: debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-*.tar"
 tar xfp ./deploy/debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-*.tar -C ./ignore/.root
 sync
 
@@ -46,7 +47,20 @@ cd ./ignore/.root/
 ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=./etc/systemd/system/multi-user.target.wants/
 cd ../../
 
-cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
+if [ -f ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ] ; then
+	cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
+else
+	echo '[Match]' > ./ignore/.root/etc/systemd/network/eth0.network
+	echo 'Name=eth0' >> ./ignore/.root/etc/systemd/network/eth0.network
+	echo 'Type=ether' >> ./ignore/.root/etc/systemd/network/eth0.network
+	echo '' >> ./ignore/.root/etc/systemd/network/eth0.network
+	echo '[Link]' >> ./ignore/.root/etc/systemd/network/eth0.network
+	echo 'RequiredForOnline=yes' >> ./ignore/.root/etc/systemd/network/eth0.network
+	echo '' >> ./ignore/.root/etc/systemd/network/eth0.network
+	echo '[Network]' >> ./ignore/.root/etc/systemd/network/eth0.network
+	echo 'DHCP=ipv4' >> ./ignore/.root/etc/systemd/network/eth0.network
+fi
+
 cp -v ./bins/ap6203/* ./ignore/.root/lib/firmware/ || true
 
 mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true
