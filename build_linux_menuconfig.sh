@@ -18,9 +18,15 @@ cd ../BeagleBoard-DeviceTrees/
 make clean ; make
 cd ../linux
 
+echo "make ARCH=riscv CROSS_COMPILE=${CC} clean"
 make ARCH=riscv CROSS_COMPILE=${CC} clean
+
+echo "make ARCH=riscv CROSS_COMPILE=${CC} defconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} defconfig
+
+echo "make ARCH=riscv CROSS_COMPILE=${CC} menuconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} menuconfig
+
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs
 

@@ -18,10 +18,18 @@ cd ../BeagleBoard-DeviceTrees/
 make clean ; make
 cd ../linux
 
+echo "make ARCH=riscv CROSS_COMPILE=${CC} clean"
 make ARCH=riscv CROSS_COMPILE=${CC} clean
+
+echo "make ARCH=riscv CROSS_COMPILE=${CC} defconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} defconfig
+
 ./scripts/config --enable CONFIG_OF_OVERLAY
 ./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
+
+echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
+make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
+
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs
 
