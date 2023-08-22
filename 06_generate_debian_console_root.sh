@@ -52,6 +52,11 @@ ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=
 cd ../../
 
 cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
+
+if [ -f ./ignore/.root/etc/systemd/system/multi-user.target.wants/wpa_supplicant@wlan0.service ] ; then
+	rm -rf ./ignore/.root/etc/systemd/system/multi-user.target.wants/wpa_supplicant@wlan0.service || true
+fi
+
 cp -v ./bins/ap6203/* ./ignore/.root/lib/firmware/ || true
 
 mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true

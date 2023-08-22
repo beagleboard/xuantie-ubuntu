@@ -55,6 +55,10 @@ cd ../../
 
 cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
 
+if [ -f ./ignore/.root/etc/systemd/system/multi-user.target.wants/wpa_supplicant@wlan0.service ] ; then
+	rm -rf ./ignore/.root/etc/systemd/system/multi-user.target.wants/wpa_supplicant@wlan0.service || true
+fi
+
 #Cleanup large firmware's..
 rm -rf ./ignore/.root/usr/lib/firmware/amdgpu/ || true
 rm -rf ./ignore/.root/usr/lib/firmware/dpaa2/ || true
