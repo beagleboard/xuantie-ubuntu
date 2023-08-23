@@ -47,18 +47,10 @@ cd ./ignore/.root/
 ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=./etc/systemd/system/multi-user.target.wants/
 cd ../../
 
-if [ -f ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ] ; then
-	cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
-else
-	echo '[Match]' > ./ignore/.root/etc/systemd/network/eth0.network
-	echo 'Name=eth0' >> ./ignore/.root/etc/systemd/network/eth0.network
-	echo 'Type=ether' >> ./ignore/.root/etc/systemd/network/eth0.network
-	echo '' >> ./ignore/.root/etc/systemd/network/eth0.network
-	echo '[Link]' >> ./ignore/.root/etc/systemd/network/eth0.network
-	echo 'RequiredForOnline=yes' >> ./ignore/.root/etc/systemd/network/eth0.network
-	echo '' >> ./ignore/.root/etc/systemd/network/eth0.network
-	echo '[Network]' >> ./ignore/.root/etc/systemd/network/eth0.network
-	echo 'DHCP=ipv4' >> ./ignore/.root/etc/systemd/network/eth0.network
+cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
+
+if [ -f ./ignore/.root/etc/systemd/system/multi-user.target.wants/wpa_supplicant@wlan0.service ] ; then
+	rm -rf ./ignore/.root/etc/systemd/system/multi-user.target.wants/wpa_supplicant@wlan0.service || true
 fi
 
 cp -v ./bins/ap6203/* ./ignore/.root/lib/firmware/ || true

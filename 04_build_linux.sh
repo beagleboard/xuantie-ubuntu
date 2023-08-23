@@ -24,18 +24,45 @@ cd ./linux/
 #cd ../linux
 
 make ARCH=riscv CROSS_COMPILE=${CC} clean
+
 if [ ! -f ./arch/riscv/configs/beaglev_defconfig ] ; then
 	cp -v ./arch/riscv/configs/light_defconfig ./arch/riscv/configs/beaglev_defconfig
 fi
 echo "make ARCH=riscv CROSS_COMPILE=${CC} beaglev_defconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} beaglev_defconfig
 
+#
+# Scheduler features
+#
+# end of Scheduler features
+
+./scripts/config --enable CONFIG_MEMCG
+./scripts/config --enable CONFIG_MEMCG_KMEM
+./scripts/config --enable CONFIG_RT_GROUP_SCHED
+./scripts/config --enable CONFIG_SCHED_MM_CID
+./scripts/config --enable CONFIG_CGROUP_PIDS
+./scripts/config --enable CONFIG_CGROUP_FREEZER
+./scripts/config --enable CONFIG_CGROUP_HUGETLB
+./scripts/config --enable CONFIG_CPUSETS
+./scripts/config --enable CONFIG_PROC_PID_CPUSET
+./scripts/config --enable CONFIG_CGROUP_DEVICE
+./scripts/config --enable CONFIG_CGROUP_CPUACCT
+./scripts/config --enable CONFIG_CGROUP_PERF
+./scripts/config --enable CONFIG_NAMESPACES
+./scripts/config --enable CONFIG_UTS_NS
+./scripts/config --enable CONFIG_TIME_NS
+./scripts/config --enable CONFIG_IPC_NS
+./scripts/config --enable CONFIG_USER_NS
+./scripts/config --enable CONFIG_PID_NS
+./scripts/config --enable CONFIG_NET_NS
+./scripts/config --enable CONFIG_CHECKPOINT_RESTORE
+
 #Optimize:
 ./scripts/config --enable CONFIG_IP_NF_IPTABLES
 ./scripts/config --enable CONFIG_NETFILTER_XTABLES
 
-echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
-make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
+echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
+make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
 
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs
