@@ -5,23 +5,23 @@ wdir=`pwd`
 CC=${CC:-"${wdir}/riscv-toolchain/bin/riscv64-linux-"}
 
 cd ./linux/
-cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dtsi ./arch/riscv/boot/dts/thead/
-cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dts ./arch/riscv/boot/dts/thead/
+#cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dtsi ./arch/riscv/boot/dts/thead/
+#cp -rv ../BeagleBoard-DeviceTrees/src/riscv/*.dts ./arch/riscv/boot/dts/thead/
 
-if [ ! -d ./arch/riscv/boot/dts/thead/overlays/ ] ; then
-	mkdir -p ./arch/riscv/boot/dts/thead/overlays/
-fi
-cp -rv ../BeagleBoard-DeviceTrees/src/riscv/overlays/*.dts ./arch/riscv/boot/dts/thead/overlays/
+#if [ ! -d ./arch/riscv/boot/dts/thead/overlays/ ] ; then
+#	mkdir -p ./arch/riscv/boot/dts/thead/overlays/
+#fi
+#cp -rv ../BeagleBoard-DeviceTrees/src/riscv/overlays/*.dts ./arch/riscv/boot/dts/thead/overlays/
 
-if [ ! -d ./include/dt-bindings/board/ ] ; then
-	mkdir -p ./include/dt-bindings/board/
-fi
-cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/board/light-fm-bone-pins.h ./include/dt-bindings/board/
-cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/pinctrl/light.h ./include/dt-bindings/pinctrl/
+#if [ ! -d ./include/dt-bindings/board/ ] ; then
+#	mkdir -p ./include/dt-bindings/board/
+#fi
+#cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/board/light-fm-bone-pins.h ./include/dt-bindings/board/
+#cp -v ../BeagleBoard-DeviceTrees/include/dt-bindings/pinctrl/light.h ./include/dt-bindings/pinctrl/
 
-cd ../BeagleBoard-DeviceTrees/
-make clean ; make
-cd ../linux
+#cd ../BeagleBoard-DeviceTrees/
+#make clean ; make
+#cd ../linux
 
 make ARCH=riscv CROSS_COMPILE=${CC} clean
 if [ ! -f ./arch/riscv/configs/beaglev_defconfig ] ; then
@@ -39,6 +39,11 @@ make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
 
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs
+
+if [ ! -f ./arch/riscv/boot/Image ] ; then
+	echo "Build Failed"
+	exit 2
+fi
 
 KERNEL_UTS=$(cat "${wdir}/linux/include/generated/utsrelease.h" | awk '{print $3}' | sed 's/\"//g' )
 
@@ -67,3 +72,4 @@ cd ../
 
 touch ./.05_generate_boot.sh
 touch ./.06_generate_root.sh
+#
