@@ -5,6 +5,7 @@ wdir=`pwd`
 CC=${CC:-"${wdir}/riscv-toolchain/bin/riscv64-linux-"}
 
 cd ./linux/
+cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dtsi ./arch/riscv/boot/dts/thead/
 cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dts ./arch/riscv/boot/dts/thead/
 
 #if [ ! -d ./arch/riscv/boot/dts/thead/overlays/ ] ; then
@@ -26,6 +27,8 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 
 ./scripts/config --enable CONFIG_OF_OVERLAY
 ./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
+
+./scripts/config --enable CONFIG_DWMAC_THEAD
 
 #Cleanup large DRM...
 ./scripts/config --disable CONFIG_DRM

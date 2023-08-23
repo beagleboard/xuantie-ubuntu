@@ -60,8 +60,8 @@ else
 fi
 
 cd ./linux/
-	echo "git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc --no-rebase"
-	git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc --no-rebase
+	echo "git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc-network --no-rebase"
+	git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc-network --no-rebase
 cd ../
 
 if [ -f ./.gitlab-runner ] ; then
