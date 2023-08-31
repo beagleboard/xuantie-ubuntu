@@ -59,10 +59,10 @@ else
 	git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git ./linux/ --depth=${GIT_DEPTH}
 fi
 
-cd ./linux/
-	echo "git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc-network --no-rebase"
-	git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc-network --no-rebase
-cd ../
+#cd ./linux/
+#	echo "git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc-network --no-rebase"
+#	git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc-network --no-rebase
+#cd ../
 
 if [ -f ./.gitlab-runner ] ; then
 	rm -f ./.gitlab-runner || true

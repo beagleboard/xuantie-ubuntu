@@ -5,8 +5,8 @@ wdir=`pwd`
 CC=${CC:-"${wdir}/riscv-toolchain/bin/riscv64-linux-"}
 
 cd ./linux/
-cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dtsi ./arch/riscv/boot/dts/thead/
-cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dts ./arch/riscv/boot/dts/thead/
+#cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dtsi ./arch/riscv/boot/dts/thead/
+#cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dts ./arch/riscv/boot/dts/thead/
 
 #if [ ! -d ./arch/riscv/boot/dts/thead/overlays/ ] ; then
 #	mkdir -p ./arch/riscv/boot/dts/thead/overlays/
@@ -37,11 +37,11 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_IP_NF_IPTABLES
 ./scripts/config --enable CONFIG_NETFILTER_XTABLES
 
-echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
-make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
+echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
+make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
 
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
-make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs
+make -j${CORES} ARCH=riscv CROSS_COMPILE="ccache ${CC}" Image modules dtbs
 
 KERNEL_UTS=$(cat "${wdir}/linux/include/generated/utsrelease.h" | awk '{print $3}' | sed 's/\"//g' )
 

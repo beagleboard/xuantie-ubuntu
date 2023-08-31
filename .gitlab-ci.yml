@@ -4,7 +4,6 @@ cache:
   key: "$CI_PROJECT_NAME"
   paths:
     - mirror/x86_64-gcc-*-linux.tar.xz
-    - deploy/*.tar.xz
 
 build:
   tags:
