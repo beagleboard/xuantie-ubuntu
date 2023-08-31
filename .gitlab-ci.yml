@@ -3,7 +3,8 @@ image: robertcnelson/debian-bookworm-slim-riscv:latest
 cache:
   key: "$CI_PROJECT_NAME"
   paths:
-    - mirror/x86_64-gcc-*-linux.tar.xz
+    - mirror/*.tar.xz
+    - ccache.tar.gz
 
 build:
   tags:
@@ -11,6 +12,10 @@ build:
   stage: build
   script:
     - touch .gitlab-runner
+    - mkdir -p /root/.cache/ccache/ || true
+    - ccache -s
+    - tar -xf ccache.tar.gz -C / || true
+    - ccache -s
     - ./01_git_sync.sh
     - ./02_build_opensbi.sh
     - ./03_build_uboot.sh
@@ -19,8 +24,10 @@ build:
     - ./06_generate_debian_console_root.sh
     - xz -vT8 deploy/boot.ext4
     - xz -vT8 deploy/root.ext4
+    - ccache -s
+    - tar -cf ccache.tar.gz /root/.cache/ccache/
   artifacts:
-    expire_in: 14 days
+    expire_in: 28 days
     name: "$CI_PROJECT_NAME-mainline-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
@@ -28,4 +35,3 @@ build:
       - "deploy/u-boot-with-spl.bin"
       - "deploy/boot.ext4.xz"
       - "deploy/root.ext4.xz"
-
