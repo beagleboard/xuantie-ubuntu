@@ -63,8 +63,4 @@ else
 	git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=${GIT_DEPTH}
 fi
 
-if [ -f ./.gitlab-runner ] ; then
-	rm -f ./.gitlab-runner || true
-fi
-
 #
