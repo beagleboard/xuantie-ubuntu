@@ -15,7 +15,7 @@ make -C u-boot ARCH=riscv CROSS_COMPILE=${CC} distclean
 echo "make -C u-boot ARCH=riscv CROSS_COMPILE=${CC} light_beagle_defconfig"
 make -C u-boot ARCH=riscv CROSS_COMPILE=${CC} light_beagle_defconfig
 echo "make -C u-boot -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} all"
-make -C u-boot -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} all
+make -C u-boot -j${CORES} ARCH=riscv CROSS_COMPILE="ccache ${CC}" all
 
 cp -v ./u-boot/u-boot-with-spl.bin ./deploy/
 

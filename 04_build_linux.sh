@@ -23,6 +23,7 @@ cd ../BeagleBoard-DeviceTrees/
 make clean ; make
 cd ../linux
 
+echo "make ARCH=riscv CROSS_COMPILE=${CC} clean"
 make ARCH=riscv CROSS_COMPILE=${CC} clean
 if [ ! -f ./arch/riscv/configs/beaglev_defconfig ] ; then
 	cp -v ./arch/riscv/configs/light_defconfig ./arch/riscv/configs/beaglev_defconfig
@@ -34,11 +35,11 @@ make ARCH=riscv CROSS_COMPILE=${CC} beaglev_defconfig
 ./scripts/config --enable CONFIG_IP_NF_IPTABLES
 ./scripts/config --enable CONFIG_NETFILTER_XTABLES
 
-echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
-make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
+echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
+make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
 
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
-make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs
+make -j${CORES} ARCH=riscv CROSS_COMPILE="ccache ${CC}" Image modules dtbs
 
 KERNEL_UTS=$(cat "${wdir}/linux/include/generated/utsrelease.h" | awk '{print $3}' | sed 's/\"//g' )
 

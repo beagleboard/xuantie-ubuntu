@@ -17,7 +17,11 @@ if [ -f /tmp/latest ] ; then
 	datestamp=$(cat "/tmp/latest" | awk -F 'riscv64-' '{print $2}' | awk -F '.' '{print $1}')
 
 	if [ ! -f ./deploy/debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-debian-sid.tar ] ; then
-		wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-sid-minimal/${datestamp}/${latest_rootfs}
+		if [ -f ./.gitlab-runner ] ; then
+			wget -c --directory-prefix=./deploy http://192.168.1.98/rcn-ee.us/rootfs/debian-riscv64-sid-minimal/${datestamp}/${latest_rootfs}
+		else
+			wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-sid-minimal/${datestamp}/${latest_rootfs}
+		fi
 		cd ./deploy/
 		tar xf ${latest_rootfs}
 		cd ../
