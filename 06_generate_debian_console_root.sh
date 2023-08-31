@@ -36,6 +36,7 @@ if [ -d ./ignore/.root ] ; then
 fi
 mkdir -p ./ignore/.root
 
+echo "Extracting: debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-*.tar"
 tar xfp ./deploy/debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-*.tar -C ./ignore/.root
 sync
 
