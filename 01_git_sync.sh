@@ -1,6 +1,9 @@
 #!/bin/bash
 
-OPENSBI_BRANCH="v1.3.1"
+OPENSBI_BRANCH="master"
+#OPENSBI_BRANCH="v1.3.1"
+OPENSBI_REPO="https://github.com/riscv-software-src/opensbi.git"
+
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 DTB_BRANCH="v6.5.x"
 #LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
@@ -21,8 +24,8 @@ if [ -d ./opensbi ] ; then
 	rm -rf ./opensbi || true
 fi
 
-echo "git clone -b ${OPENSBI_BRANCH} https://github.com/riscv-software-src/opensbi.git ./opensbi/ --depth=${GIT_DEPTH}"
-git clone -b ${OPENSBI_BRANCH} https://github.com/riscv-software-src/opensbi.git ./opensbi/ --depth=${GIT_DEPTH}
+echo "git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}"
+git clone -b ${OPENSBI_BRANCH}  ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}
 
 if [ -d ./u-boot ] ; then
 	rm -rf ./u-boot || true
