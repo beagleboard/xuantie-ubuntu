@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GIT_DEPTH="20"
+GCC_VERSION="13.2.0"
 
 OPENSBI_BRANCH="master"
 #OPENSBI_BRANCH="v1.3.1"
@@ -9,22 +10,24 @@ OPENSBI_REPO="https://github.com/riscv-software-src/opensbi.git"
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
 
-DTB_BRANCH="v6.5.x"
+DTB_BRANCH="v6.6.x"
 
 LINUX_BRANCH="master"
 #LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 #LINUX_REPO="https://github.com/beagleboard/linux.git"
 LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-if [ ! -f ./mirror/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz ] ; then
-	###FIXME, move to public when released...
-	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/13.2.0/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz"
-	wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/13.2.0/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz
+#LINUX_BBBIO_BRANCH="v6.6-rc1-BeagleV-Ahead"
+LINUX_BBBIO_REPO="https://git.beagleboard.org/beaglev-ahead/linux.git"
+
+if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
+	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/${GCC_VERSION}/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz"
+	wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/${GCC_VERSION}/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz
 fi
 
-if [ ! -f ./riscv-toolchain/bin/riscv64-linux-gcc-13.2.0 ] ; then
-	echo "tar xf ./mirror/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/"
-	tar xf ./mirror/x86_64-gcc-13.2.0-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/
+if [ ! -f ./riscv-toolchain/bin/riscv64-linux-gcc-${GCC_VERSION} ] ; then
+	echo "tar xf ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/"
+	tar xf ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz --strip-components=2 -C ./riscv-toolchain/
 fi
 
 if [ -d ./opensbi ] ; then
@@ -65,9 +68,11 @@ else
 	git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=${GIT_DEPTH}
 fi
 
-#cd ./linux/
-#	echo "git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc-network --no-rebase"
-#	git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.5-rc1-BeagleV-Ahead-mmc-network --no-rebase
-#cd ../
+if [ "${LINUX_BBBIO_BRANCH}" ] ; then
+	cd ./linux/
+		echo "git pull --no-edit ${LINUX_BBBIO_REPO} ${LINUX_BBBIO_BRANCH} --no-rebase"
+		git pull --no-edit ${LINUX_BBBIO_REPO} ${LINUX_BBBIO_BRANCH} --no-rebase
+	cd ../
+fi
 
 #
