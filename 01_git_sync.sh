@@ -17,7 +17,7 @@ LINUX_BRANCH="master"
 #LINUX_REPO="https://github.com/beagleboard/linux.git"
 LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-LINUX_BBBIO_BRANCH="v6.6-rc1-BeagleV-Ahead"
+LINUX_BBBIO_BRANCH="v6.6-rc2-BeagleV-Ahead"
 LINUX_BBBIO_REPO="https://git.beagleboard.org/beaglev-ahead/linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
