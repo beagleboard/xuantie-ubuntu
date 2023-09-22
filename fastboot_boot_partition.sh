@@ -6,8 +6,8 @@ if ! id | grep -q root; then
 	exit
 fi
 
-if [ -f ./.06_generate_boot.sh ] ; then
-	echo "ERROR: run: [sudo ./06_generate_boot.sh] first"
+if [ -f ./.05_generate_boot.sh ] ; then
+	echo "ERROR: run: [sudo ./05_generate_boot.sh] first"
 else
 	fastboot flash ram ./deploy/u-boot-with-spl.bin
 	fastboot reboot

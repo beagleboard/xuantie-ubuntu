@@ -33,6 +33,8 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 #TH1520 MMC
 ./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
 ./scripts/config --enable CONFIG_DW_AXI_DMAC
+./scripts/config --disable CONFIG_ARCH_R9A07G043
+#CONFIG_DMA_GLOBAL_POOL breaks ADMA
 
 #TH1520 PHY
 ./scripts/config --enable CONFIG_DWMAC_THEAD
