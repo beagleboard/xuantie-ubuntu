@@ -37,7 +37,8 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 #TH1520 PHY
 ./scripts/config --enable CONFIG_DWMAC_THEAD
 
-#Cleanup large DRM...
+#Cleanup large PCI/DRM...
+./scripts/config --disable CONFIG_PCI
 ./scripts/config --disable CONFIG_DRM
 
 #Optimize:
