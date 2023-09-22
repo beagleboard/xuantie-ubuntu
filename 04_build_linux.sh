@@ -29,8 +29,12 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --set-str CONFIG_LOCALVERSION "-$(date +%Y%m%d)"
 
 ./scripts/config --enable CONFIG_OF_OVERLAY
-./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
 
+#TH1520 MMC
+./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
+./scripts/config --enable CONFIG_DW_AXI_DMAC
+
+#TH1520 PHY
 ./scripts/config --enable CONFIG_DWMAC_THEAD
 
 #Cleanup large DRM...
