@@ -25,6 +25,9 @@ make ARCH=riscv CROSS_COMPILE=${CC} clean
 echo "make ARCH=riscv CROSS_COMPILE=${CC} defconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 
+./scripts/config --disable CONFIG_LOCALVERSION_AUTO
+./scripts/config --set-str CONFIG_LOCALVERSION "-$(date +%Y%m%d)"
+
 ./scripts/config --enable CONFIG_OF_OVERLAY
 ./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
 
@@ -37,11 +40,33 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_IP_NF_IPTABLES
 ./scripts/config --enable CONFIG_NETFILTER_XTABLES
 
+#iwd
+./scripts/config --enable CONFIG_CRYPTO_USER_API_HASH
+./scripts/config --enable CONFIG_CRYPTO_USER_API_SKCIPHER
+./scripts/config --enable CONFIG_ASYMMETRIC_KEY_TYPE
+./scripts/config --enable CONFIG_KEY_DH_OPERATIONS
+./scripts/config --enable CONFIG_CRYPTO_ECB
+./scripts/config --enable CONFIG_CRYPTO_MD5
+./scripts/config --enable CONFIG_CRYPTO_CBC
+./scripts/config --enable CONFIG_CRYPTO_AES
+./scripts/config --enable CONFIG_CRYPTO_DES
+./scripts/config --enable CONFIG_ASYMMETRIC_PUBLIC_KEY_SUBTYPE
+./scripts/config --enable CONFIG_CRYPTO_CMAC
+./scripts/config --enable CONFIG_PKCS7_MESSAGE_PARSER
+./scripts/config --enable CONFIG_CRYPTO_HMAC
+./scripts/config --enable CONFIG_X509_CERTIFICATE_PARSER
+./scripts/config --enable CONFIG_PKCS8_PRIVATE_KEY_PARSER
+
 echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
 
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE="ccache ${CC}" Image modules dtbs
+
+if [ ! -f ./arch/riscv/boot/Image ] ; then
+	echo "Build Failed"
+	exit 2
+fi
 
 KERNEL_UTS=$(cat "${wdir}/linux/include/generated/utsrelease.h" | awk '{print $3}' | sed 's/\"//g' )
 
@@ -68,3 +93,4 @@ git diff > log.txt ; cat log.txt ; rm log.txt
 
 touch ./.05_generate_boot.sh
 touch ./.06_generate_root.sh
+#

@@ -46,21 +46,10 @@ echo '/dev/mmcblk0p2  /boot/firmware/ auto  defaults  0  2' >> ./ignore/.root/et
 echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/.root/etc/fstab
 echo 'debugfs  /sys/kernel/debug  debugfs  mode=755,uid=root,gid=gpio,defaults  0  0' >> ./ignore/.root/etc/fstab
 
-rm -rf ./ignore/.root/usr/lib/systemd/system/bb-usb-gadgets.service || true
-rm -rf ./ignore/.root/etc/systemd/system/getty.target.wants/serial-getty@ttyGS0.service || true
-rm -rf ./ignore/.root/etc/systemd/network/usb0.network || true
-rm -rf ./ignore/.root/etc/systemd/network/usb1.network || true
-
 rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 cd ./ignore/.root/
 ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=./etc/systemd/system/multi-user.target.wants/
 cd ../../
-
-cp -v ./ignore/.root/etc/bbb.io/templates/eth0-DHCP.network ./ignore/.root/etc/systemd/network/eth0.network || true
-
-if [ -f ./ignore/.root/etc/systemd/system/multi-user.target.wants/wpa_supplicant@wlan0.service ] ; then
-	rm -rf ./ignore/.root/etc/systemd/system/multi-user.target.wants/wpa_supplicant@wlan0.service || true
-fi
 
 cp -v ./bins/ap6203/* ./ignore/.root/lib/firmware/ || true
 

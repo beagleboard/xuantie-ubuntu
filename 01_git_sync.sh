@@ -35,7 +35,7 @@ if [ -d ./opensbi ] ; then
 fi
 
 echo "git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}"
-git clone -b ${OPENSBI_BRANCH}  ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}
+git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}
 
 if [ -d ./u-boot ] ; then
 	rm -rf ./u-boot || true
