@@ -3,7 +3,7 @@ image: robertcnelson/debian-bookworm-slim-riscv:latest
 cache:
   key: "$CI_PROJECT_NAME-1.2.1"
   paths:
-    - mirror/*.tar.xz
+    - mirror/x86_64-gcc-*-linux.tar.xz
     - ccache.tar.gz
 
 build:
