@@ -17,6 +17,7 @@ LINUX_BRANCH="master"
 #LINUX_REPO="https://github.com/beagleboard/linux.git"
 LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 
+LINUX_BBBIO_NEXT_BRANCH="v6.6-rc1-for-next"
 LINUX_BBBIO_BRANCH="v6.6-rc2-BeagleV-Ahead"
 LINUX_BBBIO_REPO="https://git.beagleboard.org/beaglev-ahead/linux.git"
 
@@ -61,11 +62,18 @@ if [ -d ./linux ] ; then
 fi
 
 if [ -f ./.gitlab-runner ] ; then
-	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=${GIT_DEPTH}"
-	git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=${GIT_DEPTH}
+	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
+	git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
 else
-	echo "git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=${GIT_DEPTH}"
-	git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=${GIT_DEPTH}
+	echo "git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=200"
+	git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=200
+fi
+
+if [ "${LINUX_BBBIO_NEXT_BRANCH}" ] ; then
+	cd ./linux/
+		echo "git pull --no-edit ${LINUX_BBBIO_REPO} ${LINUX_BBBIO_NEXT_BRANCH} --no-rebase"
+		git pull --no-edit ${LINUX_BBBIO_REPO} ${LINUX_BBBIO_NEXT_BRANCH} --no-rebase
+	cd ../
 fi
 
 if [ "${LINUX_BBBIO_BRANCH}" ] ; then
