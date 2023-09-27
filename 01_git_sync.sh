@@ -3,9 +3,12 @@
 GIT_DEPTH="20"
 GCC_VERSION="13.2.0"
 
-OPENSBI_BRANCH="master"
+#OPENSBI_BRANCH="master"
 #OPENSBI_BRANCH="v1.3.1"
-OPENSBI_REPO="https://github.com/riscv-software-src/opensbi.git"
+#OPENSBI_REPO="https://github.com/riscv-software-src/opensbi.git"
+
+OPENSBI_BRANCH="lpi4a"
+OPENSBI_REPO="https://github.com/revyos/thead-opensbi.git"
 
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
