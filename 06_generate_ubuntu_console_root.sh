@@ -18,7 +18,7 @@ if [ -f /tmp/latest ] ; then
 
 	if [ ! -f ./deploy/ubuntu-23.04-console-riscv64-${datestamp}/riscv64-rootfs-ubuntu-lunar.tar ] ; then
 		if [ -f ./.gitlab-runner ] ; then
-			wget -c --directory-prefix=./deploy http://192.168.1.98/rcn-ee.us/rootfs/ubuntu-riscv64-23.04-minimal/${datestamp}/${latest_rootfs}
+			wget -c --directory-prefix=./deploy http://192.168.1.98/rcn-ee.us/mirror/rootfs/ubuntu-riscv64-23.04-minimal/${datestamp}/${latest_rootfs}
 		else
 			wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-23.04-minimal/${datestamp}/${latest_rootfs}
 		fi
