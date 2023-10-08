@@ -18,7 +18,7 @@ if [ -f /tmp/latest ] ; then
 
 	if [ ! -f ./deploy/debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-debian-sid.tar ] ; then
 		if [ -f ./.gitlab-runner ] ; then
-			wget -c --directory-prefix=./deploy http://192.168.1.98/rcn-ee.us/rootfs/debian-riscv64-sid-minimal/${datestamp}/${latest_rootfs}
+			wget -c --directory-prefix=./deploy http://192.168.1.98/mirror/rcn-ee.us/rootfs/debian-riscv64-sid-minimal/${datestamp}/${latest_rootfs}
 		else
 			wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-sid-minimal/${datestamp}/${latest_rootfs}
 		fi
