@@ -40,6 +40,11 @@ echo "Extracting: ubuntu-23.04-xfce-riscv64-${datestamp}/riscv64-rootfs-ubuntu-l
 tar xfp ./deploy/ubuntu-23.04-xfce-riscv64-${datestamp}/riscv64-rootfs-ubuntu-lunar.tar -C ./ignore/.root
 sync
 
+if [ ! -f ./ignore/.root/etc/fstab ] ; then
+	echo "RootFS Error"
+	exit 2
+fi
+
 mkdir -p ./ignore/.root/boot/firmware/ || true
 
 echo '/dev/mmcblk0p2  /boot/firmware/ auto  defaults  0  2' >> ./ignore/.root/etc/fstab
