@@ -69,6 +69,15 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 
 ./scripts/config --disable CONFIG_RT_GROUP_SCHED
 
+#Docker.io
+./scripts/config --enable CONFIG_BLK_CGROUP
+./scripts/config --enable CONFIG_CGROUP_WRITEBACK
+./scripts/config --enable CONFIG_BLK_CGROUP_RWSTAT
+./scripts/config --enable CONFIG_BLK_DEV_THROTTLING
+./scripts/config --enable CONFIG_BFQ_GROUP_IOSCHED
+./scripts/config --module CONFIG_NETFILTER_XT_MATCH_MARK
+./scripts/config --module CONFIG_NETFILTER_XT_MATCH_BPF
+
 echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
 
