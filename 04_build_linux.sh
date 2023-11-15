@@ -53,8 +53,11 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_ASYMMETRIC_KEY_TYPE
 ./scripts/config --enable CONFIG_KEY_DH_OPERATIONS
 ./scripts/config --enable CONFIG_CRYPTO_ECB
+./scripts/config --enable CONFIG_CRYPTO_MD4
 ./scripts/config --enable CONFIG_CRYPTO_MD5
 ./scripts/config --enable CONFIG_CRYPTO_CBC
+./scripts/config --enable CONFIG_CRYPTO_SHA256
+./scripts/config --enable CONFIG_CRYPTO_SHA512
 ./scripts/config --enable CONFIG_CRYPTO_AES
 ./scripts/config --enable CONFIG_CRYPTO_DES
 ./scripts/config --enable CONFIG_ASYMMETRIC_PUBLIC_KEY_SUBTYPE
@@ -63,6 +66,8 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_CRYPTO_HMAC
 ./scripts/config --enable CONFIG_X509_CERTIFICATE_PARSER
 ./scripts/config --enable CONFIG_PKCS8_PRIVATE_KEY_PARSER
+
+./scripts/config --disable CONFIG_RT_GROUP_SCHED
 
 echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
