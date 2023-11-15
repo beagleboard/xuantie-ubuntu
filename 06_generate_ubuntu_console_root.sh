@@ -1,5 +1,10 @@
 #!/bin/bash
 
+image_dir="ubuntu-riscv64-23.04-minimal"
+image_pre="ubuntu-23.04"
+image_post="ubuntu-lunar"
+image_type="console"
+
 if ! id | grep -q root; then
 	echo "./06_generate_ubuntu_console_root.sh must be run as root:"
 	echo "sudo ./06_generate_ubuntu_console_root.sh"
@@ -11,16 +16,16 @@ wdir=`pwd`
 if [ -f /tmp/latest ] ; then
 	rm -rf /tmp/latest | true
 fi
-wget --quiet --directory-prefix=/tmp/ https://rcn-ee.net/rootfs/ubuntu-riscv64-23.04-minimal/latest || true
+wget --quiet --directory-prefix=/tmp/ https://rcn-ee.net/rootfs/${image_dir}/latest || true
 if [ -f /tmp/latest ] ; then
 	latest_rootfs=$(cat "/tmp/latest")
 	datestamp=$(cat "/tmp/latest" | awk -F 'riscv64-' '{print $2}' | awk -F '.' '{print $1}')
 
-	if [ ! -f ./deploy/ubuntu-23.04-console-riscv64-${datestamp}/riscv64-rootfs-ubuntu-lunar.tar ] ; then
+	if [ ! -f ./deploy/${image_pre}-${image_type}-riscv64-${datestamp}/riscv64-rootfs-${image_post}.tar ] ; then
 		if [ -f ./.gitlab-runner ] ; then
-			wget -c --directory-prefix=./deploy http://192.168.1.98/mirror/rcn-ee.us/rootfs/ubuntu-riscv64-23.04-minimal/${datestamp}/${latest_rootfs}
+			wget -c --directory-prefix=./deploy http://192.168.1.98/mirror/rcn-ee.us/rootfs/${image_dir}/${datestamp}/${latest_rootfs}
 		else
-			wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/ubuntu-riscv64-23.04-minimal/${datestamp}/${latest_rootfs}
+			wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/${image_dir}/${datestamp}/${latest_rootfs}
 		fi
 		cd ./deploy/
 		tar xf ${latest_rootfs}
@@ -36,8 +41,8 @@ if [ -d ./ignore/.root ] ; then
 fi
 mkdir -p ./ignore/.root
 
-echo "Extracting: ubuntu-23.04-console-riscv64-${datestamp}/riscv64-rootfs-ubuntu-lunar.tar"
-tar xfp ./deploy/ubuntu-23.04-console-riscv64-${datestamp}/riscv64-rootfs-ubuntu-lunar.tar -C ./ignore/.root
+echo "Extracting: ${image_pre}-${image_type}-riscv64-${datestamp}/riscv64-rootfs-${image_post}.tar"
+tar xfp ./deploy/${image_pre}-${image_type}-riscv64-${datestamp}/riscv64-rootfs-${image_post}.tar -C ./ignore/.root
 sync
 
 if [ ! -f ./ignore/.root/etc/fstab ] ; then
