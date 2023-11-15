@@ -15,10 +15,14 @@ UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
 
 DTB_BRANCH="v6.6.x"
 
-LINUX_BRANCH="master"
 #LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 #LINUX_REPO="https://github.com/beagleboard/linux.git"
-LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+
+#LINUX_BRANCH="master"
+#LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+
+LINUX_BRANCH="linux-6.6.y"
+LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 
 #git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master
 #git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master --tags
@@ -78,8 +82,8 @@ if [ -f ./.gitlab-runner ] ; then
 	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
 	git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
 else
-	echo "git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=${GIT_DEPTH}"
-	git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=${GIT_DEPTH}
+	echo "git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=100"
+	git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=100
 fi
 
 if [ "${LINUX_BBBIO_BRANCH}" ] ; then
