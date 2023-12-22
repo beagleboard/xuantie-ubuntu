@@ -82,7 +82,7 @@ if [ -f ./.gitlab-runner ] ; then
 	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
 	git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
 else
-	echo "git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/""
+	echo "git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
 	git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
 fi
 
