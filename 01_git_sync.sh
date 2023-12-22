@@ -35,7 +35,7 @@ LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 #git rebase v6.6-rc3
 #git push origin v6.6-rc3-BeagleV-Ahead
 
-LINUX_BBBIO_BRANCH="v6.6-rc3-BeagleV-Ahead"
+LINUX_BBBIO_BRANCH="v6.6-BeagleV-Ahead"
 LINUX_BBBIO_REPO="https://git.beagleboard.org/beaglev-ahead/linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
@@ -82,8 +82,8 @@ if [ -f ./.gitlab-runner ] ; then
 	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
 	git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
 else
-	echo "git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=100"
-	git clone -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/ --depth=100
+	echo "git clone --reference-if-able ~/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
+	git clone --reference-if-able ~/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
 fi
 
 if [ "${LINUX_BBBIO_BRANCH}" ] ; then
