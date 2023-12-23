@@ -1,8 +1,8 @@
 #!/bin/bash
 
-image_dir="ubuntu-riscv64-23.04-minimal"
-image_pre="ubuntu-23.04"
-image_post="ubuntu-lunar"
+image_dir="ubuntu-riscv64-23.10-minimal"
+image_pre="ubuntu-23.10"
+image_post="ubuntu-mantic"
 image_type="console"
 
 if ! id | grep -q root; then
