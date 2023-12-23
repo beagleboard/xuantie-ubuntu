@@ -67,7 +67,7 @@ cd ./ignore/.root/
 ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=./etc/systemd/system/multi-user.target.wants/
 cd ../../
 
-cp -v ./bins/ap6203/* ./ignore/.root/lib/firmware/ || true
+cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
 mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true
 cp -v bins/BCM43013A0_001.001.006.1073.1102.hcd ./ignore/.root/usr/lib/firmware/brcm/BCM43013A0.hcd
@@ -81,21 +81,6 @@ if [ -f ./deploy/.modules ] ; then
 		tar xf ./deploy/${version}-modules.tar.gz -C ./ignore/.root/usr/
 	fi
 fi
-
-#FIXME: We need to solve the 0.7.1 vector enabled blobs, with mainline ubuntu/debian...
-#mkdir -p ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./gpu_bxm_4_64-kernel/rogue_km/binary_thead_linux_lws-generic_release/target_riscv64/kbuild/drm_nulldisp.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./gpu_bxm_4_64-kernel/rogue_km/binary_thead_linux_lws-generic_release/target_riscv64/kbuild/pvrsrvkm.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./vi-kernel/output/rootfs/bsp/isp/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./baremetal-drivers/output/rootfs/bsp/baremetal/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./video_memory/output/rootfs/bsp/vidmem/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#depmod -a -b ./ignore/.root/usr ${version}
-
-#cp -v ./vi-kernel/output/rootfs/bsp/isp/ko/*.sh ./ignore/.root/home/beagle/
-
-#mkdir -p ./ignore/.root/usr/share/vidmem/test/bin/
-#cp -v video_memory/output/rootfs/bsp/vidmem/test/vidmem_test ./ignore/.root/usr/share/vidmem/test/bin/
-#cp -v video_memory/output/rootfs/bsp/vidmem/lib/libvmem.so ./ignore/.root/usr/lib/
 
 echo '---------------------'
 echo 'File Size'
