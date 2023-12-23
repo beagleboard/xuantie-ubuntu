@@ -36,9 +36,6 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --disable CONFIG_ARCH_R9A07G043
 #CONFIG_DMA_GLOBAL_POOL breaks ADMA
 
-#TH1520 PHY
-./scripts/config --enable CONFIG_DWMAC_THEAD
-
 #Cleanup large PCI/DRM...
 ./scripts/config --disable CONFIG_PCI
 ./scripts/config --disable CONFIG_DRM

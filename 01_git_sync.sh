@@ -13,16 +13,16 @@ OPENSBI_REPO="https://github.com/revyos/thead-opensbi.git"
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
 
-DTB_BRANCH="v6.6.x"
+DTB_BRANCH="v6.7.x"
 
 #LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 #LINUX_REPO="https://github.com/beagleboard/linux.git"
 
-#LINUX_BRANCH="master"
-#LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+LINUX_BRANCH="master"
+LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-LINUX_BRANCH="linux-6.6.y"
-LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
+#LINUX_BRANCH="linux-6.7.y"
+#LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 
 #git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master
 #git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master --tags
@@ -35,7 +35,7 @@ LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 #git rebase v6.6-rc3
 #git push origin v6.6-rc3-BeagleV-Ahead
 
-LINUX_BBBIO_BRANCH="v6.6-BeagleV-Ahead"
+LINUX_BBBIO_BRANCH="v6.7-rc6-BeagleV-Ahead"
 LINUX_BBBIO_REPO="https://git.beagleboard.org/beaglev-ahead/linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
