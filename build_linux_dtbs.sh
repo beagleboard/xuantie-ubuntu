@@ -5,7 +5,7 @@ wdir=`pwd`
 CC=${CC:-"${wdir}/riscv-toolchain/bin/riscv64-linux-"}
 
 cd ./linux/
-cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dts ./arch/riscv/boot/dts/thead/
+cp -rv ../BeagleBoard-DeviceTrees/src/riscv/thead/*.dts ./arch/riscv/boot/dts/thead/
 
 #if [ ! -d ./arch/riscv/boot/dts/thead/overlays/ ] ; then
 #	mkdir -p ./arch/riscv/boot/dts/thead/overlays/
@@ -21,10 +21,11 @@ cd ../linux
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} dtbs
 
-cp -v ./arch/riscv/boot/dts/thead/th1520-beaglev-ahead.dts ../BeagleBoard-DeviceTrees/src/thead/
+cp -v ./arch/riscv/boot/dts/thead/th1520-beaglev-ahead.dts ../BeagleBoard-DeviceTrees/src/riscv/thead/
 cp -v ./arch/riscv/boot/dts/thead/*.dtb ../deploy/
 
 cd ../
 
 touch ./.05_generate_boot.sh
 touch ./.06_generate_root.sh
+#

@@ -1,4 +1,8 @@
-image: robertcnelson/debian-bookworm-slim-riscv:latest
+image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64
+# https://git.beagleboard.org/beagleboard/ci-docker-images
+
+#before_script:
+#  - apt-get update -q && apt-get install -y -q device-tree-compiler
 
 cache:
   key: "$CI_PROJECT_NAME"
@@ -11,6 +15,8 @@ build:
     - docker-amd64
   stage: build
   script:
+    - git config --global user.email "Beagle@BeagleBoard.org"
+    - git config --global user.name "Beagle User"
     - touch .gitlab-runner
     - mkdir -p /root/.cache/ccache/ || true
     - ccache -s
@@ -27,6 +33,7 @@ build:
     - ccache -s
     - tar -cf ccache.tar.gz /root/.cache/ccache/
   artifacts:
+    when: on_success
     expire_in: 28 days
     name: "$CI_PROJECT_NAME-mainline-$CI_JOB_ID"
     paths:

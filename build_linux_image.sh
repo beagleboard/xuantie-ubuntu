@@ -5,7 +5,7 @@ wdir=`pwd`
 CC=${CC:-"${wdir}/riscv-toolchain/bin/riscv64-linux-"}
 
 cd ./linux/
-cp -rv ../BeagleBoard-DeviceTrees/src/thead/*.dts ./arch/riscv/boot/dts/thead/
+cp -rv ../BeagleBoard-DeviceTrees/src/riscv/thead/*.dts ./arch/riscv/boot/dts/thead/
 
 #if [ ! -d ./arch/riscv/boot/dts/thead/overlays/ ] ; then
 #	mkdir -p ./arch/riscv/boot/dts/thead/overlays/
@@ -28,3 +28,4 @@ cd ../
 
 touch ./.05_generate_boot.sh
 touch ./.06_generate_root.sh
+#
