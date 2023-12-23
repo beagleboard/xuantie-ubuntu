@@ -1,6 +1,10 @@
 image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64
 # https://git.beagleboard.org/beagleboard/ci-docker-images
 
+before_script:
+  - apt-get update -q && apt-get install -y -q git rsync tree
+  - apt-get install -y -q device-tree-compiler
+
 cache:
   key: "$CI_PROJECT_NAME"
   paths:
@@ -28,6 +32,7 @@ build:
     - ccache -s
     - tar -cf ccache.tar.gz /root/.cache/ccache/
   artifacts:
+    when: on_success
     expire_in: 28 days
     name: "$CI_PROJECT_NAME-mainline-$CI_JOB_ID"
     paths:
