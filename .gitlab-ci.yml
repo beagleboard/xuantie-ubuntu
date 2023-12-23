@@ -16,6 +16,8 @@ build:
     - docker-amd64
   stage: build
   script:
+    - git config --global user.email "Beagle@BeagleBoard.org"
+    - git config --global user.name "Beagle User"
     - touch .gitlab-runner
     - mkdir -p /root/.cache/ccache/ || true
     - ccache -s
