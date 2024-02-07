@@ -18,11 +18,11 @@ DTB_BRANCH="v6.7.x"
 #LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 #LINUX_REPO="https://github.com/beagleboard/linux.git"
 
-LINUX_BRANCH="master"
-LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+#LINUX_BRANCH="master"
+#LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-#LINUX_BRANCH="linux-6.7.y"
-#LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
+LINUX_BRANCH="linux-6.7.y"
+LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 
 #git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master
 #git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master --tags
