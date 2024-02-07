@@ -53,6 +53,7 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_CRYPTO_MD4
 ./scripts/config --enable CONFIG_CRYPTO_MD5
 ./scripts/config --enable CONFIG_CRYPTO_CBC
+./scripts/config --enable CONFIG_CRYPTO_SHA1
 ./scripts/config --enable CONFIG_CRYPTO_SHA256
 ./scripts/config --enable CONFIG_CRYPTO_SHA512
 ./scripts/config --enable CONFIG_CRYPTO_AES
