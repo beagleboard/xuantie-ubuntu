@@ -29,6 +29,7 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --set-str CONFIG_LOCALVERSION "-$(date +%Y%m%d)"
 
 ./scripts/config --enable CONFIG_OF_OVERLAY
+./scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
 
 #TH1520 MMC
 ./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
