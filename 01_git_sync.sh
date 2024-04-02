@@ -24,19 +24,8 @@ DTB_BRANCH="v6.7.x"
 LINUX_BRANCH="linux-6.7.y"
 LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 
-#git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master
-#git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master --tags
-#git push origin master
-#git fetch https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master --tags
-#git push origin master --tags
-#git checkout v6.6-rc3 -b v6.6-rc3-BeagleV-Ahead
-##git pull --no-edit git://git.kernel.org/pub/scm/linux/kernel/git/palmer/linux.git for-next --rebase
-#git pull --no-edit https://git.beagleboard.org/beaglev-ahead/linux.git v6.6-rc2-BeagleV-Ahead --no-rebase
-#git rebase v6.6-rc3
-#git push origin v6.6-rc3-BeagleV-Ahead
-
 LINUX_BBBIO_BRANCH="v6.7-rc6-BeagleV-Ahead"
-LINUX_BBBIO_REPO="https://git.beagleboard.org/beaglev-ahead/linux.git"
+LINUX_BBBIO_REPO="https://openbeagle.org/beaglev-ahead/linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
 	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/${GCC_VERSION}/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz"
@@ -71,8 +60,8 @@ if [ -d ./BeagleBoard-DeviceTrees ] ; then
 	rm -rf ./BeagleBoard-DeviceTrees || true
 fi
 
-echo "git clone -b ${DTB_BRANCH} https://git.beagleboard.org/beagleboard/BeagleBoard-DeviceTrees.git"
-git clone -b ${DTB_BRANCH} https://git.beagleboard.org/beagleboard/BeagleBoard-DeviceTrees.git
+echo "git clone -b ${DTB_BRANCH} https://openbeagle.org/beagleboard/BeagleBoard-DeviceTrees.git"
+git clone -b ${DTB_BRANCH} https://openbeagle.org/beagleboard/BeagleBoard-DeviceTrees.git
 
 if [ -d ./linux ] ; then
 	rm -rf ./linux || true
