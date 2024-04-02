@@ -13,29 +13,18 @@ OPENSBI_REPO="https://github.com/revyos/thead-opensbi.git"
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
 
-DTB_BRANCH="v6.8.x"
+DTB_BRANCH="v6.9.x"
 
 #LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
 #LINUX_REPO="https://github.com/beagleboard/linux.git"
 
-#LINUX_BRANCH="master"
-#LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+LINUX_BRANCH="master"
+LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-LINUX_BRANCH="linux-6.8.y"
-LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
+#LINUX_BRANCH="linux-6.9.y"
+#LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 
-#git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master
-#git pull --no-edit https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master --tags
-#git push origin master
-#git fetch https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master --tags
-#git push origin master --tags
-#git checkout v6.6-rc3 -b v6.6-rc3-BeagleV-Ahead
-##git pull --no-edit git://git.kernel.org/pub/scm/linux/kernel/git/palmer/linux.git for-next --rebase
-#git pull --no-edit https://openbeagle.org/beaglev-ahead/linux.git v6.6-rc2-BeagleV-Ahead --no-rebase
-#git rebase v6.6-rc3
-#git push origin v6.6-rc3-BeagleV-Ahead
-
-LINUX_BBBIO_BRANCH="v6.8-rc3-BeagleV-Ahead"
+LINUX_BBBIO_BRANCH="v6.9-rc2-BeagleV-Ahead"
 LINUX_BBBIO_REPO="https://openbeagle.org/beaglev-ahead/linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
