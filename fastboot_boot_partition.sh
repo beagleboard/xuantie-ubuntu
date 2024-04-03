@@ -9,6 +9,7 @@ fi
 if [ -f ./.06_generate_boot.sh ] ; then
 	echo "ERROR: run: [sudo ./06_generate_boot.sh] first"
 else
+	fastboot --version
 	fastboot flash ram ./deploy/u-boot-with-spl.bin
 	fastboot reboot
 	sleep 10

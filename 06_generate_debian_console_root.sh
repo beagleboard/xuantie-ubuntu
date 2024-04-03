@@ -1,5 +1,10 @@
 #!/bin/bash
 
+image_dir="debian-riscv64-sid-minimal"
+image_pre="debian-sid"
+image_post="debian-sid"
+image_type="console"
+
 if ! id | grep -q root; then
 	echo "./06_generate_debian_console_root.sh must be run as root:"
 	echo "sudo ./06_generate_debian_console_root.sh"
@@ -11,16 +16,16 @@ wdir=`pwd`
 if [ -f /tmp/latest ] ; then
 	rm -rf /tmp/latest | true
 fi
-wget --quiet --directory-prefix=/tmp/ https://rcn-ee.net/rootfs/debian-riscv64-sid-minimal/latest || true
+wget --quiet --directory-prefix=/tmp/ https://rcn-ee.net/rootfs/${image_dir}/latest || true
 if [ -f /tmp/latest ] ; then
 	latest_rootfs=$(cat "/tmp/latest")
 	datestamp=$(cat "/tmp/latest" | awk -F 'riscv64-' '{print $2}' | awk -F '.' '{print $1}')
 
-	if [ ! -f ./deploy/debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-debian-sid.tar ] ; then
+	if [ ! -f ./deploy/${image_pre}-${image_type}-riscv64-${datestamp}/riscv64-rootfs-${image_post}.tar ] ; then
 		if [ -f ./.gitlab-runner ] ; then
-			wget -c --directory-prefix=./deploy http://192.168.1.98/mirror/rcn-ee.us/rootfs/debian-riscv64-sid-minimal/${datestamp}/${latest_rootfs}
+			wget -c --directory-prefix=./deploy http://192.168.1.98/mirror/rcn-ee.us/rootfs/${image_dir}/${datestamp}/${latest_rootfs}
 		else
-			wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/debian-riscv64-sid-minimal/${datestamp}/${latest_rootfs}
+			wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/${image_dir}/${datestamp}/${latest_rootfs}
 		fi
 		cd ./deploy/
 		tar xf ${latest_rootfs}
@@ -36,8 +41,8 @@ if [ -d ./ignore/.root ] ; then
 fi
 mkdir -p ./ignore/.root
 
-echo "Extracting: debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-*.tar"
-tar xfp ./deploy/debian-sid-console-riscv64-${datestamp}/riscv64-rootfs-*.tar -C ./ignore/.root
+echo "Extracting: ${image_pre}-${image_type}-riscv64-${datestamp}/riscv64-rootfs-${image_post}.tar"
+tar xfp ./deploy/${image_pre}-${image_type}-riscv64-${datestamp}/riscv64-rootfs-${image_post}.tar -C ./ignore/.root
 sync
 
 if [ ! -f ./ignore/.root/etc/fstab ] ; then
@@ -51,12 +56,18 @@ echo '/dev/mmcblk0p2  /boot/firmware/ auto  defaults  0  2' >> ./ignore/.root/et
 echo '/dev/mmcblk0p3  /  auto  errors=remount-ro  0  1' >> ./ignore/.root/etc/fstab
 echo 'debugfs  /sys/kernel/debug  debugfs  mode=755,uid=root,gid=gpio,defaults  0  0' >> ./ignore/.root/etc/fstab
 
+#No USB support yet...
+rm -rf ./ignore/.root/usr/lib/systemd/system/bb-usb-gadgets.service || true
+rm -rf ./ignore/.root/etc/systemd/system/getty.target.wants/serial-getty@ttyGS0.service || true
+rm -rf ./ignore/.root/etc/systemd/network/usb0.network || true
+rm -rf ./ignore/.root/etc/systemd/network/usb1.network || true
+
 rm -rf ./ignore/.root/usr/lib/systemd/system/grow_partition.service || true
 cd ./ignore/.root/
 ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=./etc/systemd/system/multi-user.target.wants/
 cd ../../
 
-cp -v ./bins/ap6203/* ./ignore/.root/lib/firmware/ || true
+cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
 mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true
 cp -v bins/BCM43013A0_001.001.006.1073.1102.hcd ./ignore/.root/usr/lib/firmware/brcm/BCM43013A0.hcd
@@ -70,21 +81,6 @@ if [ -f ./deploy/.modules ] ; then
 		tar xf ./deploy/${version}-modules.tar.gz -C ./ignore/.root/usr/
 	fi
 fi
-
-#FIXME: We need to solve the 0.7.1 vector enabled blobs, with mainline ubuntu/debian...
-#mkdir -p ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./gpu_bxm_4_64-kernel/rogue_km/binary_thead_linux_lws-generic_release/target_riscv64/kbuild/drm_nulldisp.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./gpu_bxm_4_64-kernel/rogue_km/binary_thead_linux_lws-generic_release/target_riscv64/kbuild/pvrsrvkm.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./vi-kernel/output/rootfs/bsp/isp/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./baremetal-drivers/output/rootfs/bsp/baremetal/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#cp -v ./video_memory/output/rootfs/bsp/vidmem/ko/*.ko ./ignore/.root/usr/lib/modules/${version}/extra/
-#depmod -a -b ./ignore/.root/usr ${version}
-
-#cp -v ./vi-kernel/output/rootfs/bsp/isp/ko/*.sh ./ignore/.root/home/beagle/
-
-#mkdir -p ./ignore/.root/usr/share/vidmem/test/bin/
-#cp -v video_memory/output/rootfs/bsp/vidmem/test/vidmem_test ./ignore/.root/usr/share/vidmem/test/bin/
-#cp -v video_memory/output/rootfs/bsp/vidmem/lib/libvmem.so ./ignore/.root/usr/lib/
 
 echo '---------------------'
 echo 'File Size'

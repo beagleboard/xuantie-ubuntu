@@ -23,6 +23,7 @@ cd ./linux/
 #make clean ; make
 #cd ../linux
 
+echo "make ARCH=riscv CROSS_COMPILE=${CC} clean"
 make ARCH=riscv CROSS_COMPILE=${CC} clean
 
 if [ ! -f ./arch/riscv/configs/beaglev_defconfig ] ; then

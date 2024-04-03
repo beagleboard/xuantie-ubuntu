@@ -12,6 +12,7 @@ else
 	if [ -f ./.06_generate_root.sh ] ; then
 		echo "ERROR: run: [sudo ./06_generate_debian_console_root.sh] first"
 	else
+		fastboot --version
 		fastboot flash ram ./deploy/u-boot-with-spl.bin
 		fastboot reboot
 		sleep 10
