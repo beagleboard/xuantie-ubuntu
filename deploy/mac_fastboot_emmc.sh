@@ -11,6 +11,7 @@ if [ -f root.ext4.xz ] ; then
 	unxz -v root.ext4.xz
 fi
 
+fastboot --version
 fastboot flash ram ./u-boot-with-spl.bin
 fastboot reboot
 sleep 10
