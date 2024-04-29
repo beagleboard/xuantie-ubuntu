@@ -16,7 +16,7 @@ wdir=`pwd`
 if [ -f /tmp/latest ] ; then
 	rm -rf /tmp/latest | true
 fi
-wget --quiet --directory-prefix=/tmp/ https://rcn-ee.net/rootfs/${image_dir}/latest || true
+wget --quiet --directory-prefix=/tmp/ https://rcn-ee.online/rootfs/${image_dir}/latest || true
 if [ -f /tmp/latest ] ; then
 	latest_rootfs=$(cat "/tmp/latest")
 	datestamp=$(cat "/tmp/latest" | awk -F 'riscv64-' '{print $2}' | awk -F '.' '{print $1}')
@@ -25,7 +25,7 @@ if [ -f /tmp/latest ] ; then
 		if [ -f ./.gitlab-runner ] ; then
 			wget -c --directory-prefix=./deploy http://192.168.1.98/mirror/rcn-ee.us/rootfs/${image_dir}/${datestamp}/${latest_rootfs}
 		else
-			wget -c --directory-prefix=./deploy https://rcn-ee.net/rootfs/${image_dir}/${datestamp}/${latest_rootfs}
+			wget -c --directory-prefix=./deploy https://rcn-ee.online/rootfs/${image_dir}/${datestamp}/${latest_rootfs}
 		fi
 		cd ./deploy/
 		tar xf ${latest_rootfs}
@@ -67,10 +67,14 @@ cd ./ignore/.root/
 ln -L -f -s -v /lib/systemd/system/resize_filesystem.service --target-directory=./etc/systemd/system/multi-user.target.wants/
 cd ../../
 
+du -sh ./ignore/.root/usr/lib/firmware/
+
 cp -v ./bins/ap6203/* ./ignore/.root/usr/lib/firmware/ || true
 
 mkdir -p ./ignore/.root/usr/lib/firmware/brcm/ || true
 cp -v bins/BCM43013A0_001.001.006.1073.1102.hcd ./ignore/.root/usr/lib/firmware/brcm/BCM43013A0.hcd
+
+du -sh ./ignore/.root/usr/lib/firmware/
 
 # setuid root ping+ping6
 chmod u+s ./ignore/.root/usr/bin/ping ./ignore/.root/usr/bin/ping6
