@@ -40,6 +40,10 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 #TH1520 RESET
 ./scripts/config --enable CONFIG_RESET_TH1520
 
+#GPIO:
+./scripts/config --enable CONFIG_GPIO_SYSFS
+./scripts/config --enable CONFIG_GPIO_DWAPB
+
 #Cleanup large PCI/DRM...
 ./scripts/config --disable CONFIG_PCI
 ./scripts/config --disable CONFIG_DRM
