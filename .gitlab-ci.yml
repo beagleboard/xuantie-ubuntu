@@ -15,7 +15,7 @@ cache:
     - mirror/x86_64-gcc-*-linux.tar.xz
     - ccache.tar.lz4
 
-pages:
+build:
   tags:
     - docker-amd64
   stage: build
