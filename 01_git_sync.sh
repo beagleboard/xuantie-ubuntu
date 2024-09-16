@@ -1,31 +1,27 @@
 #!/bin/bash
 
 GIT_DEPTH="20"
-GCC_VERSION="13.2.0"
-
-#OPENSBI_BRANCH="master"
-#OPENSBI_BRANCH="v1.3.1"
-#OPENSBI_REPO="https://github.com/riscv-software-src/opensbi.git"
+GCC_VERSION="13.3.0"
 
 OPENSBI_BRANCH="lpi4a"
 OPENSBI_REPO="https://github.com/revyos/thead-opensbi.git"
+LOCAL_OPENSBI_REPO="https://github.com/revyos/thead-opensbi.git"
 
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
+LOCAL_UBOOT_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-u-boot.git"
 
 DTB_BRANCH="v6.6.x"
 
-#LINUX_BRANCH="beaglev-v5.10.113-1.1.2"
-#LINUX_REPO="https://github.com/beagleboard/linux.git"
-
 #LINUX_BRANCH="master"
-#LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+#LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
 
 LINUX_BRANCH="linux-6.6.y"
-LINUX_REPO="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
+LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
+LOCAL_LINUX_REPO="https://git.gfnd.rcn-ee.org/kernel.org/mirror-linux-stable.git"
 
 LINUX_BBBIO_BRANCH="v6.6-BeagleV-Ahead"
-LINUX_BBBIO_REPO="https://git.beagleboard.org/beaglev-ahead/linux.git"
+LINUX_BBBIO_REPO="https://openbeagle.org/beaglev-ahead/linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
 	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/${GCC_VERSION}/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz"
@@ -41,16 +37,21 @@ if [ -d ./opensbi ] ; then
 	rm -rf ./opensbi || true
 fi
 
-echo "git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}"
-git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}
+if [ -f ./.gitlab-runner ] ; then
+	echo "git clone -b ${OPENSBI_BRANCH} ${LOCAL_OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}"
+	git clone -b ${OPENSBI_BRANCH} ${LOCAL_OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}
+else
+	echo "git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}"
+	git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}
+fi
 
 if [ -d ./u-boot ] ; then
 	rm -rf ./u-boot || true
 fi
 
 if [ -f ./.gitlab-runner ] ; then
-	echo "git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-u-boot/ -b ${UBOOT_BRANCH} ${UBOOT_REPO} ./u-boot/ --depth=1"
-	git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-u-boot/ -b ${UBOOT_BRANCH} ${UBOOT_REPO} ./u-boot/ --depth=1
+	echo "git clone -b ${UBOOT_BRANCH} ${LOCAL_UBOOT_REPO} ./u-boot/ --depth=${GIT_DEPTH}"
+	git clone -b ${UBOOT_BRANCH} ${LOCAL_UBOOT_REPO} ./u-boot/ --depth=${GIT_DEPTH}
 else
 	echo "git clone -b ${UBOOT_BRANCH} ${UBOOT_REPO} ./u-boot/ --depth=${GIT_DEPTH}"
 	git clone -b ${UBOOT_BRANCH} ${UBOOT_REPO} ./u-boot/ --depth=${GIT_DEPTH}
@@ -68,8 +69,8 @@ if [ -d ./linux ] ; then
 fi
 
 if [ -f ./.gitlab-runner ] ; then
-	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
-	git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
+	echo "git clone --reference-if-able /opt/linux-src/ -b ${LINUX_BRANCH} ${LOCAL_LINUX_REPO} ./linux/"
+	git clone --reference-if-able /opt/linux-src/ -b ${LINUX_BRANCH} ${LOCAL_LINUX_REPO} ./linux/
 else
 	echo "git clone --reference-if-able ~/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
 	git clone --reference-if-able ~/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
