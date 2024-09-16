@@ -15,6 +15,7 @@ DTB_BRANCH="v5.10.x-ti-unified"
 
 LINUX_BRANCH="beaglev-v5.10.113-1.1.2-ubuntu"
 LINUX_REPO="https://github.com/beagleboard/linux.git"
+LOCAL_LINUX_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
 	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/${GCC_VERSION}/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz"
@@ -62,8 +63,8 @@ if [ -d ./linux ] ; then
 fi
 
 if [ -f ./.gitlab-runner ] ; then
-	echo "git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
-	git clone --reference-if-able /mnt/yocto-cache/git/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
+	echo "git clone --reference-if-able /opt/linux-src/ -b ${LINUX_BRANCH} ${LOCAL_LINUX_REPO} ./linux/"
+	git clone --reference-if-able /opt/linux-src/ -b ${LINUX_BRANCH} ${LOCAL_LINUX_REPO} ./linux/
 else
 	echo "git clone --reference-if-able ~/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/"
 	git clone --reference-if-able ~/linux-src/ -b ${LINUX_BRANCH} ${LINUX_REPO} ./linux/
