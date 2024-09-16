@@ -12,7 +12,7 @@ before_script:
 cache:
   key: "$CI_PROJECT_NAME-1.1.2"
   paths:
-    - mirror/x86_64-gcc-*-linux.tar.xz
+    - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
     - ccache.tar.lz4
 
 build:

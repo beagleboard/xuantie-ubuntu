@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GIT_DEPTH="20"
-GCC_VERSION="13.2.0"
+GCC_VERSION="13.3.0"
 
 OPENSBI_BRANCH="0.9-1.1.2-ubuntu"
 OPENSBI_REPO="https://github.com/beagleboard/beaglev-ahead-opensbi.git"
