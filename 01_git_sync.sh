@@ -5,9 +5,11 @@ GCC_VERSION="13.2.0"
 
 OPENSBI_BRANCH="0.9-1.1.2-ubuntu"
 OPENSBI_REPO="https://github.com/beagleboard/beaglev-ahead-opensbi.git"
+LOCAL_OPENSBI_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-opensbi.git"
 
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
+LOCAL_UBOOT_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-u-boot.git"
 
 DTB_BRANCH="v5.10.x-ti-unified"
 
@@ -28,16 +30,21 @@ if [ -d ./opensbi ] ; then
 	rm -rf ./opensbi || true
 fi
 
-echo "git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}"
-git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}
+if [ -f ./.gitlab-runner ] ; then
+	echo "git clone -b ${OPENSBI_BRANCH} ${LOCAL_OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}"
+	git clone -b ${OPENSBI_BRANCH} ${LOCAL_OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}
+else
+	echo "git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}"
+	git clone -b ${OPENSBI_BRANCH} ${OPENSBI_REPO} ./opensbi/ --depth=${GIT_DEPTH}
+fi
 
 if [ -d ./u-boot ] ; then
 	rm -rf ./u-boot || true
 fi
 
 if [ -f ./.gitlab-runner ] ; then
-	echo "git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-u-boot/ -b ${UBOOT_BRANCH} ${UBOOT_REPO} ./u-boot/ --depth=1"
-	git clone --reference-if-able /mnt/yocto-cache/git/beaglev-ahead-u-boot/ -b ${UBOOT_BRANCH} ${UBOOT_REPO} ./u-boot/ --depth=1
+	echo "git clone -b ${UBOOT_BRANCH} ${LOCAL_UBOOT_REPO} ./u-boot/ --depth=${GIT_DEPTH}"
+	git clone -b ${UBOOT_BRANCH} ${LOCAL_UBOOT_REPO} ./u-boot/ --depth=${GIT_DEPTH}
 else
 	echo "git clone -b ${UBOOT_BRANCH} ${UBOOT_REPO} ./u-boot/ --depth=${GIT_DEPTH}"
 	git clone -b ${UBOOT_BRANCH} ${UBOOT_REPO} ./u-boot/ --depth=${GIT_DEPTH}
