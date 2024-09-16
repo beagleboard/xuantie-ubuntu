@@ -1,27 +1,32 @@
-image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64
-# https://git.beagleboard.org/beagleboard/ci-docker-images
+image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64:latest
+# https://openbeagle.org/beagleboard/ci-docker-images
 
-#before_script:
-#  - apt-get update -q && apt-get install -y -q device-tree-compiler
+before_script:
+  - export PATH=/usr/lib/ccache:$PATH
+  - echo "Acquire::http::Proxy \"http://192.168.1.10:3142\";" > /etc/apt/apt.conf.d/00aptproxy
+  - apt-get update
+  - apt-get upgrade -yq
+  - apt-get dist-upgrade -yq
+  - cd /opt/linux-src/ ; git pull ; cd -
 
 cache:
   key: "$CI_PROJECT_NAME-1.2.1"
   paths:
-    - mirror/x86_64-gcc-*-linux.tar.xz
-    - ccache.tar.gz
+    - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
+    - ccache.tar.lz4
 
 build:
   tags:
     - docker-amd64
   stage: build
   script:
-    - git config --global user.email "Beagle@BeagleBoard.org"
-    - git config --global user.name "Beagle User"
+    - git config --global user.email "$GITLAB_USER_EMAIL"
+    - git config --global user.name "$GITLAB_USER_NAME"
     - touch .gitlab-runner
     - mkdir -p /root/.cache/ccache/ || true
-    - ccache -s
-    - tar -xf ccache.tar.gz -C / || true
-    - ccache -s
+    - tar --use-compress-program=lz4 -xf ccache.tar.lz4 -C / || true
+    - ccache -M 2G
+    - ccache -z
     - ./01_git_sync.sh
     - ./02_build_opensbi.sh
     - ./03_build_uboot.sh
@@ -30,8 +35,9 @@ build:
     - ./06_generate_ubuntu_console_root.sh
     - xz -vT8 deploy/boot.ext4
     - xz -vT8 deploy/root.ext4
-    - ccache -s
-    - tar -cf ccache.tar.gz /root/.cache/ccache/
+    - ccache -sv
+    - tar --use-compress-program=lz4 -cf ccache.tar.lz4 /root/.cache/ccache/
+    - du -sh ccache.tar.lz4
   artifacts:
     when: on_success
     expire_in: 28 days
