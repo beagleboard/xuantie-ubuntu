@@ -29,7 +29,6 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --set-str CONFIG_LOCALVERSION "-$(date +%Y%m%d)"
 
 ./scripts/config --enable CONFIG_OF_OVERLAY
-./scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
 
 #TH1520 MMC
 ./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
@@ -43,6 +42,10 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 #GPIO:
 ./scripts/config --enable CONFIG_GPIO_SYSFS
 ./scripts/config --enable CONFIG_GPIO_DWAPB
+
+#SPI
+./scripts/config --enable CONFIG_SPI_DESIGNWARE
+./scripts/config --enable CONFIG_SPI_DW_MMIO
 
 #Cleanup large PCI/DRM...
 ./scripts/config --disable CONFIG_PCI
@@ -75,7 +78,6 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 
 ./scripts/config --disable CONFIG_RT_GROUP_SCHED
 
-#Docker.io
 ./scripts/config --enable CONFIG_BLK_CGROUP
 ./scripts/config --enable CONFIG_CGROUP_WRITEBACK
 ./scripts/config --enable CONFIG_BLK_CGROUP_RWSTAT
@@ -83,6 +85,51 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_BFQ_GROUP_IOSCHED
 ./scripts/config --module CONFIG_NETFILTER_XT_MATCH_MARK
 ./scripts/config --module CONFIG_NETFILTER_XT_MATCH_BPF
+
+#Docker.io
+./scripts/config --enable CONFIG_NETFILTER_XT_MATCH_IPVS
+./scripts/config --enable CONFIG_CGROUP_BPF
+./scripts/config --enable CONFIG_BLK_DEV_THROTTLING
+./scripts/config --enable CONFIG_NET_CLS_CGROUP
+./scripts/config --enable CONFIG_CGROUP_NET_PRIO
+./scripts/config --enable CONFIG_IP_NF_TARGET_REDIRECT
+./scripts/config --enable CONFIG_IP_VS
+./scripts/config --enable CONFIG_IP_VS_NFCT
+./scripts/config --enable CONFIG_IP_VS_PROTO_TCP
+./scripts/config --enable CONFIG_IP_VS_PROTO_UDP
+./scripts/config --enable CONFIG_IP_VS_RR
+./scripts/config --enable CONFIG_SECURITY_SELINUX
+./scripts/config --enable CONFIG_SECURITY_APPARMOR
+./scripts/config --enable CONFIG_VXLAN
+./scripts/config --enable CONFIG_IPVLAN
+./scripts/config --enable CONFIG_DUMMY
+./scripts/config --enable CONFIG_NF_NAT_FTP
+./scripts/config --enable CONFIG_NF_CONNTRACK_FTP
+./scripts/config --enable CONFIG_NF_NAT_TFTP
+./scripts/config --enable CONFIG_NF_CONNTRACK_TFTP
+./scripts/config --enable CONFIG_DM_THIN_PROVISIONING
+./scripts/config --enable CONFIG_CGROUP_MISC
+
+#enable CONFIG_DYNAMIC_FTRACE
+./scripts/config --enable CONFIG_FUNCTION_TRACER
+./scripts/config --enable CONFIG_DYNAMIC_FTRACE
+
+./scripts/config --enable CONFIG_MODULE_COMPRESS
+./scripts/config --disable CONFIG_MODULE_COMPRESS_GZIP
+./scripts/config --enable CONFIG_MODULE_COMPRESS_XZ
+./scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD
+./scripts/config --enable CONFIG_MODULE_COMPRESS_ALL
+
+./scripts/config --enable CONFIG_ZRAM_BACKEND_LZ4
+./scripts/config --enable CONFIG_ZRAM_BACKEND_LZ4HC
+./scripts/config --enable CONFIG_ZRAM_BACKEND_ZSTD
+./scripts/config --enable CONFIG_ZRAM_BACKEND_DEFLATE
+./scripts/config --enable CONFIG_ZRAM_DEF_COMP_LZ4
+./scripts/config --set-str CONFIG_ZRAM_DEF_COMP "lz4"
+
+./scripts/config --enable CONFIG_FW_LOADER_COMPRESS
+./scripts/config --enable CONFIG_FW_LOADER_COMPRESS_XZ
+./scripts/config --enable CONFIG_FW_LOADER_COMPRESS_ZSTD
 
 echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig

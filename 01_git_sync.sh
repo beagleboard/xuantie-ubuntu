@@ -11,12 +11,12 @@ UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
 LOCAL_UBOOT_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-u-boot.git"
 
-DTB_BRANCH="v6.9.x"
+DTB_BRANCH="v6.10.x"
 
 #LINUX_BRANCH="master"
 #LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-LINUX_BRANCH="linux-6.9.y"
+LINUX_BRANCH="linux-6.10.y"
 LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
 LOCAL_LINUX_REPO="https://git.gfnd.rcn-ee.org/kernel.org/mirror-linux-stable.git"
 
