@@ -11,9 +11,9 @@
 - eMMC - [RFC, testing] - https://lore.kernel.org/linux-riscv/20230724-th1520-emmc-v1-0-cca1b2533da2@baylibre.com/T/#t
 
 # Debian/Ubuntu RootFS generator:
-- Ubuntu 23.04 Console: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-ubuntu-2304-console-riscv64.conf 
-- Ubuntu 23.04 Xfce: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-ubuntu-2304-xfce-riscv64.conf
-- Debian (sid/ports) Console: https://git.beagleboard.org/beagleboard/image-builder/-/blob/master/configs/bb.org-debian-sid-console-riscv64.conf
+- Ubuntu 24.04 Console: https://openbeagle.org/beagleboard/image-builder/-/blob/master/configs/bb.org-ubuntu-2404-console-riscv64.conf
+- Ubuntu 24.04 Xfce: https://openbeagle.org/beagleboard/image-builder/-/blob/master/configs/bb.org-ubuntu-2404-xfce-riscv64.conf
+- Debian (trixie) Console: https://openbeagle.org/beagleboard/image-builder/-/blob/master/configs/bb.org-debian-trixie-console-riscv64.conf
 
 These are daily built and uploaded to: https://rcn-ee.net/rootfs/
 
@@ -26,11 +26,11 @@ cd ./xuantie-ubuntu/
 
 # Merge Requests:
 
-https://git.beagleboard.org/beaglev-ahead/xuantie-ubuntu
+https://openbeagle.org/beaglev-ahead/xuantie-ubuntu
 
 # CI builds:
 
-https://git.beagleboard.org/beaglev-ahead/xuantie-ubuntu/-/pipelines
+https://openbeagle.org/beaglev-ahead/xuantie-ubuntu/-/pipelines
 
 # Install Android Fastboot
 
