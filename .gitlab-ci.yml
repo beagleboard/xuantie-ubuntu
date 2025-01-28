@@ -25,7 +25,7 @@ build:
     - touch .gitlab-runner
     - mkdir -p /root/.cache/ccache/ || true
     - tar --use-compress-program=lz4 -xf ccache.tar.lz4 -C / || true
-    - ccache -M 2G
+    - ccache -M 1G
     - ccache -z
     - ./01_git_sync.sh
     - ./02_build_opensbi.sh
