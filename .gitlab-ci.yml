@@ -25,14 +25,14 @@ build:
     - touch .gitlab-runner
     - mkdir -p /root/.cache/ccache/ || true
     - tar --use-compress-program=lz4 -xf ccache.tar.lz4 -C / || true
-    - ccache -M 2G
+    - ccache -M 1G
     - ccache -z
     - ./01_git_sync.sh
     - ./02_build_opensbi.sh
     - ./03_build_uboot.sh
     - ./04_build_linux.sh
     - ./05_generate_boot.sh
-    - ./06_generate_ubuntu_xfce_root.sh
+    - ./06_generate_ubuntu_console_root.sh
     - xz -vT8 deploy/boot.ext4
     - xz -vT8 deploy/root.ext4
     - ccache -sv
