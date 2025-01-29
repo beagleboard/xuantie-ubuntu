@@ -30,6 +30,9 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 
 ./scripts/config --enable CONFIG_OF_OVERLAY
 
+#Ethernet
+./scripts/config --enable CONFIG_DWMAC_THEAD
+
 #TH1520 MMC
 ./scripts/config --enable CONFIG_MMC_SDHCI_OF_DWCMSHC
 ./scripts/config --enable CONFIG_DW_AXI_DMAC
@@ -42,6 +45,7 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 #GPIO:
 ./scripts/config --enable CONFIG_GPIO_SYSFS
 ./scripts/config --enable CONFIG_GPIO_DWAPB
+./scripts/config --enable CONFIG_PINCTRL_TH1520
 
 #SPI
 ./scripts/config --enable CONFIG_SPI_DESIGNWARE
@@ -49,6 +53,9 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 
 #CLOCK
 ./scripts/config --enable CONFIG_CLK_THEAD_TH1520_AP
+
+#Mailbox
+./scripts/config --enable CONFIG_THEAD_TH1520_MBOX
 
 #Cleanup large PCI/DRM...
 ./scripts/config --disable CONFIG_PCI
