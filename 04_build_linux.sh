@@ -47,6 +47,9 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_SPI_DESIGNWARE
 ./scripts/config --enable CONFIG_SPI_DW_MMIO
 
+#CLOCK
+./scripts/config --enable CONFIG_CLK_THEAD_TH1520_AP
+
 #Cleanup large PCI/DRM...
 ./scripts/config --disable CONFIG_PCI
 ./scripts/config --disable CONFIG_DRM
@@ -54,6 +57,7 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 #Optimize:
 ./scripts/config --enable CONFIG_IP_NF_IPTABLES
 ./scripts/config --enable CONFIG_NETFILTER_XTABLES
+./scripts/config --disable CONFIG_RAID6_PQ_BENCHMARK
 
 #iwd
 ./scripts/config --enable CONFIG_CRYPTO_USER_API_HASH
@@ -120,12 +124,15 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD
 ./scripts/config --enable CONFIG_MODULE_COMPRESS_ALL
 
+./scripts/config --module CONFIG_ZRAM
 ./scripts/config --enable CONFIG_ZRAM_BACKEND_LZ4
 ./scripts/config --enable CONFIG_ZRAM_BACKEND_LZ4HC
 ./scripts/config --enable CONFIG_ZRAM_BACKEND_ZSTD
 ./scripts/config --enable CONFIG_ZRAM_BACKEND_DEFLATE
 ./scripts/config --enable CONFIG_ZRAM_DEF_COMP_LZ4
 ./scripts/config --set-str CONFIG_ZRAM_DEF_COMP "lz4"
+
+./scripts/config --enable CONFIG_ZSWAP
 
 ./scripts/config --enable CONFIG_FW_LOADER_COMPRESS
 ./scripts/config --enable CONFIG_FW_LOADER_COMPRESS_XZ
