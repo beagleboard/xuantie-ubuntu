@@ -11,16 +11,16 @@ UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
 LOCAL_UBOOT_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-u-boot.git"
 
-DTB_BRANCH="v6.13.x"
+DTB_BRANCH="v6.14.x"
 
-#LINUX_BRANCH="master"
-#LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
+LINUX_BRANCH="master"
+LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-LINUX_BRANCH="linux-6.13.y"
-LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
+#LINUX_BRANCH="linux-6.14.y"
+#LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
 LOCAL_LINUX_REPO="https://git.gfnd.rcn-ee.org/kernel.org/mirror-linux-stable.git"
 
-LINUX_BBBIO_BRANCH="v6.12-BeagleV-Ahead"
+LINUX_BBBIO_BRANCH="v6.13-BeagleV-Ahead"
 LINUX_BBBIO_REPO="https://openbeagle.org/beaglev-ahead/linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then

@@ -51,6 +51,10 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_SPI_DESIGNWARE
 ./scripts/config --enable CONFIG_SPI_DW_MMIO
 
+#I2C
+./scripts/config --enable CONFIG_I2C_CHARDEV
+./scripts/config --module CONFIG_EEPROM_AT24
+
 #CLOCK
 ./scripts/config --enable CONFIG_CLK_THEAD_TH1520_AP
 
@@ -147,6 +151,9 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 
 echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
+
+#echo "make ARCH=riscv CROSS_COMPILE=${CC} menuconfig"
+#make ARCH=riscv CROSS_COMPILE=${CC} menuconfig
 
 echo "make -j${CORES} ARCH=riscv CROSS_COMPILE=${CC} Image modules dtbs"
 make -j${CORES} ARCH=riscv CROSS_COMPILE="ccache ${CC}" Image modules dtbs
