@@ -20,7 +20,7 @@ LINUX_BRANCH="linux-6.13.y"
 LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
 LOCAL_LINUX_REPO="https://git.gfnd.rcn-ee.org/kernel.org/mirror-linux-stable.git"
 
-LINUX_BBBIO_BRANCH="v6.12-BeagleV-Ahead"
+LINUX_BBBIO_BRANCH="v6.13-BeagleV-Ahead"
 LINUX_BBBIO_REPO="https://openbeagle.org/beaglev-ahead/linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
