@@ -13,11 +13,11 @@ LOCAL_UBOOT_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-u-bo
 
 DTB_BRANCH="v6.14.x"
 
-#LINUX_BRANCH="master"
-#LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
+LINUX_BRANCH="master"
+LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-LINUX_BRANCH="linux-6.14.y"
-LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
+#LINUX_BRANCH="linux-6.15.y"
+#LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
 LOCAL_LINUX_REPO="https://git.gfnd.rcn-ee.org/kernel.org/mirror-linux-stable.git"
 
 LINUX_BBBIO_BRANCH="v6.13-BeagleV-Ahead"

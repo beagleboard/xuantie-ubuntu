@@ -61,6 +61,10 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 #Mailbox
 ./scripts/config --enable CONFIG_THEAD_TH1520_MBOX
 
+#PM/AON
+./scripts/config --enable CONFIG_TH1520_AON_PROTOCOL
+./scripts/config --enable CONFIG_TH1520_PM_DOMAINS
+
 #Cleanup large PCI/DRM...
 ./scripts/config --disable CONFIG_PCI
 ./scripts/config --disable CONFIG_DRM
