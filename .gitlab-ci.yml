@@ -10,7 +10,7 @@ before_script:
   - cd /opt/linux-src/ ; git pull ; cd -
 
 cache:
-  key: "$CI_PROJECT_NAME-v6.9.x"
+  key: "$CI_PROJECT_NAME-v6.14.x"
   paths:
     - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
     - ccache.tar.lz4
@@ -41,7 +41,7 @@ build:
   artifacts:
     when: on_success
     expire_in: 28 days
-    name: "$CI_PROJECT_NAME-v6.9.x-$CI_JOB_ID"
+    name: "$CI_PROJECT_NAME-v6.14.x-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
       - "deploy/mac_fastboot_emmc.sh"
