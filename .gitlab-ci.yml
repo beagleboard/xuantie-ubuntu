@@ -1,28 +1,25 @@
-image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64:latest
-# https://openbeagle.org/beagleboard/ci-docker-images
-
 before_script:
   - export PATH=/usr/lib/ccache:$PATH
   - echo "Acquire::http::Proxy \"http://192.168.1.10:3142\";" > /etc/apt/apt.conf.d/00aptproxy
   - apt-get update
-  - apt-get upgrade -yq
   - apt-get dist-upgrade -yq
   - cd /opt/linux-src/ ; git pull ; cd -
+  - git config --global user.email "$GITLAB_USER_EMAIL"
+  - git config --global user.name "$GITLAB_USER_NAME"
+  - touch .gitlab-runner
 
-cache:
-  key: "$CI_PROJECT_NAME-v6.13.x"
-  paths:
-    - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
-    - ccache.tar.lz4
-
-build:
+build-debian-13-riscv64:
+  image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64:latest
+  # https://openbeagle.org/beagleboard/ci-docker-images
+  cache:
+    key: "$CI_PROJECT_NAME-v6.13.x-debian-13-riscv64"
+    paths:
+      - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
+      - ccache.tar.lz4
   tags:
     - docker-amd64
   stage: build
   script:
-    - git config --global user.email "$GITLAB_USER_EMAIL"
-    - git config --global user.name "$GITLAB_USER_NAME"
-    - touch .gitlab-runner
     - mkdir -p /root/.cache/ccache/ || true
     - tar --use-compress-program=lz4 -xf ccache.tar.lz4 -C / || true
     - ccache -M 1G
@@ -41,7 +38,45 @@ build:
   artifacts:
     when: on_success
     expire_in: 28 days
-    name: "$CI_PROJECT_NAME-v6.13.x-$CI_JOB_ID"
+    name: "$CI_PROJECT_NAME-v6.13.x-debian-13-riscv64-$CI_JOB_ID"
+    paths:
+      - "deploy/fastboot_emmc.sh"
+      - "deploy/mac_fastboot_emmc.sh"
+      - "deploy/u-boot-with-spl.bin"
+      - "deploy/boot.ext4.xz"
+      - "deploy/root.ext4.xz"
+
+build-ubuntu-2404-riscv64:
+  image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64:latest
+  # https://openbeagle.org/beagleboard/ci-docker-images
+  cache:
+    key: "$CI_PROJECT_NAME-v6.13.x-ubuntu-2404-riscv64"
+    paths:
+      - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
+      - ccache.tar.lz4
+  tags:
+    - docker-amd64
+  stage: build
+  script:
+    - mkdir -p /root/.cache/ccache/ || true
+    - tar --use-compress-program=lz4 -xf ccache.tar.lz4 -C / || true
+    - ccache -M 1G
+    - ccache -z
+    - ./01_git_sync.sh
+    - ./02_build_opensbi.sh
+    - ./03_build_uboot.sh
+    - ./04_build_linux.sh
+    - ./05_generate_boot.sh
+    - ./06_generate_ubuntu_console_root.sh
+    - xz -vT8 deploy/boot.ext4
+    - xz -vT8 deploy/root.ext4
+    - ccache -sv
+    - tar --use-compress-program=lz4 -cf ccache.tar.lz4 /root/.cache/ccache/
+    - du -sh ccache.tar.lz4
+  artifacts:
+    when: on_success
+    expire_in: 28 days
+    name: "$CI_PROJECT_NAME-v6.13.x-ubuntu-2404-riscv64-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
       - "deploy/mac_fastboot_emmc.sh"
