@@ -9,7 +9,7 @@ LOCAL_OPENSBI_REPO="https://github.com/revyos/thead-opensbi.git"
 
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
-LOCAL_UBOOT_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-u-boot.git"
+LOCAL_UBOOT_REPO="http://forgejo.gfnd.rcn-ee.org:3000/BeagleBoard.org/beaglev-ahead-u-boot.git"
 
 DTB_BRANCH="v6.11.x"
 
@@ -18,7 +18,7 @@ DTB_BRANCH="v6.11.x"
 
 LINUX_BRANCH="linux-6.11.y"
 LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
-LOCAL_LINUX_REPO="https://git.gfnd.rcn-ee.org/kernel.org/mirror-linux-stable.git"
+LOCAL_LINUX_REPO="http://forgejo.gfnd.rcn-ee.org:3000/kernel.org/mirror-linux-stable.git"
 
 LINUX_BBBIO_BRANCH="v6.9-rc2-BeagleV-Ahead"
 LINUX_BBBIO_REPO="https://openbeagle.org/beaglev-ahead/linux.git"
