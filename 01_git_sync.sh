@@ -5,17 +5,17 @@ GCC_VERSION="13.3.0"
 
 OPENSBI_BRANCH="0.9-1.1.2-ubuntu"
 OPENSBI_REPO="https://github.com/beagleboard/beaglev-ahead-opensbi.git"
-LOCAL_OPENSBI_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-opensbi.git"
+LOCAL_OPENSBI_REPO="http://forgejo.gfnd.rcn-ee.org:3000/BeagleBoard.org/beaglev-ahead-opensbi.git"
 
 UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
-LOCAL_UBOOT_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-u-boot.git"
+LOCAL_UBOOT_REPO="http://forgejo.gfnd.rcn-ee.org:3000/BeagleBoard.org/beaglev-ahead-u-boot.git"
 
 DTB_BRANCH="v5.10.x-ti-unified"
 
 LINUX_BRANCH="beaglev-v5.10.113-1.1.2-ubuntu"
 LINUX_REPO="https://github.com/beagleboard/linux.git"
-LOCAL_LINUX_REPO="https://git.gfnd.rcn-ee.org/BeagleBoard.org/beaglev-ahead-linux.git"
+LOCAL_LINUX_REPO="http://forgejo.gfnd.rcn-ee.org:3000/BeagleBoard.org/beaglev-ahead-linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
 	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/${GCC_VERSION}/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz"
