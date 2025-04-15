@@ -1,6 +1,3 @@
-image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64:latest
-# https://openbeagle.org/beagleboard/ci-docker-images
-
 before_script:
   - export PATH=/usr/lib/ccache:$PATH
   - echo "Acquire::http::Proxy \"http://192.168.1.10:3142\";" > /etc/apt/apt.conf.d/00aptproxy
