@@ -11,7 +11,7 @@ UBOOT_BRANCH="beaglev-v2020.01-1.1.2-ubuntu"
 UBOOT_REPO="https://github.com/beagleboard/beaglev-ahead-u-boot.git"
 LOCAL_UBOOT_REPO="http://forgejo.gfnd.rcn-ee.org:3000/BeagleBoard.org/beaglev-ahead-u-boot.git"
 
-DTB_BRANCH="v6.14.x"
+DTB_BRANCH="v6.15.x"
 
 LINUX_BRANCH="master"
 LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
