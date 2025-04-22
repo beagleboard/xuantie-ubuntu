@@ -153,6 +153,11 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --enable CONFIG_FW_LOADER_COMPRESS_XZ
 ./scripts/config --enable CONFIG_FW_LOADER_COMPRESS_ZSTD
 
+#WiFi
+./scripts/config --module CONFIG_CFG80211
+./scripts/config --module CONFIG_BRCMFMAC
+./scripts/config --enable CONFIG_BRCMFMAC_SDIO
+
 echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
 
