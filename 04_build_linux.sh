@@ -158,6 +158,10 @@ make ARCH=riscv CROSS_COMPILE=${CC} defconfig
 ./scripts/config --module CONFIG_BRCMFMAC
 ./scripts/config --enable CONFIG_BRCMFMAC_SDIO
 
+#configure CONFIG_EXTRA_FIRMWARE
+./scripts/config --set-str CONFIG_EXTRA_FIRMWARE "regulatory.db regulatory.db.p7s"
+./scripts/config --set-str CONFIG_EXTRA_FIRMWARE_DIR "firmware"
+
 echo "make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig"
 make ARCH=riscv CROSS_COMPILE=${CC} olddefconfig
 
