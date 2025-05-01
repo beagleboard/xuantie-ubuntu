@@ -1,9 +1,5 @@
 before_script:
   - export PATH=/usr/lib/ccache:$PATH
-  - echo "Acquire::http::Proxy \"http://192.168.1.10:3142\";" > /etc/apt/apt.conf.d/00aptproxy
-  - apt-get update
-  - apt-get dist-upgrade -yq
-  - cd /opt/linux-src/ ; git pull ; cd -
   - git config --global user.email "$GITLAB_USER_EMAIL"
   - git config --global user.name "$GITLAB_USER_NAME"
   - touch .gitlab-runner
@@ -12,7 +8,7 @@ build-debian-13-riscv64:
   image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64:latest
   # https://openbeagle.org/beagleboard/ci-docker-images
   cache:
-    key: "$CI_PROJECT_NAME-v6.11.x-debian-13-riscv64"
+    key: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-debian-13-riscv64"
     paths:
       - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
       - ccache.tar.lz4
@@ -38,7 +34,7 @@ build-debian-13-riscv64:
   artifacts:
     when: on_success
     expire_in: 28 days
-    name: "$CI_PROJECT_NAME-v6.11.x-debian-13-riscv64-$CI_JOB_ID"
+    name: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-debian-13-riscv64-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
       - "deploy/mac_fastboot_emmc.sh"
@@ -50,7 +46,7 @@ build-ubuntu-2404-riscv64:
   image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64:latest
   # https://openbeagle.org/beagleboard/ci-docker-images
   cache:
-    key: "$CI_PROJECT_NAME-v6.11.x-ubuntu-2404-riscv64"
+    key: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-ubuntu-2404-riscv64"
     paths:
       - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
       - ccache.tar.lz4
@@ -76,7 +72,7 @@ build-ubuntu-2404-riscv64:
   artifacts:
     when: on_success
     expire_in: 28 days
-    name: "$CI_PROJECT_NAME-v6.11.x-ubuntu-2404-riscv64-$CI_JOB_ID"
+    name: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-ubuntu-2404-riscv64-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
       - "deploy/mac_fastboot_emmc.sh"
