@@ -1,8 +1,9 @@
 before_script:
   - export PATH=/usr/lib/ccache:$PATH
+  - touch .gitlab-runner
   - git config --global user.email "$GITLAB_USER_EMAIL"
   - git config --global user.name "$GITLAB_USER_NAME"
-  - touch .gitlab-runner
+  - git config --global advice.detachedHead false
 
 build-debian-13-riscv64:
   image: robertcnelson/beagle-devscripts-kernel-debian-12-amd64:latest
@@ -10,7 +11,7 @@ build-debian-13-riscv64:
   cache:
     key: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-debian-13-riscv64"
     paths:
-      - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
+      - mirror/x86_64-gcc-*-linux.tar.xz
       - ccache.tar.lz4
   tags:
     - docker-amd64
@@ -33,7 +34,7 @@ build-debian-13-riscv64:
     - du -sh ccache.tar.lz4
   artifacts:
     when: on_success
-    expire_in: 28 days
+    expire_in: 1 week
     name: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-debian-13-riscv64-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
@@ -48,7 +49,7 @@ build-ubuntu-2404-riscv64:
   cache:
     key: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-ubuntu-2404-riscv64"
     paths:
-      - mirror/x86_64-gcc-13.3.0-nolibc-riscv64-linux.tar.xz
+      - mirror/x86_64-gcc-*-linux.tar.xz
       - ccache.tar.lz4
   tags:
     - docker-amd64
@@ -71,7 +72,7 @@ build-ubuntu-2404-riscv64:
     - du -sh ccache.tar.lz4
   artifacts:
     when: on_success
-    expire_in: 28 days
+    expire_in: 1 week
     name: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-ubuntu-2404-riscv64-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
