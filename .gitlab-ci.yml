@@ -34,7 +34,7 @@ build-debian-13-riscv64:
     - du -sh ccache.tar.lz4
   artifacts:
     when: on_success
-    expire_in: 1 week
+    expire_in: 4 weeks
     name: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-debian-13-riscv64-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
@@ -72,7 +72,7 @@ build-ubuntu-2404-riscv64:
     - du -sh ccache.tar.lz4
   artifacts:
     when: on_success
-    expire_in: 1 week
+    expire_in: 4 weeks
     name: "$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-ubuntu-2404-riscv64-$CI_JOB_ID"
     paths:
       - "deploy/fastboot_emmc.sh"
