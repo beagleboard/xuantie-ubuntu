@@ -1,3 +1,15 @@
+# Weekly BUILDS for Debian 13 (trixie) and Ubuntu 24.04 (noble)
+
+https://gitlab.com/beagle-rootfs/xuantie-ubuntu/-/artifacts
+
+# Mirrors:
+
+Main Mirror:https://github.com/beagleboard/xuantie-ubuntu
+
+Builds on every commit: https://openbeagle.org/beaglev-ahead/xuantie-ubuntu
+
+Daily CI Builds: https://gitlab.com/beagle-rootfs/xuantie-ubuntu
+
 # Mainline Status
 
 # OpenSBI - [v1.3.1]
