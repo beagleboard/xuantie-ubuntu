@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GIT_DEPTH="20"
-GCC_VERSION="13.3.0"
+GCC_VERSION="13.4.0"
 
 OPENSBI_BRANCH="lpi4a"
 OPENSBI_REPO="https://github.com/revyos/thead-opensbi.git"
@@ -13,15 +13,15 @@ LOCAL_UBOOT_REPO="http://forgejo.gfnd.rcn-ee.org:3000/BeagleBoard.org/beaglev-ah
 
 DTB_BRANCH="v6.16.x"
 
-LINUX_BRANCH="master"
-LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
+#LINUX_BRANCH="master"
+#LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-#LINUX_BRANCH="linux-6.16.y"
-#LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
+LINUX_BRANCH="linux-6.15.y"
+LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
 LOCAL_LINUX_REPO="http://forgejo.gfnd.rcn-ee.org:3000/kernel.org/mirror-linux-stable.git"
 
 LINUX_BBBIO_BRANCH="v6.13-BeagleV-Ahead"
-LINUX_BBBIO_REPO="https://openbeagle.org/beaglev-ahead/linux.git"
+LINUX_BBBIO_REPO="https://gitlab.com/beagle-linux/beaglev-ahead-linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
 	echo "wget -c --directory-prefix=./mirror/ https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/${GCC_VERSION}/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz"
@@ -61,8 +61,8 @@ if [ -d ./BeagleBoard-DeviceTrees ] ; then
 	rm -rf ./BeagleBoard-DeviceTrees || true
 fi
 
-echo "git clone -b ${DTB_BRANCH} https://openbeagle.org/beagleboard/BeagleBoard-DeviceTrees.git"
-git clone -b ${DTB_BRANCH} https://openbeagle.org/beagleboard/BeagleBoard-DeviceTrees.git
+echo "git clone -b ${DTB_BRANCH} https://github.com/beagleboard/BeagleBoard-DeviceTrees.git"
+git clone -b ${DTB_BRANCH} https://github.com/beagleboard/BeagleBoard-DeviceTrees.git
 
 if [ -d ./linux ] ; then
 	rm -rf ./linux || true
