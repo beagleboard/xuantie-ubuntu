@@ -13,14 +13,14 @@ LOCAL_UBOOT_REPO="http://forgejo.gfnd.rcn-ee.org:3000/BeagleBoard.org/beaglev-ah
 
 DTB_BRANCH="v6.16.x"
 
-#LINUX_BRANCH="master"
-#LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
+LINUX_BRANCH="master"
+LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git"
 
-LINUX_BRANCH="linux-6.15.y"
-LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
+#LINUX_BRANCH="linux-6.16.y"
+#LINUX_REPO="https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux.git"
 LOCAL_LINUX_REPO="http://forgejo.gfnd.rcn-ee.org:3000/kernel.org/mirror-linux-stable.git"
 
-LINUX_BBBIO_BRANCH="v6.13-BeagleV-Ahead"
+LINUX_BBBIO_BRANCH="v6.16-rc3-BeagleV-Ahead"
 LINUX_BBBIO_REPO="https://gitlab.com/beagle-linux/beaglev-ahead-linux.git"
 
 if [ ! -f ./mirror/x86_64-gcc-${GCC_VERSION}-nolibc-riscv64-linux.tar.xz ] ; then
